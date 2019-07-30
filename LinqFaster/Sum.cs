@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
+using JM.LinqFaster.Utils;
 
 
 namespace JM.LinqFaster
@@ -13,21 +16,114 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint SumF(this byte[] source)
+        {
+            return NumericPolicies.Instance.SumF<NumericPolicies, byte, uint>(source);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int SumF(this sbyte[] source)
+        {
+            return NumericPolicies.Instance.SumF<NumericPolicies, sbyte, int>(source);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint SumF(this ushort[] source)
+        {
+            return NumericPolicies.Instance.SumF<NumericPolicies, ushort, uint>(source);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int SumF(this short[] source)
+        {
+            return NumericPolicies.Instance.SumF<NumericPolicies, short, int>(source);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint SumF(this uint[] source)
+        {
+            return NumericPolicies.Instance.SumF<NumericPolicies, uint>(source);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int SumF(this int[] source)
+        {
+            return NumericPolicies.Instance.SumF<NumericPolicies, int>(source);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static ulong SumF(this ulong[] source)
+        {
+            return NumericPolicies.Instance.SumF<NumericPolicies, ulong>(source);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static long SumF(this long[] source)
+        {
+            return NumericPolicies.Instance.SumF<NumericPolicies, long>(source);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float SumF(this float[] source)
+        {
+            return (float)NumericPolicies.Instance.SumF<NumericPolicies, float, double>(source);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double SumF(this double[] source)
+        {
+            return NumericPolicies.Instance.SumF<NumericPolicies, double>(source);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static decimal SumF(this decimal[] source)
+        {
+            return NumericPolicies.Instance.SumF<NumericPolicies, Decimal>(source);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static T2 SumF<P, T1, T2>(this P p, T1[] source)
+            where P : INumericPolicy<T1, T2>
+            where T1 : IConvertible
+            where T2 : IConvertible
         {
             if (source == null)
             {
-                throw Error.ArgumentNull("source");
+                throw Error.ArgumentNull(nameof(source));
             }
-            int sum = 0;
+
+            T2 a = p.Zero();
             checked
             {
-                foreach (var v in source)
+                foreach (T1 b in source)
                 {
-                    sum += v;
+                    a = p.Add(a, b);
                 }
             }
-            return sum;
+
+            return a;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static T SumF<P, T>(this P p, T[] source) 
+            where P : INumericPolicy<T>
+        {
+            if (source == null)
+            {
+                throw Error.ArgumentNull(nameof(source));
+            }
+
+            T a = p.Zero();
+            checked
+            {
+                foreach (T b in source)
+                {
+                    a = p.Add(a, b);
+                }
+            }
+
+            return a;
         }
 
         /// <summary>
@@ -54,28 +150,6 @@ namespace JM.LinqFaster
                 foreach (var v in source)
                 {
                     sum += selector(v);
-                }
-            }
-            return sum;
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static long SumF(this long[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            long sum = 0;
-            checked
-            {
-                foreach (var v in source)
-                {
-                    sum += v;
                 }
             }
             return sum;
@@ -111,27 +185,6 @@ namespace JM.LinqFaster
         }
 
         /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static float SumF(this float[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            double sum = 0;
-
-            foreach (var v in source)
-            {
-                sum += v;
-            }
-
-            return (float)sum;
-        }
-
-        /// <summary>
         /// Adds the transformed sequence of elements.
         /// </summary>        
         /// <param name="source">The sequence of values to transform then sum.</param>
@@ -159,26 +212,6 @@ namespace JM.LinqFaster
         }
 
         /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static double SumF(this double[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            double sum = 0;
-            foreach (var v in source)
-            {
-                sum += v;
-            }
-
-            return sum;
-        }
-
-        /// <summary>
         /// Adds the transformed sequence of elements.
         /// </summary>        
         /// <param name="source">The sequence of values to transform then sum.</param>
@@ -200,27 +233,6 @@ namespace JM.LinqFaster
             foreach (var v in source)
             {
                 sum += selector(v);
-            }
-
-            return sum;
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
-        public static decimal SumF(this decimal[] source)
-        {
-            if (source == null)
-            {
-                throw Error.ArgumentNull("source");
-            }
-            decimal sum = 0;
-
-            foreach (var v in source)
-            {
-                sum += v;
             }
 
             return sum;
@@ -254,7 +266,7 @@ namespace JM.LinqFaster
         }
 
         /*---- Spans ---*/
-        
+
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>

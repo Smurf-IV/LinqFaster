@@ -8,6 +8,8 @@ namespace Tests
     public class Test
     {
         public const int TEST_SIZE = 1000;
+        public static byte[] byteArray;
+        public static short[] shortArray;
         public static int[] intArray;
         public static long[] longArray;
         public static float[] floatArray;
@@ -40,6 +42,8 @@ namespace Tests
             squaredInts = (x => x * x);
             addXInts = (x, acc) => acc += x;
 
+            byteArray = new byte[TEST_SIZE];
+            shortArray = new short[TEST_SIZE];
             intArray = new int[TEST_SIZE];
             floatArray = new float[TEST_SIZE];
             intList = new List<int>(TEST_SIZE);
@@ -56,6 +60,8 @@ namespace Tests
             for (int i = 0; i < intArray.Length;i++)
             {
                 intArray[i] = rand.Next(-100, 100);
+                byteArray[i] = (byte) intArray[i];
+                shortArray[i] = (short) intArray[i];
                 intList.Add(intArray[i]);
                 longArray[i] = intArray[i];
                 longList.Add(intArray[i]);
