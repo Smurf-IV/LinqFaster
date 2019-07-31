@@ -1840,6 +1840,14 @@
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF``2(``0[],System.Func{``0,``1})">
+            <summary>
+            Adds the transformed sequence of elements.
+            </summary>        
+            <param name="source">The sequence of values to transform then sum.</param>
+            <param name="selector">A transformation function.</param>
+            <returns>The sum of the transformed elements.</returns>
+        </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Nullable{System.Byte}[])">
             <summary>
              Adds a sequence of values.
@@ -2005,80 +2013,40 @@
             <param name="selector">A transformation function.</param>
             <returns>The sum of the transformed elements.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.Int32})">
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.Byte})">
             <summary>
              Adds a sequence of values.
             </summary>
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF``1(System.Span{``0},System.Func{``0,System.Int32})">
-            <summary>
-            Adds the transformed sequence of elements.
-            </summary>        
-            <param name="source">The sequence of values to transform then sum.</param>
-            <param name="selector">A transformation function.</param>
-            <returns>The sum of the transformed elements.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.Int64})">
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.SByte})">
             <summary>
              Adds a sequence of values.
             </summary>
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF``1(System.Span{``0},System.Func{``0,System.Int64})">
-            <summary>
-            Adds the transformed sequence of elements.
-            </summary>        
-            <param name="source">The sequence of values to transform then sum.</param>
-            <param name="selector">A transformation function.</param>
-            <returns>The sum of the transformed elements.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.Single})">
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.UInt16})">
             <summary>
              Adds a sequence of values.
             </summary>
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF``1(System.Span{``0},System.Func{``0,System.Single})">
-            <summary>
-            Adds the transformed sequence of elements.
-            </summary>        
-            <param name="source">The sequence of values to transform then sum.</param>
-            <param name="selector">A transformation function.</param>
-            <returns>The sum of the transformed elements.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.Double})">
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.Int16})">
             <summary>
              Adds a sequence of values.
             </summary>
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF``1(System.Span{``0},System.Func{``0,System.Double})">
-            <summary>
-            Adds the transformed sequence of elements.
-            </summary>        
-            <param name="source">The sequence of values to transform then sum.</param>
-            <param name="selector">A transformation function.</param>
-            <returns>The sum of the transformed elements.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.Decimal})">
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.UInt32})">
             <summary>
              Adds a sequence of values.
             </summary>
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF``1(System.Span{``0},System.Func{``0,System.Decimal})">
-            <summary>
-            Adds the transformed sequence of elements.
-            </summary>        
-            <param name="source">The sequence of values to transform then sum.</param>
-            <param name="selector">A transformation function.</param>
-            <returns>The sum of the transformed elements.</returns>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.Int32})">
             <summary>
@@ -2087,13 +2055,12 @@
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Int32})">
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.UInt64})">
             <summary>
-            Adds the transformed sequence of elements.
-            </summary>        
-            <param name="source">The sequence of values to transform then sum.</param>
-            <param name="selector">A transformation function.</param>
-            <returns>The sum of the transformed elements.</returns>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.Int64})">
             <summary>
@@ -2102,28 +2069,12 @@
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Int64})">
-            <summary>
-            Adds the transformed sequence of elements.
-            </summary>        
-            <param name="source">The sequence of values to transform then sum.</param>
-            <param name="selector">A transformation function.</param>
-            <returns>The sum of the transformed elements.</returns>
-        </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.Single})">
             <summary>
              Adds a sequence of values.
             </summary>
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Single})">
-            <summary>
-            Adds the transformed sequence of elements.
-            </summary>        
-            <param name="source">The sequence of values to transform then sum.</param>
-            <param name="selector">A transformation function.</param>
-            <returns>The sum of the transformed elements.</returns>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.Double})">
             <summary>
@@ -2132,14 +2083,6 @@
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Double})">
-            <summary>
-            Adds the transformed sequence of elements.
-            </summary>        
-            <param name="source">The sequence of values to transform then sum.</param>
-            <param name="selector">A transformation function.</param>
-            <returns>The sum of the transformed elements.</returns>
-        </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.Decimal})">
             <summary>
              Adds a sequence of values.
@@ -2147,7 +2090,92 @@
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.SumF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Decimal})">
+        <member name="M:JM.LinqFaster.LinqFaster.SumF``2(System.Collections.Generic.List{``0},System.Func{``0,``1})">
+            <summary>
+            Adds the transformed sequence of elements.
+            </summary>        
+            <param name="source">The sequence of values to transform then sum.</param>
+            <param name="selector">A transformation function.</param>
+            <returns>The sum of the transformed elements.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.Byte})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.SByte})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.UInt16})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.Int16})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.UInt32})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.Int32})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.UInt64})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.Int64})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.Single})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.Double})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.Decimal})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF``2(System.Span{``0},System.Func{``0,``1})">
             <summary>
             Adds the transformed sequence of elements.
             </summary>        

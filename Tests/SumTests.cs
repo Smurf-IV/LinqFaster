@@ -19,13 +19,13 @@ namespace Tests
             Assert.That(a, Is.EqualTo(b));
             var an = intNullArray.SumF();
             var bn = intNullArray.Sum();
-            var cn = intNullArray.SumF(x => x ?? 0);
             Assert.That(an, Is.EqualTo(bn));
-            Assert.That(an, Is.EqualTo(cn));
 
             var c = floatArray.SumF();
             var d = floatArray.Sum();
             Assert.That(c, Is.EqualTo(d));
+            var dn = floatNullArray.SumF();
+            Assert.That(c, Is.EqualTo(dn));
 
             var e = decimalArray.SumF();
             var f = decimalArray.Sum();
@@ -38,6 +38,13 @@ namespace Tests
             var i = shortArray.SumF();
             var j = shortArray.Aggregate(0, (current, s1) => current + s1);
             Assert.That(i, Is.EqualTo(j));
+
+            var k = doubleArray.SumF();
+            var l = doubleArray.Sum();
+            Assert.That(k, Is.EqualTo(l));
+            var ln = doubleNullArray.SumF();
+            Assert.That(k, Is.EqualTo(ln));
+
 
         }
 

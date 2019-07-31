@@ -24,10 +24,12 @@ namespace Tests
         public byte[] byteArray;
         public short[] shortArray;
         public int[] intArray;
-        public int?[] intNullArray;
+        private int?[] intNullArray;
         public int[] array2;
         public float[] floatArray;
+        private float?[] floatNullArray;
         public double[] doubleArray;
+        private double?[] doubleNullArray;
         public string[] strarray;
         
 
@@ -48,7 +50,9 @@ namespace Tests
             intNullArray = new int?[TEST_SIZE];
             array2 = new int[TEST_SIZE];
             floatArray = new float[TEST_SIZE];
+            floatNullArray = new float?[TEST_SIZE];
             doubleArray = new double[TEST_SIZE];
+            doubleNullArray = new double?[TEST_SIZE];
             list = new List<int>(TEST_SIZE);
             strarray = new string[TEST_SIZE];
                                     
@@ -62,7 +66,9 @@ namespace Tests
                 list.Add(intArray[i]);
                 strarray[i] = intArray[i].ToString();
                 floatArray[i] = intArray[i];
+                floatNullArray[i] = floatArray[i];
                 doubleArray[i] = floatArray[i];
+                doubleNullArray[i] = doubleArray[i];
             }
             array2[TEST_SIZE / 2] = 0;
         }
@@ -149,7 +155,7 @@ namespace Tests
         }
 
         [Benchmark]
-        public int? IntNullSumFastSelect()
+        public int IntNullSumFastSelect()
         {
             return intNullArray.SumF(x => x ?? 0);
         }
@@ -166,6 +172,35 @@ namespace Tests
         //    return floatArray.SumF();
         //}
 
+        [Benchmark]
+        public float FloatSumLinqSelect()
+        {
+            return floatArray.Sum(x => x);
+        }
+
+        [Benchmark]
+        public float FloatSumFastSelect()
+        {
+            return floatArray.SumF(x => x);
+        }
+
+        [Benchmark]
+        public float ? FloatNullSumLinq()
+        {
+            return floatNullArray.Sum();
+        }
+
+        [Benchmark]
+        public float ? FloatNullSumFast()
+        {
+            return floatNullArray.SumF();
+        }
+
+        [Benchmark]
+        public float FloatNullSumFastSelect()
+        {
+            return floatNullArray.SumF(x => x ?? 0);
+        }
 
         //[Benchmark]
         //public double DoubleSumLinq()
@@ -178,6 +213,36 @@ namespace Tests
         //{
         //    return doubleArray.SumF();
         //}
+
+        [Benchmark]
+        public double DoubleSumLinqSelect()
+        {
+            return doubleArray.Sum(x => x);
+        }
+
+        [Benchmark]
+        public double DoubleSumFastSelect()
+        {
+            return doubleArray.SumF(x => x);
+        }
+
+        [Benchmark]
+        public double ? DoubleNullSumLinq()
+        {
+            return doubleNullArray.Sum();
+        }
+
+        [Benchmark]
+        public double ? DoubleNullSumFast()
+        {
+            return doubleNullArray.SumF();
+        }
+
+        [Benchmark]
+        public double ? DoubleNullSumFastSelect()
+        {
+            return doubleNullArray.SumF(x => x ?? 0);
+        }
 
         //[Benchmark]
         //public double AverageLinq()

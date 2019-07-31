@@ -14,7 +14,9 @@ namespace Tests
         public static int?[] intNullArray;
         public static long[] longArray;
         public static float[] floatArray;
+        public static float?[] floatNullArray;
         public static double[] doubleArray;
+        public static double?[] doubleNullArray;
         public static decimal[] decimalArray;
         public static string[] stringArray;
 
@@ -48,6 +50,7 @@ namespace Tests
             intArray = new int[TEST_SIZE];
             intNullArray = new int?[TEST_SIZE];
             floatArray = new float[TEST_SIZE];
+            floatNullArray = new float?[TEST_SIZE];
             intList = new List<int>(TEST_SIZE);
             floatList = new List<float>(TEST_SIZE);
             stringArray = new string[TEST_SIZE];
@@ -55,6 +58,7 @@ namespace Tests
             decimalArray = new decimal[TEST_SIZE];
             decimalList = new List<decimal>(TEST_SIZE);
             doubleArray = new double[TEST_SIZE];
+            doubleNullArray = new double?[TEST_SIZE];
             doubleList = new List<double>(TEST_SIZE);
             longArray = new long[TEST_SIZE];
             longList = new List<long>(TEST_SIZE);
@@ -69,12 +73,14 @@ namespace Tests
                 longArray[i] = intArray[i];
                 longList.Add(intArray[i]);
                 floatArray[i] = (float)rand.NextDouble() * 100.0f - 50f;
+                floatNullArray[i] = floatArray[i];
                 floatList.Add(intArray[i]);
                 stringArray[i] = intArray[i].ToString();
                 stringList.Add(stringArray[i]);
                 decimalArray[i] = (decimal)floatArray[i];
                 decimalList.Add(decimalArray[i]);
                 doubleArray[i] = rand.NextDouble() * 10000.0 - 5000.0;
+                doubleNullArray[i] = doubleArray[i];
                 doubleList.Add(doubleArray[i]);
             }
         }
