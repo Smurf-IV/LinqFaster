@@ -178,7 +178,6 @@ namespace JM.LinqFaster
         /// <returns>The sum of the transformed elements.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T2 SumF<T, T2>(this T[] source, Func<T, T2> selector) 
-            where T2 : struct, IConvertible // Make sure these are not nullable
         {
             if (source == null)
             {

@@ -121,47 +121,47 @@ namespace Tests
         //}
 
 
-        [Benchmark]
-        public int IntArraySumLinq()
-        {
-            return intArray.Sum();
-        }
+        //[Benchmark]
+        //public int IntArraySumLinq()
+        //{
+        //    return intArray.Sum();
+        //}
 
-        [Benchmark]
-        public int IntArraySumFast()
-        {
-            return intArray.SumF();
-        }
+        //[Benchmark]
+        //public int IntArraySumFast()
+        //{
+        //    return intArray.SumF();
+        //}
 
-        [Benchmark]
-        public int IntIArraySumFast()
-        {
-            return ((IList<int>)intArray).SumF();
-        }
+        //[Benchmark]
+        //public int IntIArraySumFast()
+        //{
+        //    return ((IList<int>)intArray).SumF();
+        //}
 
-        [Benchmark]
-        public int IntListSumLinq()
-        {
-            return intList.Sum();
-        }
+        //[Benchmark]
+        //public int IntListSumLinq()
+        //{
+        //    return intList.Sum();
+        //}
 
-        [Benchmark]
-        public int IntListSumFast()
-        {
-            return intList.SumF();
-        }
+        //[Benchmark]
+        //public int IntListSumFast()
+        //{
+        //    return intList.SumF();
+        //}
 
-        [Benchmark]
-        public int IntIListSumLinq()
-        {
-            return ((IList<int>)intList).Sum();
-        }
+        //[Benchmark]
+        //public int IntIListSumLinq()
+        //{
+        //    return ((IList<int>)intList).Sum();
+        //}
 
-        [Benchmark]
-        public int IntIListSumFast()
-        {
-            return ((IList<int>)intList).SumF();
-        }
+        //[Benchmark]
+        //public int IntIListSumFast()
+        //{
+        //    return ((IList<int>)intList).SumF();
+        //}
 
 
         //[Benchmark]
@@ -309,23 +309,23 @@ namespace Tests
         //    return doubleNullArray.SumF(x => x ?? 0);
         //}
 
-        //[Benchmark]
-        //public double AverageLinq()
-        //{
-        //    return intArray.Average();
-        //}
+        [Benchmark]
+        public double IntArrayAverageLinq()
+        {
+            return intArray.Average();
+        }
 
-        //[Benchmark]
-        //public double AverageFast()
-        //{
-        //    return intArray.AverageF();
-        //}
+        [Benchmark]
+        public double IntArrayAverageFast()
+        {
+            return intArray.AverageF();
+        }
 
-        //[Benchmark]
-        //public double AverageFastSIMD()
-        //{
-        //    return intArray.AverageS();
-        //}
+        [Benchmark]
+        public double IntArrayAverageFastSIMD()
+        {
+            return intArray.AverageS();
+        }
 
         //[Benchmark]
         //public int SumWithSelectLinq()

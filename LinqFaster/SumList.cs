@@ -400,7 +400,6 @@ namespace JM.LinqFaster
         /// <returns>The sum of the transformed elements.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T2 SumF<T, T2>(this List<T> source, Func<T, T2> selector)
-            where T2 : struct, IConvertible // Make sure these are not nullable
         {
             if (source == null)
             {
@@ -423,6 +422,45 @@ namespace JM.LinqFaster
             }
 
             return a;
+        }
+
+        /// <summary>
+        /// Adds the transformed sequence of elements.
+        /// </summary>        
+        /// <param name="source">The sequence of values to transform then sum.</param>
+        /// <param name="selector">A transformation function.</param>
+        /// <returns>The sum of the transformed elements.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static T2 SumF<T, T2>(this IList<T> source, Func<T, T2> selector)
+        {
+            switch (source)
+            {
+                case null:
+                    throw Error.ArgumentNull(nameof(source));
+                case T[] sa:
+                    return sa.SumF(selector);
+                case List<T> sl:
+                    return sl.SumF(selector);
+                default:
+                {
+                    if (selector == null)
+                    {
+                        throw Error.ArgumentNull("selector");
+                    }
+
+                    int sourceCount = source.Count;
+                    T2 a = default(T2);
+                    checked
+                    {
+                        for (int index = 0; index < sourceCount; index++)
+                        {
+                            a = GenericOperators.Add(a, selector(source[index]));
+                        }
+                    }
+
+                    return a;
+                }
+            }
         }
 
 

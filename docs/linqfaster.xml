@@ -173,14 +173,19 @@
             <returns>true if every element of the source array passes the test in the specified
             predicate, or if the list is empty; otherwise, false</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Int32[])">
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Single})">
             <summary>
-            Computes the average of an array
+            Computes the average of values obtained by invoking a transform function on
+            each element of the input array.
             </summary>
-            <param name="source">The array to calculate the average of.</param>
+            <param name="source">The array to calculate the transformed average of.</param>
+            <param name="selector">A transform function to apply to each element.</param>
             <returns>The average of the array.</returns>
+            <remarks>
+            Special case for floats to be equivalent to IEnumerable !
+            </remarks>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF``1(``0[],System.Func{``0,System.Int32})">
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF``2(System.Collections.Generic.IList{``0},System.Func{``0,``1})">
             <summary>
             Computes the average of values obtained by invoking a transform function on
             each element of the input array.
@@ -189,14 +194,84 @@
             <param name="selector">A transform function to apply to each element.</param>
             <returns>The average of the array.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Int64[])">
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Byte})">
             <summary>
             Computes the average of an array
             </summary>
             <param name="source">The array to calculate the average of.</param>
             <returns>The average of the array.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF``1(``0[],System.Func{``0,System.Int64})">
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.SByte})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.UInt16})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Int16})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.UInt32})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.UInt64})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Single})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Double})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Decimal})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF``1(System.Collections.Generic.IList{``0},System.Func{``0,System.Decimal})">
             <summary>
             Computes the average of values obtained by invoking a transform function on
             each element of the input array.
@@ -205,52 +280,81 @@
             <param name="selector">A transform function to apply to each element.</param>
             <returns>The average of the array.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Single[])">
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Nullable{System.Byte}})">
             <summary>
             Computes the average of an array
             </summary>
             <param name="source">The array to calculate the average of.</param>
             <returns>The average of the array.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF``1(``0[],System.Func{``0,System.Single})">
-            <summary>
-            Computes the average of values obtained by invoking a transform function on
-            each element of the input array.
-            </summary>
-            <param name="source">The array to calculate the transformed average of.</param>
-            <param name="selector">A transform function to apply to each element.</param>
-            <returns>The average of the array.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Double[])">
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Nullable{System.SByte}})">
             <summary>
             Computes the average of an array
             </summary>
             <param name="source">The array to calculate the average of.</param>
             <returns>The average of the array.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF``1(``0[],System.Func{``0,System.Double})">
-            <summary>
-            Computes the average of values obtained by invoking a transform function on
-            each element of the input array.
-            </summary>
-            <param name="source">The array to calculate the transformed average of.</param>
-            <param name="selector">A transform function to apply to each element.</param>
-            <returns>The average of the array.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Decimal[])">
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Nullable{System.UInt16}})">
             <summary>
             Computes the average of an array
             </summary>
             <param name="source">The array to calculate the average of.</param>
             <returns>The average of the array.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF``1(``0[],System.Func{``0,System.Decimal})">
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Nullable{System.Int16}})">
             <summary>
-            Computes the average of values obtained by invoking a transform function on
-            each element of the input array.
+            Computes the average of an array
             </summary>
-            <param name="source">The array to calculate the transformed average of.</param>
-            <param name="selector">A transform function to apply to each element.</param>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Nullable{System.UInt32}})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Nullable{System.Int32}})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Nullable{System.UInt64}})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Nullable{System.Int64}})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Nullable{System.Single}})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Nullable{System.Double}})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
+            <returns>The average of the array.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.IList{System.Nullable{System.Decimal}})">
+            <summary>
+            Computes the average of an array
+            </summary>
+            <param name="source">The array to calculate the average of.</param>
             <returns>The average of the array.</returns>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Span{System.Int32})">
@@ -325,86 +429,6 @@
             <returns>The average of the array.</returns>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.AverageF``1(System.Span{``0},System.Func{``0,System.Decimal})">
-            <summary>
-            Computes the average of values obtained by invoking a transform function on
-            each element of the input array.
-            </summary>
-            <param name="source">The array to calculate the transformed average of.</param>
-            <param name="selector">A transform function to apply to each element.</param>
-            <returns>The average of the array.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.List{System.Int32})">
-            <summary>
-            Computes the average of a list.
-            </summary>
-            <param name="source">The list to calculate the average of.</param>
-            <returns>The average of the list.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Int32})">
-            <summary>
-            Computes the average of values obtained by invoking a transform function on
-            each element of the input array.
-            </summary>
-            <param name="source">The array to calculate the transformed average of.</param>
-            <param name="selector">A transform function to apply to each element.</param>
-            <returns>The average of the array.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.List{System.Int64})">
-            <summary>
-            Computes the average of a list.
-            </summary>
-            <param name="source">The list to calculate the average of.</param>
-            <returns>The average of the list.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Int64})">
-            <summary>
-            Computes the average of values obtained by invoking a transform function on
-            each element of the input array.
-            </summary>
-            <param name="source">The array to calculate the transformed average of.</param>
-            <param name="selector">A transform function to apply to each element.</param>
-            <returns>The average of the array.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.List{System.Single})">
-            <summary>
-            Computes the average of a list.
-            </summary>
-            <param name="source">The list to calculate the average of.</param>
-            <returns>The average of the list.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Single})">
-            <summary>
-            Computes the average of values obtained by invoking a transform function on
-            each element of the input array.
-            </summary>
-            <param name="source">The array to calculate the transformed average of.</param>
-            <param name="selector">A transform function to apply to each element.</param>
-            <returns>The average of the array.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.List{System.Double})">
-            <summary>
-            Computes the average of a list.
-            </summary>
-            <param name="source">The list to calculate the average of.</param>
-            <returns>The average of the list.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Double})">
-            <summary>
-            Computes the average of values obtained by invoking a transform function on
-            each element of the input array.
-            </summary>
-            <param name="source">The array to calculate the transformed average of.</param>
-            <param name="selector">A transform function to apply to each element.</param>
-            <returns>The average of the array.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF(System.Collections.Generic.List{System.Decimal})">
-            <summary>
-            Computes the average of a list.
-            </summary>
-            <param name="source">The list to calculate the average of.</param>
-            <returns>The average of the list.</returns>
-        </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AverageF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Decimal})">
             <summary>
             Computes the average of values obtained by invoking a transform function on
             each element of the input array.
@@ -2102,6 +2126,14 @@
             <returns>The sum of the sequence.</returns>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF``2(System.Collections.Generic.List{``0},System.Func{``0,``1})">
+            <summary>
+            Adds the transformed sequence of elements.
+            </summary>        
+            <param name="source">The sequence of values to transform then sum.</param>
+            <param name="selector">A transformation function.</param>
+            <returns>The sum of the transformed elements.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF``2(System.Collections.Generic.IList{``0},System.Func{``0,``1})">
             <summary>
             Adds the transformed sequence of elements.
             </summary>        
