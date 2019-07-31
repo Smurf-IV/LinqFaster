@@ -309,57 +309,81 @@ namespace Tests
         //    return doubleNullArray.SumF(x => x ?? 0);
         //}
 
-        [Benchmark]
-        public double IntArrayAverageLinq()
-        {
-            return intArray.Average();
-        }
-
-        [Benchmark]
-        public double IntArrayAverageFast()
-        {
-            return intArray.AverageF();
-        }
-
-        [Benchmark]
-        public double IntArrayAverageFastSIMD()
-        {
-            return intArray.AverageS();
-        }
+        //[Benchmark]
+        //public double IntArrayAverageLinq()
+        //{
+        //    return intArray.Average();
+        //}
 
         //[Benchmark]
-        //public int SumWithSelectLinq()
+        //public double IntArrayAverageFast()
+        //{
+        //    return intArray.AverageF();
+        //}
+
+        //[Benchmark]
+        //public double IntArrayAverageFastSIMD()
+        //{
+        //    return intArray.AverageS();
+        //}
+
+        //[Benchmark]
+        //public int IntArraySumWithSelectLinq()
         //{
         //    return intArray.Sum(x => x / 2);
         //}
 
         //[Benchmark]
-        //public int SumWithSelectFast()
+        //public int IntArraySumWithSelectFast()
         //{
         //    return intArray.SumF(x => x/2);
         //}
 
+        [Benchmark]
+        public double IntArrayAggregateLinq()
+        {
+            return intArray.Aggregate(0.0, (acc, x) => acc += x * x);
+        }
+
+        [Benchmark]
+        public double IntArrayAggregateFast()
+        {
+            return intArray.AggregateF(0.0, (acc, x) => acc += x * x);
+        }
+
+        [Benchmark]
+        public double IntArrayAggregateLinqSelector()
+        {
+            return intArray.Aggregate(0.0, (acc, x) => acc += x * x, acc => acc / intArray.Length);
+        }
+
+        [Benchmark]
+        public double IntArrayAggregateFastSelector()
+        {
+            return intArray.AggregateF(0.0, (acc, x) => acc += x * x, acc => acc / intArray.Length);
+        }
+
 
         //[Benchmark]
-        //public double WhereAggregateLinq()
+        //public double IntArrayWhereAggregateLinq()
         //{        
         //    return intArray.Where(x => x % 2 == 0).Aggregate(0.0, (acc, x) => acc += x * x, acc => acc / intArray.Length);
         //}
 
         //[Benchmark]
-        //public double WhereAggregateFast()
+        //public double IntArrayWhereAggregateFast()
         //{
-        //    return intArray.WhereAggregateF(x => x % 2 == 0,0.0,(acc,x)=> acc += x*x,acc => acc/array.Length);
+        //    return intArray.WhereAggregateF(x => x % 2 == 0,0.0,(acc,x)=> acc += x*x,acc => acc/intArray.Length);
         //}
 
         //[Benchmark]
-        //public int[] SelectFast()
+        //public int[] IntArraySelectFast()
         //{
         //    return intArray.SelectF(x => x * x);
         //}
 
         //[Benchmark]
-        //public int[] SelectFastSIMD()
+        //public int[] IntArraySelectFastSIMD()
         //{
         //    return intArray.SelectS(x => x * x, x=>x*x);
         //}
@@ -367,75 +391,75 @@ namespace Tests
 
 
         //[Benchmark]
-        //public int[] RepeatLinq()
+        //public int[] IntArrayRepeatLinq()
         //{
         //    return Enumerable.Repeat(5, TEST_SIZE).ToArray();
         //}
 
         //[Benchmark]
-        //public int[] RepeatFast()
+        //public int[] IntArrayRepeatFast()
         //{
         //    return LinqFaster.RepeatArrayF(5, TEST_SIZE);
         //}
 
 
         //[Benchmark]
-        //public int[] RepeatFastSIMD()
+        //public int[] IntArrayRepeatFastSIMD()
         //{
         //    return LinqFasterSIMD.RepeatS(5, TEST_SIZE);
         //}
 
         //[Benchmark]
-        //public int[] RepeatFastSIMDB()
+        //public int[] IntArrayRepeatFastSIMDB()
         //{
         //    return LinqFasterSIMD.RepeatSB(5, TEST_SIZE);
         //}
 
         //[Benchmark]
-        //public int MinLinq()
+        //public int IntArrayMinLinq()
         //{
         //    return intArray.Min();
         //}
 
         //[Benchmark]
-        //public int MinFast()
+        //public int IntArrayMinFast()
         //{
         //    return intArray.MinF();
         //}
 
         //[Benchmark]
-        //public int MinFastSIMD()
+        //public int IntArrayMinFastSIMD()
         //{                        
         //    return intArray.MinS();
         //}
 
         //[Benchmark]
-        //public bool SequenceEqual()
+        //public bool IntArraySequenceEqual()
         //{
         //    return intArray.SequenceEqual(array2);
         //}
 
         //[Benchmark]
-        //public bool SequenceEqualF()
+        //public bool IntArraySequenceEqualF()
         //{            
         //    return intArray.SequenceEqualF(array2);
         //}
 
 
         //[Benchmark]
-        //public bool SequenceEqualP()
+        //public bool IntArraySequenceEqualP()
         //{
         //    return intArray.SequenceEqualP(array2);
         //}
 
         //[Benchmark]
-        //public bool SequenceEqualS()
+        //public bool IntArraySequenceEqualS()
         //{
         //    return intArray.SequenceEqualS(array2);
         //}
 
         //[Benchmark]
-        //public bool SequenceEqualSP()
+        //public bool IntArraySequenceEqualSP()
         //{
         //    return intArray.SequenceEqualSP(array2);
         //}

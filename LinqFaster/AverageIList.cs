@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.CompilerServices;
+
 // ReSharper disable UnusedMember.Global
 // ReSharper disable PossibleInvalidOperationException
 
@@ -18,6 +20,7 @@ namespace JM.LinqFaster
         /// <remarks>
         /// Special case for floats to be equivalent to IEnumerable !
         /// </remarks>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float AverageF<T>(this IList<T> source, Func<T, float> selector)
         {
             if (source.Count == 0)
@@ -34,6 +37,7 @@ namespace JM.LinqFaster
         /// <param name="source">The array to calculate the transformed average of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double AverageF<T, T2>(this IList<T> source, Func<T, T2> selector)
             where T2 : IConvertible
         {
@@ -50,6 +54,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double AverageF(this IList<byte> source)
         {
             if (source.Count == 0)
@@ -64,6 +69,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double AverageF(this IList<sbyte> source)
         {
             if (source.Count == 0)
@@ -78,6 +84,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double AverageF(this IList<ushort> source)
         {
             if (source.Count == 0)
@@ -92,6 +99,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double AverageF(this IList<short> source)
         {
             if (source.Count == 0)
@@ -106,6 +114,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double AverageF(this IList<uint> source)
         {
             if (source.Count == 0)
@@ -120,6 +129,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double AverageF(this IList<int> source)
         {
             if (source.Count == 0)
@@ -134,6 +144,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double AverageF(this IList<ulong> source)
         {
             if (source.Count == 0)
@@ -148,6 +159,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double AverageF(this IList<long> source)
         {
             if (source.Count == 0)
@@ -163,6 +175,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float AverageF(this IList<float> source)
         {
             if (source.Count == 0)
@@ -177,6 +190,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double AverageF(this IList<double> source)
         {
             if (source.Count == 0)
@@ -191,6 +205,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static decimal AverageF(this IList<decimal> source)
         {
             if (source.Count == 0)
@@ -207,6 +222,7 @@ namespace JM.LinqFaster
         /// <param name="source">The array to calculate the transformed average of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static decimal AverageF<T>(this IList<T> source, Func<T, decimal> selector)
         {
             if (source.Count == 0)
@@ -223,6 +239,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double? AverageF(this IList<byte?> source)
         {
             if (source.Count == 0)
@@ -237,6 +254,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double? AverageF(this IList<sbyte?> source)
         {
             if (source.Count == 0)
@@ -251,6 +269,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double? AverageF(this IList<ushort?> source)
         {
             if (source.Count == 0)
@@ -265,6 +284,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double? AverageF(this IList<short?> source)
         {
             if (source.Count == 0)
@@ -279,6 +299,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double? AverageF(this IList<uint?> source)
         {
             if (source.Count == 0)
@@ -293,6 +314,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double? AverageF(this IList<int?> source)
         {
             if (source.Count == 0)
@@ -307,6 +329,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double? AverageF(this IList<ulong?> source)
         {
             if (source.Count == 0)
@@ -321,6 +344,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double? AverageF(this IList<long?> source)
         {
             if (source.Count == 0)
@@ -336,6 +360,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double? AverageF(this IList<float?> source)
         {
             if (source.Count == 0)
@@ -350,6 +375,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double? AverageF(this IList<double?> source)
         {
             if (source.Count == 0)
@@ -364,6 +390,7 @@ namespace JM.LinqFaster
         /// </summary>
         /// <param name="source">The array to calculate the average of.</param>
         /// <returns>The average of the array.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static decimal? AverageF(this IList<decimal?> source)
         {
             if (source.Count == 0)
