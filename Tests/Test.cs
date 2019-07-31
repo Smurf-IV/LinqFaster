@@ -11,6 +11,7 @@ namespace Tests
         public static byte[] byteArray;
         public static short[] shortArray;
         public static int[] intArray;
+        public static int?[] intNullArray;
         public static long[] longArray;
         public static float[] floatArray;
         public static double[] doubleArray;
@@ -45,6 +46,7 @@ namespace Tests
             byteArray = new byte[TEST_SIZE];
             shortArray = new short[TEST_SIZE];
             intArray = new int[TEST_SIZE];
+            intNullArray = new int?[TEST_SIZE];
             floatArray = new float[TEST_SIZE];
             intList = new List<int>(TEST_SIZE);
             floatList = new List<float>(TEST_SIZE);
@@ -62,6 +64,7 @@ namespace Tests
                 intArray[i] = rand.Next(-100, 100);
                 byteArray[i] = (byte) intArray[i];
                 shortArray[i] = (short) intArray[i];
+                intNullArray[i] = intArray[i];
                 intList.Add(intArray[i]);
                 longArray[i] = intArray[i];
                 longList.Add(intArray[i]);

@@ -1,19 +1,27 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+
 using JM.LinqFaster;
-using System.Linq;
+
+using NUnit.Framework;
+
 using static Tests.Test;
 
 namespace Tests
 {
     [TestFixture]
-    class SumTests
+    internal class SumTests
     {
         [Test]
-        public  void SumArray()
+        public void SumArray()
         {
             var a = intArray.SumF();
             var b = intArray.Sum();
             Assert.That(a, Is.EqualTo(b));
+            var an = intNullArray.SumF();
+            var bn = intNullArray.Sum();
+            var cn = intNullArray.SumF(x => x ?? 0);
+            Assert.That(an, Is.EqualTo(bn));
+            Assert.That(an, Is.EqualTo(cn));
 
             var c = floatArray.SumF();
             var d = floatArray.Sum();
@@ -33,10 +41,16 @@ namespace Tests
 
         }
 
+
         [Test]
-        public void SumArraySelector() {
+        public void SumArraySelector()
+        {
             var a = intArray.SumF(x => x + 1);
             var b = intArray.Sum(x => x + 1);
+
+            var an = intNullArray.SumF(x => x ?? 0);
+            var bn = intNullArray.Sum(x => x ?? 0);
+            Assert.That(an, Is.EqualTo(bn));
 
             Assert.That(a, Is.EqualTo(b));
 
@@ -66,7 +80,8 @@ namespace Tests
         }
 
         [Test]
-        public void SumListSelector() {
+        public void SumListSelector()
+        {
             var a = intList.SumF(x => x + 1);
             var b = intList.Sum(x => x + 1);
 

@@ -24,6 +24,7 @@ namespace Tests
         public byte[] byteArray;
         public short[] shortArray;
         public int[] intArray;
+        public int?[] intNullArray;
         public int[] array2;
         public float[] floatArray;
         public double[] doubleArray;
@@ -44,6 +45,7 @@ namespace Tests
             byteArray = new byte[TEST_SIZE];
             shortArray = new short[TEST_SIZE];
             intArray = new int[TEST_SIZE];
+            intNullArray = new int?[TEST_SIZE];
             array2 = new int[TEST_SIZE];
             floatArray = new float[TEST_SIZE];
             doubleArray = new double[TEST_SIZE];
@@ -55,6 +57,7 @@ namespace Tests
                 intArray[i] = i % 2;
                 byteArray[i] = (byte)intArray[i];
                 shortArray[i] = (short)intArray[i];
+                intNullArray[i] = intArray[i];
                 array2[i] = i % 2;
                 list.Add(intArray[i]);
                 strarray[i] = intArray[i].ToString();
@@ -77,30 +80,30 @@ namespace Tests
         //}
 
 
-        [Benchmark]
-        public int ByteSumLinq()
-        {
-            return byteArray.Aggregate(0, (current, b1) => current + b1);
-        }
+        //[Benchmark]
+        //public int ByteSumLinq()
+        //{
+        //    return byteArray.Aggregate(0, (current, b1) => current + b1);
+        //}
 
-        [Benchmark]
-        public uint ByteSumFast()
-        {
-            return byteArray.SumF();
-        }
+        //[Benchmark]
+        //public uint ByteSumFast()
+        //{
+        //    return byteArray.SumF();
+        //}
 
 
-        [Benchmark]
-        public int ShortSumLinq()
-        {
-            return shortArray.Aggregate(0, (current, s1) => current + s1);
-        }
+        //[Benchmark]
+        //public int ShortSumLinq()
+        //{
+        //    return shortArray.Aggregate(0, (current, s1) => current + s1);
+        //}
 
-        [Benchmark]
-        public int ShortSumFast()
-        {
-            return shortArray.SumF();
-        }
+        //[Benchmark]
+        //public int ShortSumFast()
+        //{
+        //    return shortArray.SumF();
+        //}
 
 
         [Benchmark]
@@ -115,6 +118,17 @@ namespace Tests
             return intArray.SumF();
         }
 
+        [Benchmark]
+        public int IntSumLinqSelect()
+        {
+            return intArray.Sum(x=>x);
+        }
+
+        [Benchmark]
+        public int IntSumFastSelect()
+        {
+            return intArray.SumF(x=>x);
+        }
 
         //[Benchmark]
         //public int SumFastSIMD()
@@ -123,29 +137,47 @@ namespace Tests
         //}
 
         [Benchmark]
-        public float FloatSumLinq()
+        public int? IntNullSumLinq()
         {
-            return floatArray.Sum();
+            return intNullArray.Sum();
         }
 
         [Benchmark]
-        public float FloatSumFast()
+        public int? IntNullSumFast()
         {
-            return floatArray.SumF();
-        }
-
-
-        [Benchmark]
-        public double DoubleSumLinq()
-        {
-            return doubleArray.Sum();
+            return intNullArray.SumF();
         }
 
         [Benchmark]
-        public double DoubleSumFast()
+        public int? IntNullSumFastSelect()
         {
-            return doubleArray.SumF();
+            return intNullArray.SumF(x => x ?? 0);
         }
+
+        //[Benchmark]
+        //public float FloatSumLinq()
+        //{
+        //    return floatArray.Sum();
+        //}
+
+        //[Benchmark]
+        //public float FloatSumFast()
+        //{
+        //    return floatArray.SumF();
+        //}
+
+
+        //[Benchmark]
+        //public double DoubleSumLinq()
+        //{
+        //    return doubleArray.Sum();
+        //}
+
+        //[Benchmark]
+        //public double DoubleSumFast()
+        //{
+        //    return doubleArray.SumF();
+        //}
 
         //[Benchmark]
         //public double AverageLinq()
