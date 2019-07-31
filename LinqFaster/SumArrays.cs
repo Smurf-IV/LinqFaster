@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 
 using JM.LinqFaster.Utils;
@@ -107,6 +108,42 @@ namespace JM.LinqFaster
         public static float SumF(this float[] source)
         {
             return (float)NumericPolicies.Instance.SumF<NumericPolicies, float, double>(source);
+        }
+
+        /// <summary>
+        /// Adds the transformed sequence of elements.
+        /// </summary>        
+        /// <param name="source">The sequence of values to transform then sum.</param>
+        /// <param name="selector">A transformation function.</param>
+        /// <returns>The sum of the transformed elements.</returns>
+        /// <remarks>
+        /// Special case for floats, as IEnumerable does the sums on doubles before returning the type.
+        /// </remarks>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static T2 SumF<T2>(this float[] source, Func<float, T2> selector)
+            where T2 : struct, IConvertible // Make sure these are not nullable
+        {
+            if (source == null)
+            {
+                throw Error.ArgumentNull(nameof(source));
+            }
+
+            if (selector == null)
+            {
+                throw Error.ArgumentNull("selector");
+            }
+
+            INumericPolicy<double> p = NumericPolicies.Instance;
+            double a = 0;
+            checked
+            {
+                foreach (float b in source)
+                {
+                    a = p.Add(a, selector(b).ToDouble(CultureInfo.InvariantCulture));
+                }
+            }
+
+            return (T2)Convert.ChangeType(a, typeof(T2));
         }
 
         /// <summary>

@@ -1826,6 +1826,17 @@
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF``1(System.Single[],System.Func{System.Single,``0})">
+            <summary>
+            Adds the transformed sequence of elements.
+            </summary>        
+            <param name="source">The sequence of values to transform then sum.</param>
+            <param name="selector">A transformation function.</param>
+            <returns>The sum of the transformed elements.</returns>
+            <remarks>
+            Special case for floats, as IEnumerable does the sums on doubles before returning the type.
+            </remarks>
+        </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Double[])">
             <summary>
              Adds a sequence of values.
@@ -2076,6 +2087,17 @@
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF``1(System.Collections.Generic.List{System.Single},System.Func{System.Single,``0})">
+            <summary>
+            Adds the transformed sequence of elements.
+            </summary>        
+            <param name="source">The sequence of values to transform then sum.</param>
+            <param name="selector">A transformation function.</param>
+            <returns>The sum of the transformed elements.</returns>
+            <remarks>
+            Special case for floats, as IEnumerable does the sums on doubles before returning the type.
+            </remarks>
+        </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.Double})">
             <summary>
              Adds a sequence of values.
@@ -2160,6 +2182,17 @@
             </summary>
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF``1(System.Span{System.Single},System.Func{System.Single,``0})">
+            <summary>
+            Adds the transformed sequence of elements.
+            </summary>        
+            <param name="source">The sequence of values to transform then sum.</param>
+            <param name="selector">A transformation function.</param>
+            <returns>The sum of the transformed elements.</returns>
+            <remarks>
+            Special case for floats, as IEnumerable does the sums on doubles before returning the type.
+            </remarks>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Span{System.Double})">
             <summary>

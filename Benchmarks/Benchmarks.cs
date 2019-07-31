@@ -24,11 +24,14 @@ namespace Tests
         public byte[] byteArray;
         public short[] shortArray;
         public int[] intArray;
+        public List<int> intList;
         private int?[] intNullArray;
         public int[] array2;
         public float[] floatArray;
+        public List<float> floatList;
         private float?[] floatNullArray;
         public double[] doubleArray;
+        public List<double> doubleList;
         private double?[] doubleNullArray;
         public string[] strarray;
         
@@ -48,10 +51,13 @@ namespace Tests
             shortArray = new short[TEST_SIZE];
             intArray = new int[TEST_SIZE];
             intNullArray = new int?[TEST_SIZE];
+            intList = new List<int>(TEST_SIZE);
             array2 = new int[TEST_SIZE];
             floatArray = new float[TEST_SIZE];
+            floatList = new List<float>(TEST_SIZE);
             floatNullArray = new float?[TEST_SIZE];
             doubleArray = new double[TEST_SIZE];
+            doubleList = new List<double>(TEST_SIZE);
             doubleNullArray = new double?[TEST_SIZE];
             list = new List<int>(TEST_SIZE);
             strarray = new string[TEST_SIZE];
@@ -62,12 +68,15 @@ namespace Tests
                 byteArray[i] = (byte)intArray[i];
                 shortArray[i] = (short)intArray[i];
                 intNullArray[i] = intArray[i];
+                intList.Add(intArray[i]);
                 array2[i] = i % 2;
                 list.Add(intArray[i]);
                 strarray[i] = intArray[i].ToString();
                 floatArray[i] = intArray[i];
+                floatList.Add(floatArray[i]);
                 floatNullArray[i] = floatArray[i];
                 doubleArray[i] = floatArray[i];
+                doubleList.Add(doubleArray[i]);
                 doubleNullArray[i] = doubleArray[i];
             }
             array2[TEST_SIZE / 2] = 0;
@@ -125,16 +134,28 @@ namespace Tests
         }
 
         [Benchmark]
-        public int IntSumLinqSelect()
+        public int IntLSumLinq()
         {
-            return intArray.Sum(x=>x);
+            return intList.Sum();
         }
 
         [Benchmark]
-        public int IntSumFastSelect()
+        public int IntLSumFast()
         {
-            return intArray.SumF(x=>x);
+            return intList.SumF();
         }
+        
+        //[Benchmark]
+        //public int IntSumLinqSelect()
+        //{
+        //    return intArray.Sum(x=>x);
+        //}
+
+        //[Benchmark]
+        //public int IntSumFastSelect()
+        //{
+        //    return intArray.SumF(x=>x);
+        //}
 
         //[Benchmark]
         //public int SumFastSIMD()
@@ -142,107 +163,132 @@ namespace Tests
         //    return intArray.SumS();
         //}
 
-        [Benchmark]
-        public int? IntNullSumLinq()
-        {
-            return intNullArray.Sum();
-        }
-
-        [Benchmark]
-        public int? IntNullSumFast()
-        {
-            return intNullArray.SumF();
-        }
-
-        [Benchmark]
-        public int IntNullSumFastSelect()
-        {
-            return intNullArray.SumF(x => x ?? 0);
-        }
-
         //[Benchmark]
-        //public float FloatSumLinq()
+        //public int? IntNullSumLinq()
         //{
-        //    return floatArray.Sum();
+        //    return intNullArray.Sum();
         //}
 
         //[Benchmark]
-        //public float FloatSumFast()
+        //public int? IntNullSumFast()
         //{
-        //    return floatArray.SumF();
-        //}
-
-        [Benchmark]
-        public float FloatSumLinqSelect()
-        {
-            return floatArray.Sum(x => x);
-        }
-
-        [Benchmark]
-        public float FloatSumFastSelect()
-        {
-            return floatArray.SumF(x => x);
-        }
-
-        [Benchmark]
-        public float ? FloatNullSumLinq()
-        {
-            return floatNullArray.Sum();
-        }
-
-        [Benchmark]
-        public float ? FloatNullSumFast()
-        {
-            return floatNullArray.SumF();
-        }
-
-        [Benchmark]
-        public float FloatNullSumFastSelect()
-        {
-            return floatNullArray.SumF(x => x ?? 0);
-        }
-
-        //[Benchmark]
-        //public double DoubleSumLinq()
-        //{
-        //    return doubleArray.Sum();
+        //    return intNullArray.SumF();
         //}
 
         //[Benchmark]
-        //public double DoubleSumFast()
+        //public int IntNullSumFastSelect()
         //{
-        //    return doubleArray.SumF();
+        //    return intNullArray.SumF(x => x ?? 0);
         //}
 
         [Benchmark]
-        public double DoubleSumLinqSelect()
+        public float FloatSumLinq()
         {
-            return doubleArray.Sum(x => x);
+            return floatArray.Sum();
         }
 
         [Benchmark]
-        public double DoubleSumFastSelect()
+        public float FloatSumFast()
         {
-            return doubleArray.SumF(x => x);
+            return floatArray.SumF();
         }
 
         [Benchmark]
-        public double ? DoubleNullSumLinq()
+        public float FloatLSumLinq()
         {
-            return doubleNullArray.Sum();
+            return floatList.Sum();
         }
 
         [Benchmark]
-        public double ? DoubleNullSumFast()
+        public float FloatLSumFast()
         {
-            return doubleNullArray.SumF();
+            return floatList.SumF();
+        }
+
+        //[Benchmark]
+        //public float FloatSumLinqSelect()
+        //{
+        //    return floatArray.Sum(x => x);
+        //}
+
+        //[Benchmark]
+        //public float FloatSumFastSelect()
+        //{
+        //    return floatArray.SumF(x => x);
+        //}
+
+        //[Benchmark]
+        //public float ? FloatNullSumLinq()
+        //{
+        //    return floatNullArray.Sum();
+        //}
+
+        //[Benchmark]
+        //public float ? FloatNullSumFast()
+        //{
+        //    return floatNullArray.SumF();
+        //}
+
+        //[Benchmark]
+        //public float FloatNullSumFastSelect()
+        //{
+        //    return floatNullArray.SumF(x => x ?? 0);
+        //}
+
+
+        [Benchmark]
+        public double DoubleSumLinq()
+        {
+            return doubleArray.Sum();
         }
 
         [Benchmark]
-        public double ? DoubleNullSumFastSelect()
+        public double DoubleSumFast()
         {
-            return doubleNullArray.SumF(x => x ?? 0);
+            return doubleArray.SumF();
         }
+
+        [Benchmark]
+        public double DoubleLSumLinq()
+        {
+            return doubleList.Sum();
+        }
+
+        [Benchmark]
+        public double DoubleLSumFast()
+        {
+            return doubleList.SumF();
+        }
+
+        //[Benchmark]
+        //public double DoubleSumLinqSelect()
+        //{
+        //    return doubleArray.Sum(x => x);
+        //}
+
+        //[Benchmark]
+        //public double DoubleSumFastSelect()
+        //{
+        //    return doubleArray.SumF(x => x);
+        //}
+
+        //[Benchmark]
+        //public double ? DoubleNullSumLinq()
+        //{
+        //    return doubleNullArray.Sum();
+        //}
+
+        //[Benchmark]
+        //public double ? DoubleNullSumFast()
+        //{
+        //    return doubleNullArray.SumF();
+        //}
+
+        //[Benchmark]
+        //public double ? DoubleNullSumFastSelect()
+        //{
+        //    return doubleNullArray.SumF(x => x ?? 0);
+        //}
 
         //[Benchmark]
         //public double AverageLinq()
@@ -308,20 +354,20 @@ namespace Tests
         //}
 
         //[Benchmark]
-        //public int[] RepeastFast()
+        //public int[] RepeatFast()
         //{
         //    return LinqFaster.RepeatArrayF(5, TEST_SIZE);
         //}
 
 
         //[Benchmark]
-        //public int[] RepeastFastSIMD()
+        //public int[] RepeatFastSIMD()
         //{
         //    return LinqFasterSIMD.RepeatS(5, TEST_SIZE);
         //}
 
         //[Benchmark]
-        //public int[] RepeastFastSIMDB()
+        //public int[] RepeatFastSIMDB()
         //{
         //    return LinqFasterSIMD.RepeatSB(5, TEST_SIZE);
         //}
