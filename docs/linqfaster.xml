@@ -2031,7 +2031,21 @@
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.IList{System.Byte})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.SByte})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.IList{System.SByte})">
             <summary>
              Adds a sequence of values.
             </summary>
@@ -2045,7 +2059,21 @@
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.IList{System.UInt16})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.Int16})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.IList{System.Int16})">
             <summary>
              Adds a sequence of values.
             </summary>
@@ -2059,7 +2087,21 @@
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.IList{System.UInt32})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.Int32})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.IList{System.Int32})">
             <summary>
              Adds a sequence of values.
             </summary>
@@ -2073,6 +2115,13 @@
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.IList{System.UInt64})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.Int64})">
             <summary>
              Adds a sequence of values.
@@ -2080,7 +2129,21 @@
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.Single})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.IList{System.Single})">
             <summary>
              Adds a sequence of values.
             </summary>
@@ -2105,7 +2168,21 @@
             <param name="source">The sequence to add.</param>
             <returns>The sum of the sequence.</returns>
         </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.IList{System.Double})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
         <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.List{System.Decimal})">
+            <summary>
+             Adds a sequence of values.
+            </summary>
+            <param name="source">The sequence to add.</param>
+            <returns>The sum of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.SumF(System.Collections.Generic.IList{System.Decimal})">
             <summary>
              Adds a sequence of values.
             </summary>

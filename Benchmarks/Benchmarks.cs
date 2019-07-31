@@ -83,209 +83,222 @@ namespace Tests
         }
 
         //[Benchmark]
-        //public int OrderByLinq()
+        //public int IntArrayOrderByLinq()
         //{
         //    return intArray.OrderBy((x => x -1)).Sum();
         //}
 
         //[Benchmark]
-        //public int OrderByFast()
+        //public int IntArrayOrderByFast()
         //{
         //    return intArray.OrderByF((x => x - 1)).Sum();
         //}
 
 
         //[Benchmark]
-        //public int ByteSumLinq()
+        //public int ByteArraySumLinq()
         //{
         //    return byteArray.Aggregate(0, (current, b1) => current + b1);
         //}
 
         //[Benchmark]
-        //public uint ByteSumFast()
+        //public uint ByteArraySumFast()
         //{
         //    return byteArray.SumF();
         //}
 
 
         //[Benchmark]
-        //public int ShortSumLinq()
+        //public int ShortArraySumLinq()
         //{
         //    return shortArray.Aggregate(0, (current, s1) => current + s1);
         //}
 
         //[Benchmark]
-        //public int ShortSumFast()
+        //public int ShortArraySumFast()
         //{
         //    return shortArray.SumF();
         //}
 
 
         [Benchmark]
-        public int IntSumLinq()
+        public int IntArraySumLinq()
         {
             return intArray.Sum();
         }
 
         [Benchmark]
-        public int IntSumFast()
+        public int IntArraySumFast()
         {
             return intArray.SumF();
         }
 
         [Benchmark]
-        public int IntLSumLinq()
+        public int IntListSumLinq()
         {
             return intList.Sum();
         }
 
         [Benchmark]
-        public int IntLSumFast()
+        public int IntListSumFast()
         {
             return intList.SumF();
         }
-        
+
+        [Benchmark]
+        public int IntIListSumLinq()
+        {
+            return ((IList<int>)intList).Sum();
+        }
+
+        [Benchmark]
+        public int IntIListSumFast()
+        {
+            return ((IList<int>)intList).SumF();
+        }
+
+
         //[Benchmark]
-        //public int IntSumLinqSelect()
+        //public int IntArraySumLinqSelect()
         //{
         //    return intArray.Sum(x=>x);
         //}
 
         //[Benchmark]
-        //public int IntSumFastSelect()
+        //public int IntArraySumFastSelect()
         //{
         //    return intArray.SumF(x=>x);
         //}
 
         //[Benchmark]
-        //public int SumFastSIMD()
+        //public int IntArraySumFastSIMD()
         //{
         //    return intArray.SumS();
         //}
 
         //[Benchmark]
-        //public int? IntNullSumLinq()
+        //public int? IntNullArraySumLinq()
         //{
         //    return intNullArray.Sum();
         //}
 
         //[Benchmark]
-        //public int? IntNullSumFast()
+        //public int? IntNullArraySumFast()
         //{
         //    return intNullArray.SumF();
         //}
 
         //[Benchmark]
-        //public int IntNullSumFastSelect()
+        //public int IntNullArraySumFastSelect()
         //{
         //    return intNullArray.SumF(x => x ?? 0);
         //}
 
-        [Benchmark]
-        public float FloatSumLinq()
-        {
-            return floatArray.Sum();
-        }
-
-        [Benchmark]
-        public float FloatSumFast()
-        {
-            return floatArray.SumF();
-        }
-
-        [Benchmark]
-        public float FloatLSumLinq()
-        {
-            return floatList.Sum();
-        }
-
-        [Benchmark]
-        public float FloatLSumFast()
-        {
-            return floatList.SumF();
-        }
+        //[Benchmark]
+        //public float FloatArraySumLinq()
+        //{
+        //    return floatArray.Sum();
+        //}
 
         //[Benchmark]
-        //public float FloatSumLinqSelect()
+        //public float FloatArraySumFast()
+        //{
+        //    return floatArray.SumF();
+        //}
+
+        //[Benchmark]
+        //public float FloatListSumLinq()
+        //{
+        //    return floatList.Sum();
+        //}
+
+        //[Benchmark]
+        //public float FloatListSumFast()
+        //{
+        //    return floatList.SumF();
+        //}
+
+        //[Benchmark]
+        //public float FloatArraySumLinqSelect()
         //{
         //    return floatArray.Sum(x => x);
         //}
 
         //[Benchmark]
-        //public float FloatSumFastSelect()
+        //public float FloatArraySumFastSelect()
         //{
         //    return floatArray.SumF(x => x);
         //}
 
         //[Benchmark]
-        //public float ? FloatNullSumLinq()
+        //public float ? FloatNullArraySumLinq()
         //{
         //    return floatNullArray.Sum();
         //}
 
         //[Benchmark]
-        //public float ? FloatNullSumFast()
+        //public float ? FloatNullArraySumFast()
         //{
         //    return floatNullArray.SumF();
         //}
 
         //[Benchmark]
-        //public float FloatNullSumFastSelect()
+        //public float FloatNullArraySumFastSelect()
         //{
         //    return floatNullArray.SumF(x => x ?? 0);
         //}
 
 
-        [Benchmark]
-        public double DoubleSumLinq()
-        {
-            return doubleArray.Sum();
-        }
-
-        [Benchmark]
-        public double DoubleSumFast()
-        {
-            return doubleArray.SumF();
-        }
-
-        [Benchmark]
-        public double DoubleLSumLinq()
-        {
-            return doubleList.Sum();
-        }
-
-        [Benchmark]
-        public double DoubleLSumFast()
-        {
-            return doubleList.SumF();
-        }
+        //[Benchmark]
+        //public double DoubleArraySumLinq()
+        //{
+        //    return doubleArray.Sum();
+        //}
 
         //[Benchmark]
-        //public double DoubleSumLinqSelect()
+        //public double DoubleArraySumFast()
+        //{
+        //    return doubleArray.SumF();
+        //}
+
+        //[Benchmark]
+        //public double DoubleListSumLinq()
+        //{
+        //    return doubleList.Sum();
+        //}
+
+        //[Benchmark]
+        //public double DoubleListSumFast()
+        //{
+        //    return doubleList.SumF();
+        //}
+
+        //[Benchmark]
+        //public double DoubleArraySumLinqSelect()
         //{
         //    return doubleArray.Sum(x => x);
         //}
 
         //[Benchmark]
-        //public double DoubleSumFastSelect()
+        //public double DoubleArraySumFastSelect()
         //{
         //    return doubleArray.SumF(x => x);
         //}
 
         //[Benchmark]
-        //public double ? DoubleNullSumLinq()
+        //public double ? DoubleNullArraySumLinq()
         //{
         //    return doubleNullArray.Sum();
         //}
 
         //[Benchmark]
-        //public double ? DoubleNullSumFast()
+        //public double ? DoubleNullArraySumFast()
         //{
         //    return doubleNullArray.SumF();
         //}
 
         //[Benchmark]
-        //public double ? DoubleNullSumFastSelect()
+        //public double ? DoubleNullArraySumFastSelect()
         //{
         //    return doubleNullArray.SumF(x => x ?? 0);
         //}

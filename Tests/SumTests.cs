@@ -32,7 +32,7 @@ namespace Tests
             Assert.That(e, Is.EqualTo(f));
 
             var g = byteArray.SumF();
-            var h = byteArray.Aggregate(0, (current, b1) => current + b1);
+            var h = byteArray.Aggregate(0U, (current, b1) => current + b1);
             Assert.That(g, Is.EqualTo(h));
 
             var i = shortArray.SumF();
