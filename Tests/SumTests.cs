@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 using JM.LinqFaster;
 
@@ -14,10 +15,11 @@ namespace Tests
         [Test]
         public void SumArray()
         {
-            var a = intArray.SumF();
+            var a = ((IList<int>)intArray).SumF();
+
             var b = intArray.Sum();
             Assert.That(a, Is.EqualTo(b));
-            var an = intNullArray.SumF();
+            var an = ((IList<int?>)intNullArray).SumF();
             var bn = intNullArray.Sum();
             Assert.That(an, Is.EqualTo(bn));
 

@@ -134,6 +134,12 @@ namespace Tests
         }
 
         [Benchmark]
+        public int IntIArraySumFast()
+        {
+            return ((IList<int>)intArray).SumF();
+        }
+
+        [Benchmark]
         public int IntListSumLinq()
         {
             return intList.Sum();

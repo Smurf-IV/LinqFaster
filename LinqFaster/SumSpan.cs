@@ -176,7 +176,6 @@ namespace JM.LinqFaster
         /// <returns>The sum of the transformed elements.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T2 SumF<T, T2>(this Span<T> source, Func<T, T2> selector)
-            where T : struct, IConvertible
             where T2 : struct, IConvertible // Make sure these are not nullable
         {
             if (source == null)
@@ -194,7 +193,7 @@ namespace JM.LinqFaster
             {
                 foreach (T b in source)
                 {
-                    a = GenericOperators.Add<T2>(a, selector(b));
+                    a = GenericOperators.Add(a, selector(b));
                 }
             }
 
