@@ -133,6 +133,25 @@ namespace Tests
         //    return intArray.SumF();
         //}
 
+        [Benchmark]
+        public int IntSpanSumFor()
+        {
+            int val = 0;
+            Span<int> span = intArray.AsSpan();
+            for (int index = 0; index < span.Length; index++)
+            {
+                val += span[index];
+            }
+
+            return val;
+        }
+
+        [Benchmark]
+        public int IntSpanSumFast()
+        {
+            return intArray.AsSpan().SumF();
+        }
+
         //[Benchmark]
         //public int IntIArraySumFast()
         //{
@@ -339,29 +358,41 @@ namespace Tests
         //    return intArray.SumF(x => x/2);
         //}
 
-        [Benchmark]
-        public double IntArrayAggregateLinq()
-        {
-            return intArray.Aggregate(0.0, (acc, x) => acc += x * x);
-        }
+        //[Benchmark]
+        //public double IntArrayAggregateLinq()
+        //{
+        //    return intArray.Aggregate(0.0, (acc, x) => acc += x * x);
+        //}
 
-        [Benchmark]
-        public double IntArrayAggregateFast()
-        {
-            return intArray.AggregateF(0.0, (acc, x) => acc += x * x);
-        }
+        //[Benchmark]
+        //public double IntArrayAggregateFast()
+        //{
+        //    return intArray.AggregateF(0.0, (acc, x) => acc += x * x);
+        //}
 
-        [Benchmark]
-        public double IntArrayAggregateLinqSelector()
-        {
-            return intArray.Aggregate(0.0, (acc, x) => acc += x * x, acc => acc / intArray.Length);
-        }
+        //[Benchmark]
+        //public double IntArrayAggregateLinqSelector()
+        //{
+        //    return intArray.Aggregate(0.0, (acc, x) => acc += x * x, acc => acc / intArray.Length);
+        //}
 
-        [Benchmark]
-        public double IntArrayAggregateFastSelector()
-        {
-            return intArray.AggregateF(0.0, (acc, x) => acc += x * x, acc => acc / intArray.Length);
-        }
+        //[Benchmark]
+        //public double IntArrayAggregateFastSelector()
+        //{
+        //    return intArray.AggregateF(0.0, (acc, x) => acc += x * x, acc => acc / intArray.Length);
+        //}
+
+        //[Benchmark]
+        //public double IntListAggregateLinq()
+        //{
+        //    return intList.Aggregate(0.0, (acc, x) => acc += x * x);
+        //}
+
+        //[Benchmark]
+        //public double IntListAggregateFast()
+        //{
+        //    return intList.AggregateF(0.0, (acc, x) => acc += x * x);
+        //}
 
 
         //[Benchmark]
