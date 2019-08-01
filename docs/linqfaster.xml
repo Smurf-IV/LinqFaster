@@ -12,29 +12,29 @@
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.AggregateF``1(System.Collections.Generic.IList{``0},System.Func{``0,``0,``0})">
             <summary>
-            Applies an accumulator function over an array.
+            Applies an accumulator function over an array[T] / List{T} / or IList{T}.
             </summary>        
-            <param name="source">An array to aggregate over.</param>
+            <param name="source">An IList to aggregate over.</param>
             <param name="func">An accumulator function to be invoked on each element</param>
             <returns>The final accumulator value</returns>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.AggregateF``2(System.Collections.Generic.IList{``0},``1,System.Func{``1,``0,``1})">
             <summary>
-            Applies an accumulator function over an array. The specified seed
-            value is used as the initial accumulator value.
+            The specified seed value is used as the initial accumulator value.
+            Applies an accumulator function over an array[T] / List{T} / or IList{T}.
             </summary>        
-            <param name="source">An array to aggregate over.</param>
+            <param name="source">An IList to aggregate over.</param>
             <param name="seed">The initial accumulator value.</param>
             <param name="func">An accumulator function to be invoked on each element</param>
             <returns>The final accumulator value</returns>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.AggregateF``3(System.Collections.Generic.IList{``0},``1,System.Func{``1,``0,``1},System.Func{``1,``2})">
             <summary>
-            Applies an accumulator function over an array. The specified seed
-            value is used as the initial accumulator value, and the specified 
-            function is used to select the result value.
+            The specified seed value is used as the initial accumulator value,
+            and the specified function is used to select the result value.
+            Applies an accumulator function over an array[T] / List{T} / or IList{T}.
             </summary>        
-            <param name="source">An array to aggregate over.</param>
+            <param name="source">An IList to aggregate over.</param>
             <param name="seed">The initial accumulator value.</param>
             <param name="func">An accumulator function to be invoked on each element</param>
             <param name="resultSelector">A function to transform the final accumulator value into the result value.</param>
@@ -42,29 +42,29 @@
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.AggregateF``1(System.Span{``0},System.Func{``0,``0,``0})">
             <summary>
-            Applies an accumulator function over an array.
+            Applies an accumulator function over a Span{T}.
             </summary>        
-            <param name="source">An array to aggregate over.</param>
+            <param name="source">A Span{T} to aggregate over.</param>
             <param name="func">An accumulator function to be invoked on each element</param>
             <returns>The final accumulator value</returns>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.AggregateF``2(System.Span{``0},``1,System.Func{``1,``0,``1})">
             <summary>
-            Applies an accumulator function over an array. The specified seed
+            Applies an accumulator function over a Span{T}. The specified seed
             value is used as the initial accumulator value.
             </summary>        
-            <param name="source">An array to aggregate over.</param>
+            <param name="source">A Span{T} to aggregate over.</param>
             <param name="seed">The initial accumulator value.</param>
             <param name="func">An accumulator function to be invoked on each element</param>
             <returns>The final accumulator value</returns>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.AggregateF``3(System.Span{``0},``1,System.Func{``1,``0,``1},System.Func{``1,``2})">
             <summary>
-            Applies an accumulator function over an array. The specified seed
+            Applies an accumulator function over a Span{T}. The specified seed
             value is used as the initial accumulator value, and the specified 
             function is used to select the result value.
             </summary>        
-            <param name="source">An array to aggregate over.</param>
+            <param name="source">A Span{T} to aggregate over.</param>
             <param name="seed">The initial accumulator value.</param>
             <param name="func">An accumulator function to be invoked on each element</param>
             <param name="resultSelector">A function to transform the final accumulator value into the result value.</param>
@@ -72,35 +72,35 @@
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.AggregateF``1(System.ReadOnlySpan{``0},System.Func{``0,``0,``0})">
             <summary>
-            Applies an accumulator function over an array.
+            Applies an accumulator function over a ReadOnlySpan{T}.
             </summary>        
-            <param name="source">An array to aggregate over.</param>
+            <param name="source">A ReadOnlySpan{T} to aggregate over.</param>
             <param name="func">An accumulator function to be invoked on each element</param>
             <returns>The final accumulator value</returns>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.AggregateF``2(System.ReadOnlySpan{``0},``1,System.Func{``1,``0,``1})">
             <summary>
-            Applies an accumulator function over an array. The specified seed
+            Applies an accumulator function over a ReadOnlySpan{T}. The specified seed
             value is used as the initial accumulator value.
             </summary>        
-            <param name="source">An array to aggregate over.</param>
+            <param name="source">A ReadOnlySpan{T} to aggregate over.</param>
             <param name="seed">The initial accumulator value.</param>
             <param name="func">An accumulator function to be invoked on each element</param>
             <returns>The final accumulator value</returns>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.AggregateF``3(System.ReadOnlySpan{``0},``1,System.Func{``1,``0,``1},System.Func{``1,``2})">
             <summary>
-            Applies an accumulator function over an array. The specified seed
+            Applies an accumulator function over a ReadOnlySpan{T}. The specified seed
             value is used as the initial accumulator value, and the specified 
             function is used to select the result value.
             </summary>        
-            <param name="source">An array to aggregate over.</param>
+            <param name="source">A ReadOnlySpan{T} to aggregate over.</param>
             <param name="seed">The initial accumulator value.</param>
             <param name="func">An accumulator function to be invoked on each element</param>
             <param name="resultSelector">A function to transform the final accumulator value into the result value.</param>
             <returns>The transformed final accumulator value</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.AnyF``1(``0[])">
+        <member name="M:JM.LinqFaster.LinqFaster.AnyF``1(System.Collections.Generic.IList{``0})">
             <summary>
             Determines whether an array contains any elements
             </summary>        

@@ -34,7 +34,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     uint sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i];
                     }
@@ -61,7 +61,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     int sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i];
                     }
@@ -88,7 +88,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     uint sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i];
                     }
@@ -115,7 +115,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     int sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i];
                     }
@@ -142,7 +142,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     uint sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i];
                     }
@@ -169,7 +169,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     int sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i];
                     }
@@ -196,7 +196,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     ulong sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i];
                     }
@@ -223,7 +223,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     long sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i];
                     }
@@ -250,7 +250,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     double sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i];
                     }
@@ -313,7 +313,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     double sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i];
                     }
@@ -340,7 +340,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     decimal sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i];
                     }
@@ -485,7 +485,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     uint sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i] ?? 0;
                     }
@@ -512,7 +512,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     int sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i] ?? 0;
                     }
@@ -539,7 +539,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     uint sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i] ?? 0;
                     }
@@ -566,7 +566,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     int sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i] ?? 0;
                     }
@@ -593,7 +593,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     uint sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i] ?? 0;
                     }
@@ -620,7 +620,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     int sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i] ?? 0;
                     }
@@ -647,7 +647,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     ulong sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i] ?? 0;
                     }
@@ -674,7 +674,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     long sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i] ?? 0;
                     }
@@ -701,7 +701,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     double sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i] ?? 0;
                     }
@@ -765,7 +765,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     double sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i] ?? 0;
                     }
@@ -792,7 +792,7 @@ namespace JM.LinqFaster
                 default:
                     int sourceCount = source.Count;
                     decimal sum = 0;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 0; i < sourceCount; i++)
                     {
                         sum = sum + source[i] ?? 0;
                     }
