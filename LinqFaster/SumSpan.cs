@@ -10,6 +10,12 @@ namespace JM.LinqFaster
 {
     public static partial class LinqFaster
     {
+        /*
+         * Since Span is actually a struct and it does not inherit from IEnumerable,
+         * we can’t use LINQ against it.
+         * This is a big minus when compared to C# collections.
+         */
+
         #region Normal Span<T>
         /// <summary>
         ///  Adds a sequence of values.

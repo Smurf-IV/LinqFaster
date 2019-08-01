@@ -1,40 +1,37 @@
 ﻿using System;
-using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Running;
-using JM.LinqFaster;
-using JM.LinqFaster.Parallel;
-using JM.LinqFaster.SIMD.Parallel;
-using JM.LinqFaster.SIMD;
-
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+
+using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Jobs;
+using BenchmarkDotNet.Running;
+
+using JM.LinqFaster;
 
 namespace Tests
 {
     [MemoryDiagnoser]
     public class Benchmarks
     {
+        private const int LARGE_TEST_SIZE = 1000000;
+        private const int SMALL_TEST_SIZE = 100;
 
-        const int LARGE_TEST_SIZE = 1000000;
-        const int SMALL_TEST_SIZE = 100;
-
-        public List<int> list;
-        public byte[] byteArray;
-        public short[] shortArray;
-        public int[] intArray;
-        public List<int> intList;
+        private List<int> list;
+        private byte[] byteArray;
+        private short[] shortArray;
+        private int[] intArray;
+        private List<int> intList;
         private int?[] intNullArray;
-        public int[] array2;
-        public float[] floatArray;
-        public List<float> floatList;
+        private int[] array2;
+        private float[] floatArray;
+        private List<float> floatList;
         private float?[] floatNullArray;
-        public double[] doubleArray;
-        public List<double> doubleList;
+        private double[] doubleArray;
+        private List<double> doubleList;
         private double?[] doubleNullArray;
-        public string[] strarray;
-        
+        private string[] strarray;
+
 
         [Params(1000000)]
         public int TEST_SIZE { get; set; }
@@ -61,7 +58,7 @@ namespace Tests
             doubleNullArray = new double?[TEST_SIZE];
             list = new List<int>(TEST_SIZE);
             strarray = new string[TEST_SIZE];
-                                    
+
             for (int i = 0; i < TEST_SIZE; i++)
             {
                 intArray[i] = i % 2;
@@ -133,24 +130,24 @@ namespace Tests
         //    return intArray.SumF();
         //}
 
-        [Benchmark]
-        public int IntSpanSumFor()
-        {
-            int val = 0;
-            Span<int> span = intArray.AsSpan();
-            for (int index = 0; index < span.Length; index++)
-            {
-                val += span[index];
-            }
+        //[Benchmark]
+        //public int IntSpanSumFor()
+        //{
+        //    int val = 0;
+        //    Span<int> span = intArray.AsSpan();
+        //    for (int index = 0; index < span.Length; index++)
+        //    {
+        //        val += span[index];
+        //    }
 
-            return val;
-        }
+        //    return val;
+        //}
 
-        [Benchmark]
-        public int IntSpanSumFast()
-        {
-            return intArray.AsSpan().SumF();
-        }
+        //[Benchmark]
+        //public int IntSpanSumFast()
+        //{
+        //    return intArray.AsSpan().SumF();
+        //}
 
         //[Benchmark]
         //public int IntIArraySumFast()
@@ -358,41 +355,86 @@ namespace Tests
         //    return intArray.SumF(x => x/2);
         //}
 
+        private static readonly Func<double, int, double> mulXInts = (acc, x) => acc += x * x;
+
+        [Benchmark]
+        public double IntArrayAggregateLinq()
+        {
+            return intArray.Aggregate(0.0D, mulXInts);
+        }
+
+        [Benchmark]
+        public double IntArrayAggregateFast()
+        {
+            return intArray.AggregateF(0.0D, mulXInts);
+        }
+
+        [Benchmark]
+        public double IntReadOnlyArrayAggregateLinq()
+        {
+            return Array.AsReadOnly(intArray).Aggregate(0.0D, mulXInts);
+        }
+
+        [Benchmark]
+        public double IntReadOnlyArrayAggregateFast()
+        {
+            return Array.AsReadOnly(intArray).AggregateF(0.0D, mulXInts);
+        }
+
         //[Benchmark]
-        //public double IntArrayAggregateLinq()
+        //public double IntSpanAggregateForEach()
         //{
-        //    return intArray.Aggregate(0.0, (acc, x) => acc += x * x);
+        //    //return intArray.AsSpan().Aggregate(0.0, mulXInts);
+        //    double result = 0.0D;
+        //    foreach (var v in intArray.AsSpan())
+        //    {
+        //        result = mulXInts(result, v);
+        //    }
+        //    return result;
+
         //}
 
         //[Benchmark]
-        //public double IntArrayAggregateFast()
+        //public double IntSpanAggregateFast()
         //{
-        //    return intArray.AggregateF(0.0, (acc, x) => acc += x * x);
+        //    return intArray.AsSpan().AggregateF(0.0, mulXInts);
         //}
 
         //[Benchmark]
         //public double IntArrayAggregateLinqSelector()
         //{
-        //    return intArray.Aggregate(0.0, (acc, x) => acc += x * x, acc => acc / intArray.Length);
+        //    return intArray.Aggregate(0.0, mulXInts, acc => acc / intArray.Length);
         //}
 
         //[Benchmark]
         //public double IntArrayAggregateFastSelector()
         //{
-        //    return intArray.AggregateF(0.0, (acc, x) => acc += x * x, acc => acc / intArray.Length);
+        //    return intArray.AggregateF(0.0, mulXInts, acc => acc / intArray.Length);
         //}
 
-        //[Benchmark]
-        //public double IntListAggregateLinq()
-        //{
-        //    return intList.Aggregate(0.0, (acc, x) => acc += x * x);
-        //}
+        [Benchmark]
+        public double IntListAggregateLinq()
+        {
+            return intList.Aggregate(0.0, mulXInts);
+        }
 
-        //[Benchmark]
-        //public double IntListAggregateFast()
-        //{
-        //    return intList.AggregateF(0.0, (acc, x) => acc += x * x);
-        //}
+        [Benchmark]
+        public double IntListAggregateFast()
+        {
+            return intList.AggregateF(0.0, mulXInts);
+        }
+
+        [Benchmark]
+        public double IntReadOnlyListAggregateLinq()
+        {
+            return intList.AsReadOnly().Aggregate(0.0, mulXInts);
+        }
+
+        [Benchmark]
+        public double IntReadOnlyListAggregateFast()
+        {
+            return intList.AsReadOnly().AggregateF(0.0, mulXInts);
+        }
 
 
         //[Benchmark]

@@ -21,16 +21,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint SumF(this List<byte> source)
-        {
-            return NumericPolicies.Instance.SumF<NumericPolicies, byte, uint>(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static uint SumF(this IList<byte> source)
         {
             switch (source)
@@ -40,9 +30,15 @@ namespace JM.LinqFaster
                 case byte[] sa:
                     return sa.SumF();
                 case List<byte> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumF<NumericPolicies, byte, uint>(sl);
                 default:
-                    return source.Aggregate(0U, (current, s1) => current + s1);
+                    int sourceCount = source.Count;
+                    uint sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i];
+                    }
+                    return sum;
             }
         }
 
@@ -52,16 +48,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SumF(this List<sbyte> source)
-        {
-            return NumericPolicies.Instance.SumF<NumericPolicies, sbyte, int>(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static int SumF(this IList<sbyte> source)
         {
             switch (source)
@@ -71,9 +57,15 @@ namespace JM.LinqFaster
                 case sbyte[] sa:
                     return sa.SumF();
                 case List<sbyte> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumF<NumericPolicies, sbyte, int>(sl);
                 default:
-                    return source.Aggregate(0, (current, s1) => current + s1);
+                    int sourceCount = source.Count;
+                    int sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i];
+                    }
+                    return sum;
             }
         }
 
@@ -83,16 +75,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint SumF(this List<ushort> source)
-        {
-            return NumericPolicies.Instance.SumF<NumericPolicies, ushort, uint>(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static uint SumF(this IList<ushort> source)
         {
             switch (source)
@@ -102,9 +84,15 @@ namespace JM.LinqFaster
                 case ushort[] sa:
                     return sa.SumF();
                 case List<ushort> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumF<NumericPolicies, ushort, uint>(sl);
                 default:
-                    return source.Aggregate(0U, (current, s1) => current + s1);
+                    int sourceCount = source.Count;
+                    uint sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i];
+                    }
+                    return sum;
             }
         }
 
@@ -114,16 +102,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SumF(this List<short> source)
-        {
-            return NumericPolicies.Instance.SumF<NumericPolicies, short, int>(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static int SumF(this IList<short> source)
         {
             switch (source)
@@ -133,9 +111,15 @@ namespace JM.LinqFaster
                 case short[] sa:
                     return sa.SumF();
                 case List<short> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumF<NumericPolicies, short, int>(sl);
                 default:
-                    return source.Aggregate(0, (current, s1) => current + s1);
+                    int sourceCount = source.Count;
+                    int sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i];
+                    }
+                    return sum;
             }
         }
 
@@ -145,16 +129,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint SumF(this List<uint> source)
-        {
-            return NumericPolicies.Instance.SumF(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static uint SumF(this IList<uint> source)
         {
             switch (source)
@@ -164,9 +138,15 @@ namespace JM.LinqFaster
                 case uint[] sa:
                     return sa.SumF();
                 case List<uint> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumF(sl);
                 default:
-                    return (uint) source.Aggregate(0UL, (current, s1) => (current + s1));
+                    int sourceCount = source.Count;
+                    uint sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i];
+                    }
+                    return sum;
             }
         }
 
@@ -176,16 +156,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SumF(this List<int> source)
-        {
-            return NumericPolicies.Instance.SumF(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static int SumF(this IList<int> source)
         {
             switch (source)
@@ -195,9 +165,15 @@ namespace JM.LinqFaster
                 case int[] sa:
                     return sa.SumF();
                 case List<int> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumF(sl);
                 default:
-                    return source.Sum();
+                    int sourceCount = source.Count;
+                    int sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i];
+                    }
+                    return sum;
             }
         }
 
@@ -207,16 +183,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong SumF(this List<ulong> source)
-        {
-            return NumericPolicies.Instance.SumF(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static ulong SumF(this IList<ulong> source)
         {
             switch (source)
@@ -226,9 +192,15 @@ namespace JM.LinqFaster
                 case ulong[] sa:
                     return sa.SumF();
                 case List<ulong> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumF(sl);
                 default:
-                    return source.Aggregate(0UL, (current, s1) => (current + s1));
+                    int sourceCount = source.Count;
+                    ulong sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i];
+                    }
+                    return sum;
             }
         }
 
@@ -238,16 +210,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long SumF(this List<long> source)
-        {
-            return NumericPolicies.Instance.SumF(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static long SumF(this IList<long> source)
         {
             switch (source)
@@ -257,9 +219,15 @@ namespace JM.LinqFaster
                 case long[] sa:
                     return sa.SumF();
                 case List<long> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumF(sl);
                 default:
-                    return source.Sum();
+                    int sourceCount = source.Count;
+                    long sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i];
+                    }
+                    return sum;
             }
         }
 
@@ -269,16 +237,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float SumF(this List<float> source)
-        {
-            return (float)NumericPolicies.Instance.SumF<NumericPolicies, float, double>(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static float SumF(this IList<float> source)
         {
             switch (source)
@@ -288,9 +246,15 @@ namespace JM.LinqFaster
                 case float[] sa:
                     return sa.SumF();
                 case List<float> sl:
-                    return sl.SumF();
+                    return (float)NumericPolicies.Instance.SumF<NumericPolicies, float, double>(sl);
                 default:
-                    return source.Sum();
+                    int sourceCount = source.Count;
+                    double sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i];
+                    }
+                    return (float) sum;
             }
         }
 
@@ -336,16 +300,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double SumF(this List<double> source)
-        {
-            return NumericPolicies.Instance.SumF(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static double SumF(this IList<double> source)
         {
             switch (source)
@@ -355,9 +309,15 @@ namespace JM.LinqFaster
                 case double[] sa:
                     return sa.SumF();
                 case List<double> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumF(sl);
                 default:
-                    return source.Sum();
+                    int sourceCount = source.Count;
+                    double sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i];
+                    }
+                    return sum;
             }
         }
 
@@ -367,16 +327,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal SumF(this List<decimal> source)
-        {
-            return NumericPolicies.Instance.SumF(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static decimal SumF(this IList<decimal> source)
         {
             switch (source)
@@ -386,9 +336,15 @@ namespace JM.LinqFaster
                 case decimal[] sa:
                     return sa.SumF();
                 case List<decimal> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumF(sl);
                 default:
-                    return source.Sum();
+                    int sourceCount = source.Count;
+                    decimal sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i];
+                    }
+                    return sum;
             }
         }
 
@@ -516,16 +472,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint? SumF(this List<byte?> source)
-        {
-            return NumericPolicies.Instance.SumFNullable<NumericPolicies, byte, uint>(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static uint? SumF(this IList<byte?> source)
         {
             switch (source)
@@ -535,9 +481,15 @@ namespace JM.LinqFaster
                 case byte?[] sa:
                     return SumF(sa); // Do this to prevent compiler causing recursion in to this same function
                 case List<byte?> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumFNullable<NumericPolicies, byte, uint>(sl);
                 default:
-                    return source.Aggregate(0U, (current, s1) => current + s1??0U);
+                    int sourceCount = source.Count;
+                    uint sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i] ?? 0;
+                    }
+                    return sum;
             }
         }
 
@@ -547,16 +499,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int? SumF(this List<sbyte?> source)
-        {
-            return NumericPolicies.Instance.SumFNullable<NumericPolicies, sbyte, int>(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static int? SumF(this IList<sbyte?> source)
         {
             switch (source)
@@ -566,9 +508,15 @@ namespace JM.LinqFaster
                 case sbyte?[] sa:
                     return SumF(sa); // Do this to prevent compiler causing recursion in to this same function
                 case List<sbyte?> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumFNullable<NumericPolicies, sbyte, int>(sl);
                 default:
-                    return source.Aggregate(0, (current, s1) => current + s1??0);
+                    int sourceCount = source.Count;
+                    int sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i] ?? 0;
+                    }
+                    return sum;
             }
         }
 
@@ -578,16 +526,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint? SumF(this List<ushort?> source)
-        {
-            return NumericPolicies.Instance.SumFNullable<NumericPolicies, ushort, uint>(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static uint? SumF(this IList<ushort?> source)
         {
             switch (source)
@@ -597,9 +535,15 @@ namespace JM.LinqFaster
                 case ushort?[] sa:
                     return SumF(sa); // Do this to prevent compiler causing recursion in to this same function
                 case List<ushort?> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumFNullable<NumericPolicies, ushort, uint>(sl);
                 default:
-                    return source.Aggregate(0U, (current, s1) => current + s1??0U);
+                    int sourceCount = source.Count;
+                    uint sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i] ?? 0;
+                    }
+                    return sum;
             }
         }
 
@@ -609,16 +553,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int? SumF(this List<short?> source)
-        {
-            return NumericPolicies.Instance.SumFNullable<NumericPolicies, short, int>(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static int? SumF(this IList<short?> source)
         {
             switch (source)
@@ -628,9 +562,15 @@ namespace JM.LinqFaster
                 case short?[] sa:
                     return SumF(sa); // Do this to prevent compiler causing recursion in to this same function
                 case List<short?> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumFNullable<NumericPolicies, short, int>(sl);
                 default:
-                    return source.Aggregate(0, (current, s1) => current + s1??0);
+                    int sourceCount = source.Count;
+                    int sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i] ?? 0;
+                    }
+                    return sum;
             }
         }
 
@@ -640,16 +580,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint? SumF(this List<uint?> source)
-        {
-            return NumericPolicies.Instance.SumFNullable(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static uint? SumF(this IList<uint?> source)
         {
             switch (source)
@@ -659,9 +589,15 @@ namespace JM.LinqFaster
                 case uint?[] sa:
                     return SumF(sa); // Do this to prevent compiler causing recursion in to this same function
                 case List<uint?> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumFNullable(sl);
                 default:
-                    return (uint)source.Aggregate(0UL, (current, s1) => current + s1??0UL);
+                    int sourceCount = source.Count;
+                    uint sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i] ?? 0;
+                    }
+                    return sum;
             }
         }
 
@@ -671,16 +607,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int? SumF(this List<int?> source)
-        {
-            return NumericPolicies.Instance.SumFNullable(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static int? SumF(this IList<int?> source)
         {
             switch (source)
@@ -690,9 +616,15 @@ namespace JM.LinqFaster
                 case int?[] sa:
                     return SumF(sa); // Do this to prevent compiler causing recursion in to this same function
                 case List<int?> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumFNullable(sl);
                 default:
-                    return source.Sum();
+                    int sourceCount = source.Count;
+                    int sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i] ?? 0;
+                    }
+                    return sum;
             }
         }
 
@@ -702,16 +634,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong? SumF(this List<ulong?> source)
-        {
-            return NumericPolicies.Instance.SumFNullable(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static ulong? SumF(this IList<ulong?> source)
         {
             switch (source)
@@ -721,9 +643,15 @@ namespace JM.LinqFaster
                 case ulong?[] sa:
                     return SumF(sa); // Do this to prevent compiler causing recursion in to this same function
                 case List<ulong?> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumFNullable(sl);
                 default:
-                    return source.Aggregate(0UL, (current, s1) => (current + s1??0UL));
+                    int sourceCount = source.Count;
+                    ulong sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i] ?? 0;
+                    }
+                    return sum;
             }
         }
 
@@ -733,16 +661,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long? SumF(this List<long?> source)
-        {
-            return NumericPolicies.Instance.SumFNullable(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static long? SumF(this IList<long?> source)
         {
             switch (source)
@@ -752,9 +670,15 @@ namespace JM.LinqFaster
                 case long?[] sa:
                     return SumF(sa); // Do this to prevent compiler causing recursion in to this same function
                 case List<long?> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumFNullable(sl);
                 default:
-                    return source.Sum();
+                    int sourceCount = source.Count;
+                    long sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i] ?? 0;
+                    }
+                    return sum;
             }
         }
 
@@ -764,16 +688,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float? SumF(this List<float?> source)
-        {
-            return (float?) NumericPolicies.Instance.SumFNullable<NumericPolicies, float, double>(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static float? SumF(this IList<float?> source)
         {
             switch (source)
@@ -783,9 +697,15 @@ namespace JM.LinqFaster
                 case float?[] sa:
                     return SumF(sa); // Do this to prevent compiler causing recursion in to this same function
                 case List<float?> sl:
-                    return sl.SumF();
+                    return (float?)NumericPolicies.Instance.SumFNullable<NumericPolicies, float, double>(sl);
                 default:
-                    return source.Sum();
+                    int sourceCount = source.Count;
+                    double sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i] ?? 0;
+                    }
+                    return (float?) sum;
             }
         }
 
@@ -832,16 +752,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double? SumF(this List<double?> source)
-        {
-            return NumericPolicies.Instance.SumFNullable(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static double? SumF(this IList<double?> source)
         {
             switch (source)
@@ -851,9 +761,15 @@ namespace JM.LinqFaster
                 case double?[] sa:
                     return SumF(sa); // Do this to prevent compiler causing recursion in to this same function
                 case List<double?> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumFNullable(sl);
                 default:
-                    return source.Sum();
+                    int sourceCount = source.Count;
+                    double sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i] ?? 0;
+                    }
+                    return sum;
             }
         }
 
@@ -863,16 +779,6 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal? SumF(this List<decimal?> source)
-        {
-            return NumericPolicies.Instance.SumFNullable(source);
-        }
-
-        /// <summary>
-        ///  Adds a sequence of values.
-        /// </summary>
-        /// <param name="source">The sequence to add.</param>
-        /// <returns>The sum of the sequence.</returns>
         public static decimal? SumF(this IList<decimal?> source)
         {
             switch (source)
@@ -882,9 +788,15 @@ namespace JM.LinqFaster
                 case decimal?[] sa:
                     return SumF(sa); // Do this to prevent compiler causing recursion in to this same function
                 case List<decimal?> sl:
-                    return sl.SumF();
+                    return NumericPolicies.Instance.SumFNullable(sl);
                 default:
-                    return source.Sum();
+                    int sourceCount = source.Count;
+                    decimal sum = 0;
+                    for (int i = 1; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i] ?? 0;
+                    }
+                    return sum;
             }
         }
 
