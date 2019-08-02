@@ -355,31 +355,31 @@ namespace Tests
         //    return intArray.SumF(x => x/2);
         //}
 
-        private static readonly Func<double, int, double> mulXInts = (acc, x) => acc += x * x;
+        //private static readonly Func<double, int, double> mulXInts = (acc, x) => acc += x * x;
 
-        [Benchmark]
-        public double IntArrayAggregateLinq()
-        {
-            return intArray.Aggregate(0.0D, mulXInts);
-        }
+        //[Benchmark]
+        //public double IntArrayAggregateLinq()
+        //{
+        //    return intArray.Aggregate(0.0D, mulXInts);
+        //}
 
-        [Benchmark]
-        public double IntArrayAggregateFast()
-        {
-            return intArray.AggregateF(0.0D, mulXInts);
-        }
+        //[Benchmark]
+        //public double IntArrayAggregateFast()
+        //{
+        //    return intArray.AggregateF(0.0D, mulXInts);
+        //}
 
-        [Benchmark]
-        public double IntReadOnlyArrayAggregateLinq()
-        {
-            return Array.AsReadOnly(intArray).Aggregate(0.0D, mulXInts);
-        }
+        //[Benchmark]
+        //public double IntReadOnlyArrayAggregateLinq()
+        //{
+        //    return Array.AsReadOnly(intArray).Aggregate(0.0D, mulXInts);
+        //}
 
-        [Benchmark]
-        public double IntReadOnlyArrayAggregateFast()
-        {
-            return Array.AsReadOnly(intArray).AggregateF(0.0D, mulXInts);
-        }
+        //[Benchmark]
+        //public double IntReadOnlyArrayAggregateFast()
+        //{
+        //    return Array.AsReadOnly(intArray).AggregateF(0.0D, mulXInts);
+        //}
 
         //[Benchmark]
         //public double IntSpanAggregateForEach()
@@ -412,30 +412,159 @@ namespace Tests
         //    return intArray.AggregateF(0.0, mulXInts, acc => acc / intArray.Length);
         //}
 
+        //[Benchmark]
+        //public double IntListAggregateLinq()
+        //{
+        //    return intList.Aggregate(0.0, mulXInts);
+        //}
+
+        //[Benchmark]
+        //public double IntListAggregateFast()
+        //{
+        //    return intList.AggregateF(0.0, mulXInts);
+        //}
+
+        //[Benchmark]
+        //public double IntReadOnlyListAggregateLinq()
+        //{
+        //    return intList.AsReadOnly().Aggregate(0.0, mulXInts);
+        //}
+
+        //[Benchmark]
+        //public double IntReadOnlyListAggregateFast()
+        //{
+        //    return intList.AsReadOnly().AggregateF(0.0, mulXInts);
+        //}
+
+        private static readonly Func<int, bool> firstInts = (x) => x > 0;
+
         [Benchmark]
-        public double IntListAggregateLinq()
+        public double IntArrayFirstLinq()
         {
-            return intList.Aggregate(0.0, mulXInts);
+            return intArray.First(firstInts);
         }
 
         [Benchmark]
-        public double IntListAggregateFast()
+        public double IntArrayFirstFast()
         {
-            return intList.AggregateF(0.0, mulXInts);
+            return intArray.FirstF(firstInts);
         }
 
         [Benchmark]
-        public double IntReadOnlyListAggregateLinq()
+        public double IntArrayFirstFast1()
         {
-            return intList.AsReadOnly().Aggregate(0.0, mulXInts);
+            Predicate<int> predicate = new Predicate<int>(firstInts);
+            return Array.Find(intArray, predicate);
         }
 
         [Benchmark]
-        public double IntReadOnlyListAggregateFast()
+        public double IntSpanFirstForEach()
         {
-            return intList.AsReadOnly().AggregateF(0.0, mulXInts);
+            Span<int> asSpan = intArray.AsSpan();
+            foreach (int i in asSpan)
+            {
+                if (firstInts(i))
+                {
+                    return i;
+                }
+            }
+
+            return 0;
         }
 
+        [Benchmark]
+        public double IntSpanFirstFast()
+        {
+            return intArray.AsSpan().FirstF(firstInts);
+        }
+
+        [Benchmark]
+        public double IntListFirstLinq()
+        {
+            return intList.First(firstInts);
+        }
+
+        [Benchmark]
+        public double IntListFirstFast()
+        {
+            return intList.FirstF(firstInts);
+        }
+
+        [Benchmark]
+        public double IntListFirstFast1()
+        {
+            Predicate<int> predicate = new Predicate<int>(firstInts);
+            int sourceCount = intList.Count;
+            for (int i = 0; i < sourceCount; i++)
+            {
+                if (predicate(intList[i]))
+                {
+                    return intList[i];
+                }
+            }
+
+            return 0;
+        }
+
+        [Benchmark]
+        public double IntAsListReadOnlyFirstLinq()
+        {
+            return intList.AsReadOnly().First(firstInts);
+        }
+
+        [Benchmark]
+        public double IntAsListReadOnlyFirstFast()
+        {
+            return intList.AsReadOnly().FirstF(firstInts);
+        }
+
+        [Benchmark]
+        public double IntArrayAsReadOnlyFirstLinq()
+        {
+            return Array.AsReadOnly(intArray).First(firstInts);
+        }
+
+        [Benchmark]
+        public double IntArrayAsReadOnlyFirstFast()
+        {
+            return Array.AsReadOnly(intArray).FirstF(firstInts);
+        }
+
+        //[Benchmark]
+        //public double IntReadOnlyArrayFirstLinq()
+        //{
+        //    return Array.AsReadOnly(intArray).First(firstInts);
+        //}
+
+        //[Benchmark]
+        //public double IntReadOnlyArrayFirstFast()
+        //{
+        //    return Array.AsReadOnly(intArray).FirstF(firstInts);
+        //}
+
+        //[Benchmark]
+        //public double IntListFirstLinq()
+        //{
+        //    return intList.First(firstInts);
+        //}
+
+        //[Benchmark]
+        //public double IntListFirstFast()
+        //{
+        //    return intList.FirstF(firstInts);
+        //}
+
+        //[Benchmark]
+        //public double IntReadOnlyListFirstLinq()
+        //{
+        //    return intList.AsReadOnly().First(firstInts);
+        //}
+
+        //[Benchmark]
+        //public double IntReadOnlyListFirstFast()
+        //{
+        //    return intList.AsReadOnly().FirstF(firstInts);
+        //}
 
         //[Benchmark]
         //public double IntArrayWhereAggregateLinq()
