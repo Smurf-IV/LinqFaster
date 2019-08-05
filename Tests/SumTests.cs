@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using JM.LinqFaster;
@@ -15,11 +16,11 @@ namespace Tests
         [Test]
         public void SumArray()
         {
-            var a = ((IList<int>)intArray).SumF();
+            var a = ((IReadOnlyList<int>)intArray).SumF();
 
             var b = intArray.Sum();
             Assert.That(a, Is.EqualTo(b));
-            var an = ((IList<int?>)intNullArray).SumF();
+            var an = ((IReadOnlyList<int?>)intNullArray).SumF();
             var bn = intNullArray.Sum();
             Assert.That(an, Is.EqualTo(bn));
 
@@ -56,12 +57,14 @@ namespace Tests
         {
             var a = intArray.SumF(x => x + 1);
             var b = intArray.Sum(x => x + 1);
+            Assert.That(a, Is.EqualTo(b));
+
+            var br = Array.AsReadOnly(intArray).SumF(x => x + 1);
+            Assert.That(a, Is.EqualTo(br));
 
             var an = intNullArray.SumF(x => x ?? 0);
             var bn = intNullArray.Sum(x => x ?? 0);
             Assert.That(an, Is.EqualTo(bn));
-
-            Assert.That(a, Is.EqualTo(b));
 
             var c = floatArray.SumF(squaredFloats);
             var d = floatArray.Sum(squaredFloats);
@@ -93,12 +96,13 @@ namespace Tests
         {
             var a = intList.SumF(x => x + 1);
             var b = intList.Sum(x => x + 1);
-
             Assert.That(a, Is.EqualTo(b));
+
+            var br = intList.AsReadOnly().SumF(x => x + 1);
+            Assert.That(a, Is.EqualTo(br));
 
             var c = floatList.SumF(squaredFloats);
             var d = floatList.Sum(squaredFloats);
-
             Assert.That(c, Is.EqualTo(d));
         }
 

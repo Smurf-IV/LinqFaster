@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 // ReSharper disable ForCanBeConvertedToForeach
 // ReSharper disable UnusedMember.Global
@@ -112,12 +113,12 @@ namespace JM.LinqFaster
         }
 
         /// <summary>
-        /// Returns the first element of an Array / List / IList.
+        /// Returns the first element of an Array / List / IReadOnlyList.
         /// </summary>        
         /// <param name="source">The array to return the first element of.</param>
         /// <returns>The first element in the specified array.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T FirstF<T>(this IList<T> source)
+        public static T FirstF<T>(this IReadOnlyList<T> source)
         {
             if (source == null)
             {
@@ -131,13 +132,13 @@ namespace JM.LinqFaster
         }
 
         /// <summary>
-        /// Returns the first element in an array / List / IList that satisfies a specified condition.
+        /// Returns the first element in an array / List / IReadOnlyList that satisfies a specified condition.
         /// </summary>        
-        /// <param name="source">An IList to return an element from.</param>
+        /// <param name="source">An IReadOnlyList to return an element from.</param>
         /// <param name="func">A function to test each element for a condition.</param>
         /// <returns>The first element that satisfies the condition.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T FirstF<T>(this IList<T> source, Func<T, bool> func)
+        public static T FirstF<T>(this IReadOnlyList<T> source, Func<T, bool> func)
         {
             if (func == null)
             {
@@ -176,7 +177,7 @@ namespace JM.LinqFaster
         /// <returns>default value if source is empty, otherwise, the first element
         /// in source.</returns>        
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T FirstOrDefaultF<T>(this IList<T> source)
+        public static T FirstOrDefaultF<T>(this IReadOnlyList<T> source)
         {
             if (source == null)
             {
@@ -197,7 +198,8 @@ namespace JM.LinqFaster
         /// <param name="func">A function to test each element for a condition.</param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T FirstOrDefaultF<T>(this IList<T> source, Func<T, bool> func)
+        [Pure]
+        public static T FirstOrDefaultF<T>(this IReadOnlyList<T> source, Func<T, bool> func)
         {
             if (func == null)
             {

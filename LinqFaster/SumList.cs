@@ -21,7 +21,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint SumF(this IList<byte> source)
+        public static uint SumF(this IReadOnlyList<byte> source)
         {
             switch (source)
             {
@@ -48,7 +48,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SumF(this IList<sbyte> source)
+        public static int SumF(this IReadOnlyList<sbyte> source)
         {
             switch (source)
             {
@@ -75,7 +75,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint SumF(this IList<ushort> source)
+        public static uint SumF(this IReadOnlyList<ushort> source)
         {
             switch (source)
             {
@@ -102,7 +102,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SumF(this IList<short> source)
+        public static int SumF(this IReadOnlyList<short> source)
         {
             switch (source)
             {
@@ -129,7 +129,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint SumF(this IList<uint> source)
+        public static uint SumF(this IReadOnlyList<uint> source)
         {
             switch (source)
             {
@@ -156,7 +156,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SumF(this IList<int> source)
+        public static int SumF(this IReadOnlyList<int> source)
         {
             switch (source)
             {
@@ -183,7 +183,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong SumF(this IList<ulong> source)
+        public static ulong SumF(this IReadOnlyList<ulong> source)
         {
             switch (source)
             {
@@ -210,7 +210,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long SumF(this IList<long> source)
+        public static long SumF(this IReadOnlyList<long> source)
         {
             switch (source)
             {
@@ -237,7 +237,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float SumF(this IList<float> source)
+        public static float SumF(this IReadOnlyList<float> source)
         {
             switch (source)
             {
@@ -300,7 +300,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double SumF(this IList<double> source)
+        public static double SumF(this IReadOnlyList<double> source)
         {
             switch (source)
             {
@@ -327,7 +327,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal SumF(this IList<decimal> source)
+        public static decimal SumF(this IReadOnlyList<decimal> source)
         {
             switch (source)
             {
@@ -387,7 +387,7 @@ namespace JM.LinqFaster
         /// <param name="selector">A transformation function.</param>
         /// <returns>The sum of the transformed elements.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T2 SumF<T, T2>(this IList<T> source, Func<T, T2> selector)
+        public static T2 SumF<T, T2>(this IReadOnlyList<T> source, Func<T, T2> selector)
         {
             switch (source)
             {
@@ -472,7 +472,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint? SumF(this IList<byte?> source)
+        public static uint? SumF(this IReadOnlyList<byte?> source)
         {
             switch (source)
             {
@@ -499,7 +499,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int? SumF(this IList<sbyte?> source)
+        public static int? SumF(this IReadOnlyList<sbyte?> source)
         {
             switch (source)
             {
@@ -526,7 +526,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint? SumF(this IList<ushort?> source)
+        public static uint? SumF(this IReadOnlyList<ushort?> source)
         {
             switch (source)
             {
@@ -553,7 +553,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int? SumF(this IList<short?> source)
+        public static int? SumF(this IReadOnlyList<short?> source)
         {
             switch (source)
             {
@@ -580,7 +580,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint? SumF(this IList<uint?> source)
+        public static uint? SumF(this IReadOnlyList<uint?> source)
         {
             switch (source)
             {
@@ -607,7 +607,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int? SumF(this IList<int?> source)
+        public static int? SumF(this IReadOnlyList<int?> source)
         {
             switch (source)
             {
@@ -634,7 +634,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong? SumF(this IList<ulong?> source)
+        public static ulong? SumF(this IReadOnlyList<ulong?> source)
         {
             switch (source)
             {
@@ -661,7 +661,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long? SumF(this IList<long?> source)
+        public static long? SumF(this IReadOnlyList<long?> source)
         {
             switch (source)
             {
@@ -688,7 +688,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float? SumF(this IList<float?> source)
+        public static float? SumF(this IReadOnlyList<float?> source)
         {
             switch (source)
             {
@@ -752,7 +752,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double? SumF(this IList<double?> source)
+        public static double? SumF(this IReadOnlyList<double?> source)
         {
             switch (source)
             {
@@ -779,7 +779,7 @@ namespace JM.LinqFaster
         /// <param name="source">The sequence to add.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal? SumF(this IList<decimal?> source)
+        public static decimal? SumF(this IReadOnlyList<decimal?> source)
         {
             switch (source)
             {

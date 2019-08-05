@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using JM.LinqFaster;
 using System.Linq;
 using static Tests.Test;
@@ -15,6 +16,22 @@ namespace Tests
             var b = intArray.Select(x => x * x);
 
             Assert.That(a, Is.EqualTo(b));
+            var b1 = Array.AsReadOnly(intArray).SumF(x => x * x);
+
+        a = intArray.SelectF((x, i) => x + i);
+            b = intArray.Select((x, i) => x + i);
+
+            Assert.That(a, Is.EqualTo(b));
+        }
+
+        [Test]
+        public void SelectSumArray()
+        {
+            var a = intArray.SelectF(x => x * x);
+            var b = intArray.Select(x => x * x);
+
+            Assert.That(a, Is.EqualTo(b));
+            var b1 = Array.AsReadOnly(intArray).SumF(x => x * x);
 
             a = intArray.SelectF((x, i) => x + i);
             b = intArray.Select((x, i) => x + i);

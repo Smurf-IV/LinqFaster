@@ -15,7 +15,7 @@ namespace JM.LinqFaster
         /// <param name="source">The array to check for emptiness</param>
         /// <returns>true if the source array contains any elements, otherwise, false/</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool AnyF<T>(this IList<T> source)
+        public static bool AnyF<T>(this IReadOnlyList<T> source)
         {
             if (source == null)
             {
