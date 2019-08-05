@@ -9,7 +9,6 @@ namespace JM.LinqFaster
 {
     public static partial class LinqFaster
     {
-
         // --------------------------  Arrays --------------------------------------------
 
         /// <summary>
@@ -68,6 +67,7 @@ namespace JM.LinqFaster
         /// <param name="source">The array to return the first element of.</param>
         /// <returns>default value if source is empty, otherwise, the first element
         /// in source.</returns>        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T FirstOrDefaultF<T>(this T[] source)
         {
             if (source == null)
