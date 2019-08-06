@@ -18,6 +18,10 @@ namespace JM.LinqFaster
         // means another generic instantiation, which can be costly esp.
         // for value types.
 
+        // Note: Lists can have items added and removed whilst these API's are in use
+        // The IReadOnlyList<T> represents a list in which the _number_ and _order_ of list elements is read-only.
+        //
+
         // --------------------------  LISTS  --------------------------------------------
 
         /// <summary>
@@ -34,8 +38,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(source));
             }
 
-            int sourceCount = source.Count;
-            if (sourceCount == 0)
+            if (source.Count == 0)
             {
                 throw Error.NoElements();
             }
@@ -43,7 +46,7 @@ namespace JM.LinqFaster
             T r = source[0];
             if (default(T) == null)
             {
-                for (int i = 1; i < sourceCount; i++)
+                for (int i = 1; i < source.Count; i++)
                 {
                     T item = source[i];
                     if (item != null
@@ -53,7 +56,7 @@ namespace JM.LinqFaster
             }
             else
             {
-                for (int i = 1; i < sourceCount; i++)
+                for (int i = 1; i < source.Count; i++)
                 {
                     T item = source[i];
                     if (item.CompareTo(r) < 0)
@@ -83,8 +86,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(selector));
             }
 
-            int sourceCount = source.Count;
-            if (sourceCount == 0)
+            if (source.Count == 0)
             {
                 throw Error.NoElements();
             }
@@ -92,7 +94,7 @@ namespace JM.LinqFaster
             TResult r = selector(source[0]);
             if (default(TResult) == null)
             {
-                for (int i = 1; i < sourceCount; i++)
+                for (int i = 1; i < source.Count; i++)
                 {
                     TResult item = selector(source[i]);
                     if (item != null
@@ -104,7 +106,7 @@ namespace JM.LinqFaster
             }
             else
             {
-                for (int i = 1; i < sourceCount; i++)
+                for (int i = 1; i < source.Count; i++)
                 {
                     TResult item = selector(source[i]);
                     if (item.CompareTo(r) < 0)
@@ -128,13 +130,12 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(source));
             }
 
-            int sourceCount = source.Count;
-            if (sourceCount == 0)
+            if (source.Count == 0)
             {
                 throw Error.NoElements();
             }
             int r = source[0];
-            for (int i = 1; i < sourceCount; i++)
+            for (int i = 1; i < source.Count; i++)
             {
                 if (source[i] < r)
                     r = source[i];
@@ -156,8 +157,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(source));
             }
 
-            int sourceCount = source.Count;
-            if (sourceCount == 0)
+            if (source.Count == 0)
             {
                 throw Error.NoElements();
             }
@@ -167,7 +167,7 @@ namespace JM.LinqFaster
             }
 
             int r = selector(source[0]);
-            for (int i = 1; i < sourceCount; i++)
+            for (int i = 1; i < source.Count; i++)
             {
                 int v = selector(source[i]);
                 if (v < r)
@@ -189,13 +189,12 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(source));
             }
 
-            int sourceCount = source.Count;
-            if (sourceCount == 0)
+            if (source.Count == 0)
             {
                 throw Error.NoElements();
             }
             long r = source[0];
-            for (int i = 1; i < sourceCount; i++)
+            for (int i = 1; i < source.Count; i++)
             {
                 if (source[i] < r)
                     r = source[i];
@@ -217,8 +216,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(source));
             }
 
-            int sourceCount = source.Count;
-            if (sourceCount == 0)
+            if (source.Count == 0)
             {
                 throw Error.NoElements();
             }
@@ -227,7 +225,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(source));
             }
             long r = selector(source[0]);
-            for (int i = 1; i < sourceCount; i++)
+            for (int i = 1; i < source.Count; i++)
             {
                 long v = selector(source[i]);
                 if (v < r)
@@ -249,20 +247,19 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(source));
             }
 
-            int sourceCount = source.Count;
-            if (sourceCount == 0)
+            if (source.Count == 0)
             {
                 throw Error.NoElements();
             }
             float r = source[0];
             int startIndex = 0;
-            for (; startIndex < sourceCount; startIndex++)
+            for (; startIndex < source.Count; startIndex++)
             {
                 if (float.IsNaN(source[startIndex])) continue;
                 r = source[startIndex];
                 break;
             }
-            for (int i = startIndex; i < sourceCount; i++)
+            for (int i = startIndex; i < source.Count; i++)
             {
                 if (source[i] < r)
                     r = source[i];
@@ -284,8 +281,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(source));
             }
 
-            int sourceCount = source.Count;
-            if (sourceCount == 0)
+            if (source.Count == 0)
             {
                 throw Error.NoElements();
             }
@@ -295,14 +291,14 @@ namespace JM.LinqFaster
             }
             float r = selector(source[0]);
             int startIndex = 0;
-            for (; startIndex < sourceCount; startIndex++)
+            for (; startIndex < source.Count; startIndex++)
             {
                 float v = selector(source[startIndex]);
                 if (float.IsNaN(v)) continue;
                 r = v;
                 break;
             }
-            for (int i = startIndex; i < sourceCount; i++)
+            for (int i = startIndex; i < source.Count; i++)
             {
                 float v = selector(source[i]);
                 if (v < r)
@@ -324,20 +320,19 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(source));
             }
 
-            int sourceCount = source.Count;
-            if (sourceCount == 0)
+            if (source.Count == 0)
             {
                 throw Error.NoElements();
             }
             double r = source[0];
             int startIndex = 0;
-            for (; startIndex < sourceCount; startIndex++)
+            for (; startIndex < source.Count; startIndex++)
             {
                 if (double.IsNaN(source[startIndex])) continue;
                 r = source[startIndex];
                 break;
             }
-            for (int i = startIndex; i < sourceCount; i++)
+            for (int i = startIndex; i < source.Count; i++)
             {
                 if (source[i] < r)
                     r = source[i];
@@ -359,8 +354,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(source));
             }
 
-            int sourceCount = source.Count;
-            if (sourceCount == 0)
+            if (source.Count == 0)
             {
                 throw Error.NoElements();
             }
@@ -370,14 +364,14 @@ namespace JM.LinqFaster
             }
             double r = selector(source[0]);
             int startIndex = 0;
-            for (; startIndex < sourceCount; startIndex++)
+            for (; startIndex < source.Count; startIndex++)
             {
                 double v = selector(source[startIndex]);
                 if (double.IsNaN(v)) continue;
                 r = v;
                 break;
             }
-            for (int i = startIndex; i < sourceCount; i++)
+            for (int i = startIndex; i < source.Count; i++)
             {
                 double v = selector(source[i]);
                 if (v < r)
@@ -399,13 +393,12 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(source));
             }
 
-            int sourceCount = source.Count;
-            if (sourceCount == 0)
+            if (source.Count == 0)
             {
                 throw Error.NoElements();
             }
             decimal r = source[0];
-            for (int i = 1; i < sourceCount; i++)
+            for (int i = 1; i < source.Count; i++)
             {
                 if (source[i] < r)
                     r = source[i];
@@ -427,13 +420,12 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(source));
             }
 
-            int sourceCount = source.Count;
-            if (sourceCount == 0)
+            if (source.Count == 0)
             {
                 throw Error.NoElements();
             }
             decimal r = selector(source[0]);
-            for (int i = 1; i < sourceCount; i++)
+            for (int i = 1; i < source.Count; i++)
             {
                 decimal v = selector(source[i]);
                 if (v < r)

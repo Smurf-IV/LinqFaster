@@ -9,7 +9,9 @@ namespace JM.LinqFaster
 {
     public static partial class LinqFaster
     {
-        // --------------------------  Arrays --------------------------------------------
+        // Note: Lists can have items added and removed whilst these API's are in use
+        // The IReadOnlyList<T> represents a list in which the _number_ and _order_ of list elements is read-only.
+        //
 
         /// <summary>
         /// Returns the first element of an array.
@@ -152,18 +154,15 @@ namespace JM.LinqFaster
                 case T[] sa:
                     return sa.FirstF(func);
                 default:
+                    for (int i = 0; i < source.Count; i++)
                     {
-                        int sourceCount = source.Count;
-                        for (int i = 0; i < sourceCount; i++)
+                        if (func(source[i]))
                         {
-                            if (func(source[i]))
-                            {
-                                return source[i];
-                            }
+                            return source[i];
                         }
-
-                        break;
                     }
+
+                    break;
             }
 
             throw Error.NoMatch();
@@ -213,18 +212,15 @@ namespace JM.LinqFaster
                 case T[] sa:
                     return sa.FirstOrDefaultF(func);
                 default:
+                    for (int i = 0; i < source.Count; i++)
                     {
-                        int sourceCount = source.Count;
-                        for (int i = 0; i < sourceCount; i++)
+                        if (func(source[i]))
                         {
-                            if (func(source[i]))
-                            {
-                                return source[i];
-                            }
+                            return source[i];
                         }
-
-                        break;
                     }
+
+                    break;
             }
 
             return default(T);
@@ -270,8 +266,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(predicate));
             }
 
-            int sourceCount = source.Count;
-            for (int i = 0; i < sourceCount; i++)
+            for (int i = 0; i < source.Count; i++)
             {
                 if (predicate(source[i]))
                 {
@@ -323,8 +318,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(predicate));
             }
 
-            int sourceCount = source.Count;
-            for (int i = 0; i < sourceCount; i++)
+            for (int i = 0; i < source.Count; i++)
             {
                 if (predicate(source[i]))
                 {

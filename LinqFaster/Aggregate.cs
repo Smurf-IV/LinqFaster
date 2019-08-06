@@ -13,6 +13,9 @@ namespace JM.LinqFaster
     /// </summary>
     public static partial class LinqFaster
     {
+        // Note: Lists can have items added and removed whilst these API's are in use
+        // The IReadOnlyList<T> represents a list in which the _number_ and _order_ of list elements is read-only.
+        //
 
         /// <summary>
         /// Applies an accumulator function over an array[T] / List{T} / or IReadOnlyList{T}.
@@ -55,8 +58,7 @@ namespace JM.LinqFaster
                     }
                     break;
                 default:
-                    int sourceCount = source.Count;
-                    for (int i = 1; i < sourceCount; i++)
+                    for (int i = 1; i < source.Count; i++)
                     {
                         result = func(result, source[i]);
                     }
@@ -104,8 +106,7 @@ namespace JM.LinqFaster
                     }
                     break;
                 default:
-                    int sourceCount = source.Count;
-                    for (int i = 0; i < sourceCount; i++)
+                    for (int i = 0; i < source.Count; i++)
                     {
                         result = func(result, source[i]);
                     }
@@ -161,8 +162,7 @@ namespace JM.LinqFaster
                     }
                     break;
                 default:
-                    int sourceCount = source.Count;
-                    for (int i = 0; i < sourceCount; i++)
+                    for (int i = 0; i < source.Count; i++)
                     {
                         result = func(result, source[i]);
                     }

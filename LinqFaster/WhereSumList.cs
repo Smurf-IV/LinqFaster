@@ -6,13 +6,17 @@ using System.Runtime.CompilerServices;
 using JM.LinqFaster.Utils;
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
+// ReSharper disable LoopCanBeConvertedToQuery
+// ReSharper disable ForCanBeConvertedToForeach
 
 
 namespace JM.LinqFaster
 {
     public static partial class LinqFaster
     {
-        // --------------------------  Lists  --------------------------------------------
+        // Note: Lists can have items added and removed whilst these API's are in use
+        // The IReadOnlyList<T> represents a list in which the _number_ and _order_ of list elements is read-only.
+        //
 
         /// <summary>
         ///  Adds a sequence of values.
@@ -467,11 +471,10 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(selector));
             }
 
-            int sourceCount = source.Count;
             T2 a = default(T2);
             checked
             {
-                for (int index = 0; index < sourceCount; index++)
+                for (int index = 0; index < source.Count; index++)
                 {
                     if (predicate(source[index]))
                     {
@@ -545,11 +548,10 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(predicate));
             }
 
-            int sourceCount = source.Count;
             T2 a = p.Zero();
             checked
             {
-                for (int index = 0; index < sourceCount; index++)
+                for (int index = 0; index < source.Count; index++)
                 {
                     if (predicate(source[index]))
                     {
@@ -574,11 +576,10 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(predicate));
             }
 
-            int sourceCount = source.Count;
             T a = p.Zero();
             checked
             {
-                for (int index = 0; index < sourceCount; index++)
+                for (int index = 0; index < source.Count; index++)
                 {
                     if (predicate(source[index]))
                     {
@@ -934,12 +935,11 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(selector));
             }
 
-            int sourceCount = source.Count;
             INumericPolicy<double> p = NumericPolicies.Instance;
             double a = 0;
             checked
             {
-                for (int index = 0; index < sourceCount; index++)
+                for (int index = 0; index < source.Count; index++)
                 {
                     if (predicate(source[index]))
                     {
@@ -1035,11 +1035,10 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(predicate));
             }
 
-            int sourceCount = source.Count;
             T2 a = p.Zero();
             checked
             {
-                for (int index = 0; index < sourceCount; index++)
+                for (int index = 0; index < source.Count; index++)
                 {
                     if (predicate(source[index]))
                     {
@@ -1065,11 +1064,10 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(predicate));
             }
 
-            int sourceCount = source.Count;
             T a = p.Zero();
             checked
             {
-                for (int index = 0; index < sourceCount; index++)
+                for (int index = 0; index < source.Count; index++)
                 {
                     if (predicate(source[index]))
                     {
