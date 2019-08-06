@@ -25,7 +25,7 @@ namespace JM.LinqFaster
             }
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             //maintain array bounds elision
@@ -70,7 +70,7 @@ namespace JM.LinqFaster
             }
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             //maintain array bounds elision
@@ -115,7 +115,7 @@ namespace JM.LinqFaster
             }
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             //maintain array bounds elision

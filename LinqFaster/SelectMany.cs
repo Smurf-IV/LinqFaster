@@ -23,7 +23,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             List<TResult> result = new List<TResult>(source.Length);
@@ -54,7 +54,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             List<TResult> result = new List<TResult>(source.Length);
@@ -87,7 +87,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             List<TResult> result = new List<TResult>(source.Length);
@@ -118,7 +118,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             List<TResult> result = new List<TResult>(source.Length);
@@ -150,7 +150,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             List<TResult> result = new List<TResult>(source.Count);
@@ -181,7 +181,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             List<TResult> result = new List<TResult>(source.Count);

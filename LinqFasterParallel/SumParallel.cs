@@ -59,7 +59,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             int sum = 0;
@@ -130,7 +130,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             long sum = 0;
@@ -207,7 +207,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             double sum = 0;
@@ -289,7 +289,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
             double sum = 0;
             object LOCK = new object();
@@ -370,7 +370,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             decimal sum = 0;
@@ -447,7 +447,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             int sum = 0;
@@ -518,7 +518,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             long sum = 0;
@@ -587,7 +587,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             double sum = 0;
@@ -655,7 +655,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             double sum = 0;
@@ -729,7 +729,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             decimal sum = 0;

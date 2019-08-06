@@ -132,7 +132,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             INumericPolicy<double> p = NumericPolicies.Instance;
@@ -186,7 +186,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             T2 a = default(T2);

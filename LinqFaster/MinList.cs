@@ -18,73 +18,73 @@ namespace JM.LinqFaster
         // means another generic instantiation, which can be costly esp.
         // for value types.
 
-        // --------------------------  this Spans  --------------------------------------------
+        // --------------------------  LISTS  --------------------------------------------
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T MaxF<T>(this Span<T> source)
+        public static T MinF<T>(this List<T> source)
             where T : IComparable<T>
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
 
-            Comparer<T> comparer = Comparer<T>.Default;
             T r = source[0];
             if (default(T) == null)
             {
-                for (int i = 1; i < source.Length; i++)
+                for (int i = 1; i < sourceCount; i++)
                 {
                     T item = source[i];
                     if (item != null
-                        && item.CompareTo(r) > 0)
-                    {
+                        && item.CompareTo(r) < 0)
                         r = item;
-                    }
                 }
             }
             else
             {
-                for (int i = 1; i < source.Length; i++)
+                for (int i = 1; i < sourceCount; i++)
                 {
                     T item = source[i];
-                    if (item.CompareTo(r) > 0)
-                    {
+                    if (item.CompareTo(r) < 0)
                         r = item;
-                    }
                 }
             }
             return r;
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static TResult MaxF<T, TResult>(this Span<T> source, Func<T, TResult> selector)
+        public static TResult MinF<T, TResult>(this List<T> source, Func<T, TResult> selector)
             where TResult : IComparable<TResult>
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
+
             if (selector == null)
             {
-                throw Error.ArgumentNull(nameof(source));
+                throw Error.ArgumentNull(nameof(selector));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
@@ -92,11 +92,11 @@ namespace JM.LinqFaster
             TResult r = selector(source[0]);
             if (default(TResult) == null)
             {
-                for (int i = 1; i < source.Length; i++)
+                for (int i = 1; i < sourceCount; i++)
                 {
                     TResult item = selector(source[i]);
                     if (item != null
-                        && item.CompareTo(r) > 0)
+                        && item.CompareTo(r) < 0)
                     {
                         r = item;
                     }
@@ -104,60 +104,60 @@ namespace JM.LinqFaster
             }
             else
             {
-                for (int i = 1; i < source.Length; i++)
+                for (int i = 1; i < sourceCount; i++)
                 {
                     TResult item = selector(source[i]);
-                    if (item.CompareTo(r) > 0)
-                    {
+                    if (item.CompareTo(r) < 0)
                         r = item;
-                    }
-
                 }
             }
             return r;
         }
 
+
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MaxF(this Span<int> source)
+        public static int MinF(this List<int> source)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
             int r = source[0];
-            for (int i = 1; i < source.Length; i++)
+            for (int i = 1; i < sourceCount; i++)
             {
-                if (source[i] > r)
-                {
+                if (source[i] < r)
                     r = source[i];
-                }
             }
             return r;
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MaxF<T>(this Span<T> source, Func<T, int> selector)
+        public static int MinF<T>(this List<T> source, Func<T, int> selector)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
@@ -167,119 +167,125 @@ namespace JM.LinqFaster
             }
 
             int r = selector(source[0]);
-            for (int i = 1; i < source.Length; i++)
+            for (int i = 1; i < sourceCount; i++)
             {
                 int v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                     r = v;
             }
             return r;
         }
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long MaxF(this Span<long> source)
+        public static long MinF(this List<long> source)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
             long r = source[0];
-            for (int i = 1; i < source.Length; i++)
+            for (int i = 1; i < sourceCount; i++)
             {
-                if (source[i] > r)
+                if (source[i] < r)
                     r = source[i];
             }
             return r;
         }
 
-
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long MaxF<T>(this Span<T> source, Func<T, long> selector)
+        public static long MinF<T>(this List<T> source, Func<T, long> selector)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
             if (selector == null)
             {
-                throw Error.ArgumentNull(nameof(selector));
+                throw Error.ArgumentNull(nameof(source));
             }
-
             long r = selector(source[0]);
-            for (int i = 1; i < source.Length; i++)
+            for (int i = 1; i < sourceCount; i++)
             {
                 long v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                     r = v;
             }
             return r;
         }
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float MaxF(this Span<float> source)
+        public static float MinF(this List<float> source)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
             float r = source[0];
             int startIndex = 0;
-            for (; startIndex < source.Length; startIndex++)
+            for (; startIndex < sourceCount; startIndex++)
             {
                 if (float.IsNaN(source[startIndex])) continue;
                 r = source[startIndex];
                 break;
             }
-            for (int i = startIndex; i < source.Length; i++)
+            for (int i = startIndex; i < sourceCount; i++)
             {
-                if (source[i] > r)
+                if (source[i] < r)
                     r = source[i];
             }
             return r;
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float MaxF<T>(this Span<T> source, Func<T, float> selector)
+        public static float MinF<T>(this List<T> source, Func<T, float> selector)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
@@ -287,71 +293,74 @@ namespace JM.LinqFaster
             {
                 throw Error.ArgumentNull(nameof(selector));
             }
-
             float r = selector(source[0]);
             int startIndex = 0;
-            for (; startIndex < source.Length; startIndex++)
+            for (; startIndex < sourceCount; startIndex++)
             {
                 float v = selector(source[startIndex]);
                 if (float.IsNaN(v)) continue;
                 r = v;
                 break;
             }
-            for (int i = startIndex; i < source.Length; i++)
+            for (int i = startIndex; i < sourceCount; i++)
             {
                 float v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                     r = v;
             }
             return r;
         }
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double MaxF(this Span<double> source)
+        public static double MinF(this List<double> source)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
             double r = source[0];
             int startIndex = 0;
-            for (; startIndex < source.Length; startIndex++)
+            for (; startIndex < sourceCount; startIndex++)
             {
                 if (double.IsNaN(source[startIndex])) continue;
                 r = source[startIndex];
                 break;
             }
-            for (int i = startIndex; i < source.Length; i++)
+            for (int i = startIndex; i < sourceCount; i++)
             {
-                if (source[i] > r)
+                if (source[i] < r)
                     r = source[i];
             }
             return r;
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double MaxF<T>(this Span<T> source, Func<T, double> selector)
+        public static double MinF<T>(this List<T> source, Func<T, double> selector)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
@@ -359,151 +368,147 @@ namespace JM.LinqFaster
             {
                 throw Error.ArgumentNull(nameof(selector));
             }
-
             double r = selector(source[0]);
             int startIndex = 0;
-            for (; startIndex < source.Length; startIndex++)
+            for (; startIndex < sourceCount; startIndex++)
             {
                 double v = selector(source[startIndex]);
-                if (!double.IsNaN(v))
-                {
-                    r = v;
-                    break;
-                }
+                if (double.IsNaN(v)) continue;
+                r = v;
+                break;
             }
-            for (int i = startIndex; i < source.Length; i++)
+            for (int i = startIndex; i < sourceCount; i++)
             {
                 double v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                     r = v;
             }
             return r;
         }
 
-
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal MaxF(this Span<decimal> source)
+        public static decimal MinF(this List<decimal> source)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
             decimal r = source[0];
-            for (int i = 1; i < source.Length; i++)
+            for (int i = 1; i < sourceCount; i++)
             {
-                if (source[i] > r)
+                if (source[i] < r)
                     r = source[i];
             }
             return r;
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal MaxF<T>(this Span<T> source, Func<T, decimal> selector)
+        public static decimal MinF<T>(this List<T> source, Func<T, decimal> selector)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
-            if (selector == null)
-            {
-                throw Error.ArgumentNull(nameof(selector));
-            }
             decimal r = selector(source[0]);
-            for (int i = 1; i < source.Length; i++)
+            for (int i = 1; i < sourceCount; i++)
             {
                 decimal v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                     r = v;
             }
             return r;
         }
 
-        // --------------------------  ReadOnlySpans  --------------------------------------------
+        // --------------------------  IReadOnlyList  --------------------------------------------
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T MaxF<T>(this ReadOnlySpan<T> source)
+        public static T MinF<T>(this IReadOnlyList<T> source)
             where T : IComparable<T>
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
 
-            Comparer<T> comparer = Comparer<T>.Default;
             T r = source[0];
             if (default(T) == null)
             {
-                for (int i = 1; i < source.Length; i++)
+                for (int i = 1; i < sourceCount; i++)
                 {
                     T item = source[i];
                     if (item != null
                         && item.CompareTo(r) > 0)
-                    {
                         r = item;
-                    }
                 }
             }
             else
             {
-                for (int i = 1; i < source.Length; i++)
+                for (int i = 1; i < sourceCount; i++)
                 {
                     T item = source[i];
-                    if (item.CompareTo(r) > 0)
-                    {
+                    if (item.CompareTo(r) < 0)
                         r = item;
-                    }
                 }
             }
             return r;
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static TResult MaxF<T, TResult>(this ReadOnlySpan<T> source, Func<T, TResult> selector)
+        public static TResult MinF<T, TResult>(this IReadOnlyList<T> source, Func<T, TResult> selector)
             where TResult : IComparable<TResult>
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
+
             if (selector == null)
             {
-                throw Error.ArgumentNull(nameof(source));
+                throw Error.ArgumentNull(nameof(selector));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
@@ -511,11 +516,11 @@ namespace JM.LinqFaster
             TResult r = selector(source[0]);
             if (default(TResult) == null)
             {
-                for (int i = 1; i < source.Length; i++)
+                for (int i = 1; i < sourceCount; i++)
                 {
                     TResult item = selector(source[i]);
                     if (item != null
-                        && item.CompareTo(r) > 0)
+                        && item.CompareTo(r) < 0)
                     {
                         r = item;
                     }
@@ -523,60 +528,60 @@ namespace JM.LinqFaster
             }
             else
             {
-                for (int i = 1; i < source.Length; i++)
+                for (int i = 1; i < sourceCount; i++)
                 {
                     TResult item = selector(source[i]);
-                    if (item.CompareTo(r) > 0)
-                    {
+                    if (item.CompareTo(r) < 0)
                         r = item;
-                    }
-
                 }
             }
             return r;
         }
 
+
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MaxF(this ReadOnlySpan<int> source)
+        public static int MinF(this IReadOnlyList<int> source)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
             int r = source[0];
-            for (int i = 1; i < source.Length; i++)
+            for (int i = 1; i < sourceCount; i++)
             {
-                if (source[i] > r)
-                {
+                if (source[i] < r)
                     r = source[i];
-                }
             }
             return r;
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MaxF<T>(this ReadOnlySpan<T> source, Func<T, int> selector)
+        public static int MinF<T>(this IReadOnlyList<T> source, Func<T, int> selector)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
@@ -586,119 +591,125 @@ namespace JM.LinqFaster
             }
 
             int r = selector(source[0]);
-            for (int i = 1; i < source.Length; i++)
+            for (int i = 1; i < sourceCount; i++)
             {
                 int v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                     r = v;
             }
             return r;
         }
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long MaxF(this ReadOnlySpan<long> source)
+        public static long MinF(this IReadOnlyList<long> source)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
             long r = source[0];
-            for (int i = 1; i < source.Length; i++)
+            for (int i = 1; i < sourceCount; i++)
             {
-                if (source[i] > r)
+                if (source[i] < r)
                     r = source[i];
             }
             return r;
         }
 
-
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long MaxF<T>(this ReadOnlySpan<T> source, Func<T, long> selector)
+        public static long MinF<T>(this IReadOnlyList<T> source, Func<T, long> selector)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
             if (selector == null)
             {
-                throw Error.ArgumentNull(nameof(selector));
+                throw Error.ArgumentNull(nameof(source));
             }
-
             long r = selector(source[0]);
-            for (int i = 1; i < source.Length; i++)
+            for (int i = 1; i < sourceCount; i++)
             {
                 long v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                     r = v;
             }
             return r;
         }
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float MaxF(this ReadOnlySpan<float> source)
+        public static float MinF(this IReadOnlyList<float> source)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
             float r = source[0];
             int startIndex = 0;
-            for (; startIndex < source.Length; startIndex++)
+            for (; startIndex < sourceCount; startIndex++)
             {
                 if (float.IsNaN(source[startIndex])) continue;
                 r = source[startIndex];
                 break;
             }
-            for (int i = startIndex; i < source.Length; i++)
+            for (int i = startIndex; i < sourceCount; i++)
             {
-                if (source[i] > r)
+                if (source[i] < r)
                     r = source[i];
             }
             return r;
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float MaxF<T>(this ReadOnlySpan<T> source, Func<T, float> selector)
+        public static float MinF<T>(this IReadOnlyList<T> source, Func<T, float> selector)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
@@ -706,71 +717,74 @@ namespace JM.LinqFaster
             {
                 throw Error.ArgumentNull(nameof(selector));
             }
-
             float r = selector(source[0]);
             int startIndex = 0;
-            for (; startIndex < source.Length; startIndex++)
+            for (; startIndex < sourceCount; startIndex++)
             {
                 float v = selector(source[startIndex]);
                 if (float.IsNaN(v)) continue;
                 r = v;
                 break;
             }
-            for (int i = startIndex; i < source.Length; i++)
+            for (int i = startIndex; i < sourceCount; i++)
             {
                 float v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                     r = v;
             }
             return r;
         }
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double MaxF(this ReadOnlySpan<double> source)
+        public static double MinF(this IReadOnlyList<double> source)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
             double r = source[0];
             int startIndex = 0;
-            for (; startIndex < source.Length; startIndex++)
+            for (; startIndex < sourceCount; startIndex++)
             {
                 if (double.IsNaN(source[startIndex])) continue;
                 r = source[startIndex];
                 break;
             }
-            for (int i = startIndex; i < source.Length; i++)
+            for (int i = startIndex; i < sourceCount; i++)
             {
-                if (source[i] > r)
+                if (source[i] < r)
                     r = source[i];
             }
             return r;
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double MaxF<T>(this ReadOnlySpan<T> source, Func<T, double> selector)
+        public static double MinF<T>(this IReadOnlyList<T> source, Func<T, double> selector)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
@@ -778,79 +792,75 @@ namespace JM.LinqFaster
             {
                 throw Error.ArgumentNull(nameof(selector));
             }
-
             double r = selector(source[0]);
             int startIndex = 0;
-            for (; startIndex < source.Length; startIndex++)
+            for (; startIndex < sourceCount; startIndex++)
             {
                 double v = selector(source[startIndex]);
-                if (!double.IsNaN(v))
-                {
-                    r = v;
-                    break;
-                }
+                if (double.IsNaN(v)) continue;
+                r = v;
+                break;
             }
-            for (int i = startIndex; i < source.Length; i++)
+            for (int i = startIndex; i < sourceCount; i++)
             {
                 double v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                     r = v;
             }
             return r;
         }
 
-
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal MaxF(this ReadOnlySpan<decimal> source)
+        public static decimal MinF(this IReadOnlyList<decimal> source)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
             decimal r = source[0];
-            for (int i = 1; i < source.Length; i++)
+            for (int i = 1; i < sourceCount; i++)
             {
-                if (source[i] > r)
+                if (source[i] < r)
                     r = source[i];
             }
             return r;
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal MaxF<T>(this ReadOnlySpan<T> source, Func<T, decimal> selector)
+        public static decimal MinF<T>(this IReadOnlyList<T> source, Func<T, decimal> selector)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
-            if (source.Length == 0)
+
+            int sourceCount = source.Count;
+            if (sourceCount == 0)
             {
                 throw Error.NoElements();
             }
-            if (selector == null)
-            {
-                throw Error.ArgumentNull(nameof(selector));
-            }
             decimal r = selector(source[0]);
-            for (int i = 1; i < source.Length; i++)
+            for (int i = 1; i < sourceCount; i++)
             {
                 decimal v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                     r = v;
             }
             return r;

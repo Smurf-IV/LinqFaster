@@ -80,7 +80,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             int sourceCount = source.Count;
@@ -162,7 +162,7 @@ namespace JM.LinqFaster
             }
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             int r = selector(source[0]);
@@ -290,7 +290,7 @@ namespace JM.LinqFaster
             }
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
             float r = selector(source[0]);
             int startIndex = 0;
@@ -365,7 +365,7 @@ namespace JM.LinqFaster
             }
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
             double r = selector(source[0]);
             int startIndex = 0;
@@ -502,7 +502,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             int sourceCount = source.Count;
@@ -584,7 +584,7 @@ namespace JM.LinqFaster
             }
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             int r = selector(source[0]);
@@ -712,7 +712,7 @@ namespace JM.LinqFaster
             }
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
             float r = selector(source[0]);
             int startIndex = 0;
@@ -787,7 +787,7 @@ namespace JM.LinqFaster
             }
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
             double r = selector(source[0]);
             int startIndex = 0;

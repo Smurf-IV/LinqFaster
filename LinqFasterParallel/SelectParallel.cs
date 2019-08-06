@@ -24,7 +24,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             
@@ -54,7 +54,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
 
@@ -84,7 +84,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             TResult[] r = new TResult[source.Length];
@@ -116,7 +116,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
             TResult[] r = new TResult[source.Length];
             OrderablePartitioner<Tuple<int, int>> rangePartitioner = MakePartition(source.Length, batchSize);
@@ -147,7 +147,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
 
@@ -177,7 +177,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
 
@@ -207,7 +207,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
             TResult[] r = new TResult[source.Count];
 
@@ -240,7 +240,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             TResult[] r = new TResult[source.Count];
@@ -274,7 +274,7 @@ namespace JM.LinqFaster.Parallel
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             List<TResult> r = new List<TResult>(source.Count);

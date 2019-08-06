@@ -23,7 +23,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             for (int i = 0; i < source.Length; i++)
@@ -46,7 +46,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             for (int i = 0; i < source.Length; i++)
@@ -71,7 +71,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             TResult[] r = new TResult[source.Length];
@@ -99,7 +99,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
             TResult[] r = new TResult[source.Length];
             for (int i = 0; i < source.Length; i++)
@@ -125,7 +125,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             for (int i = 0; i < source.Length; i++)
@@ -148,7 +148,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             for (int i = 0; i < source.Length; i++)
@@ -173,7 +173,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             TResult[] r = new TResult[source.Length];
@@ -201,7 +201,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
             TResult[] r = new TResult[source.Length];
             for (int i = 0; i < source.Length; i++)
@@ -227,7 +227,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             for (int i = 0; i < source.Count; i++)
@@ -250,7 +250,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             for (int i = 0; i < source.Count; i++)
@@ -275,7 +275,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             List<TResult> r = new List<TResult>(source.Count);
@@ -304,7 +304,7 @@ namespace JM.LinqFaster
 
             if (selector == null)
             {
-                throw Error.ArgumentNull("selector");
+                throw Error.ArgumentNull(nameof(selector));
             }
 
             List<TResult> r = new List<TResult>(source.Count);

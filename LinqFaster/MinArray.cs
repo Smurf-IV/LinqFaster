@@ -23,12 +23,12 @@ namespace JM.LinqFaster
         //
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T MaxF<T>(this T[] source)
+        public static T MinF<T>(this T[] source)
             where T : IComparable<T>
         {
             if (source == null)
@@ -48,7 +48,7 @@ namespace JM.LinqFaster
                     T item = source[i];
                     if ((item != null)
                         && ((r == null)
-                            || (item.CompareTo(r) > 0)
+                            || (item.CompareTo(r) < 0)
                             )
                         )
                     {
@@ -60,7 +60,7 @@ namespace JM.LinqFaster
             {
                 for (int i = 0; i < source.Length; i++)
                 {
-                    if (source[i].CompareTo(r) > 0)
+                    if (source[i].CompareTo(r) < 0)
                     {
                         r = source[i];
                     }
@@ -70,13 +70,13 @@ namespace JM.LinqFaster
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static TResult MaxF<T, TResult>(this T[] source, Func<T, TResult> selector)
+        public static TResult MinF<T, TResult>(this T[] source, Func<T, TResult> selector)
             where TResult : IComparable<TResult>
         {
             if (source == null)
@@ -85,7 +85,7 @@ namespace JM.LinqFaster
             }
             if (selector == null)
             {
-                throw Error.ArgumentNull(nameof(source));
+                throw Error.ArgumentNull(nameof(selector));
             }
             if (source.Length == 0)
             {
@@ -100,7 +100,7 @@ namespace JM.LinqFaster
                     TResult item = selector(source[i]);
                     if ((item != null)
                         && ((r == null)
-                            || (item.CompareTo(r) > 0)
+                            || (item.CompareTo(r) < 0)
                         )
                     )
                     {
@@ -113,7 +113,7 @@ namespace JM.LinqFaster
                 for (int i = 0; i < source.Length; i++)
                 {
                     TResult v = selector(source[i]);
-                    if (v.CompareTo(r) > 0)
+                    if (v.CompareTo(r) < 0)
                     {
                         r = v;
                     }
@@ -123,16 +123,16 @@ namespace JM.LinqFaster
         }
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         /// <remarks>
         /// This is faster than the templated functions above.
         /// Probably because the comparator function os only run once and there is not stack invloved
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MaxF(this int[] source)
+        public static int MinF(this int[] source)
         {
             if (source == null)
             {
@@ -145,7 +145,7 @@ namespace JM.LinqFaster
             int r = source[0];
             for (int i = 0; i < source.Length; i++)
             {
-                if (source[i] > r)
+                if (source[i] < r)
                 {
                     r = source[i];
                 }
@@ -154,17 +154,17 @@ namespace JM.LinqFaster
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         /// <remarks>
         /// This is faster than the templated functions above.
         /// Probably because the comparator function os only run once and there is not stack invloved
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MaxF<T>(this T[] source, Func<T, int> selector)
+        public static int MinF<T>(this T[] source, Func<T, int> selector)
         {
             if (source == null)
             {
@@ -183,7 +183,7 @@ namespace JM.LinqFaster
             for (int i = 0; i < source.Length; i++)
             {
                 int v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                 {
                     r = v;
                 }
@@ -192,16 +192,16 @@ namespace JM.LinqFaster
         }
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         /// <remarks>
         /// This is faster than the templated functions above.
         /// Probably because the comparator function os only run once and there is not stack invloved
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long MaxF(this long[] source)
+        public static long MinF(this long[] source)
         {
             if (source == null)
             {
@@ -214,7 +214,7 @@ namespace JM.LinqFaster
             long r = source[0];
             for (int i = 0; i < source.Length; i++)
             {
-                if (source[i] > r)
+                if (source[i] < r)
                 {
                     r = source[i];
                 }
@@ -224,17 +224,17 @@ namespace JM.LinqFaster
 
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         /// <remarks>
         /// This is faster than the templated functions above.
         /// Probably because the comparator function os only run once and there is not stack invloved
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long MaxF<T>(this T[] source, Func<T, long> selector)
+        public static long MinF<T>(this T[] source, Func<T, long> selector)
         {
             if (source == null)
             {
@@ -253,7 +253,7 @@ namespace JM.LinqFaster
             for (int i = 0; i < source.Length; i++)
             {
                 long v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                 {
                     r = v;
                 }
@@ -262,15 +262,15 @@ namespace JM.LinqFaster
         }
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         /// <remarks>
         /// Special case to deal with NAN's
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float MaxF(this float[] source)
+        public static float MinF(this float[] source)
         {
             if (source == null)
             {
@@ -290,22 +290,23 @@ namespace JM.LinqFaster
             }
             for (int i = startIndex; i < source.Length; i++)
             {
-                if (source[i] > r) r = source[i];
+                if (source[i] < r)
+                    r = source[i];
             }
             return r;
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         /// <remarks>
         /// Special case to deal with NAN's
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float MaxF<T>(this T[] source, Func<T, float> selector)
+        public static float MinF<T>(this T[] source, Func<T, float> selector)
         {
             if (source == null)
             {
@@ -332,21 +333,22 @@ namespace JM.LinqFaster
             for (int i = startIndex; i < source.Length; i++)
             {
                 float v = selector(source[i]);
-                if (v > r) r = v;
+                if (v < r)
+                    r = v;
             }
             return r;
         }
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         /// <remarks>
         /// Special case to deal with NAN's
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double MaxF(this double[] source)
+        public static double MinF(this double[] source)
         {
             if (source == null)
             {
@@ -366,22 +368,23 @@ namespace JM.LinqFaster
             }
             for (int i = startIndex; i < source.Length; i++)
             {
-                if (source[i] > r) r = source[i];
+                if (source[i] < r)
+                    r = source[i];
             }
             return r;
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         /// <remarks>
         /// Special case to deal with NAN's
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double MaxF<T>(this T[] source, Func<T, double> selector)
+        public static double MinF<T>(this T[] source, Func<T, double> selector)
         {
             if (source == null)
             {
@@ -408,7 +411,7 @@ namespace JM.LinqFaster
             for (int i = startIndex; i < source.Length; i++)
             {
                 double v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                     r = v;
             }
             return r;
@@ -416,12 +419,12 @@ namespace JM.LinqFaster
 
 
         /// <summary>
-        /// Returns the maximum value in a sequence of values.
+        /// Returns the Minimum value in a sequence of values.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum of.</param>
-        /// <returns>The maximum value in the sequence</returns>
+        /// <param name="source">A sequence of values to determine the Minimum of.</param>
+        /// <returns>The Minimum value in the sequence</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal MaxF(this decimal[] source)
+        public static decimal MinF(this decimal[] source)
         {
             if (source == null)
             {
@@ -434,7 +437,7 @@ namespace JM.LinqFaster
             decimal r = source[0];
             for (int i = 0; i < source.Length; i++)
             {
-                if (source[i] > r)
+                if (source[i] < r)
                 {
                     r = source[i];
                 }
@@ -443,13 +446,13 @@ namespace JM.LinqFaster
         }
 
         /// <summary>
-        /// Invokes a transform function on each element of a sequence and returns the maximum value.
+        /// Invokes a transform function on each element of a sequence and returns the Minimum value.
         /// </summary>        
-        /// <param name="source">A sequence of values to determine the maximum value of.</param>
+        /// <param name="source">A sequence of values to determine the Minimum value of.</param>
         /// <param name="selector">A transform function to apply to each element.</param>
-        /// <returns>The maximum value in the transform of the sequence.</returns>
+        /// <returns>The Minimum value in the transform of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal MaxF<T>(this T[] source, Func<T, decimal> selector)
+        public static decimal MinF<T>(this T[] source, Func<T, decimal> selector)
         {
             if (source == null)
             {
@@ -467,7 +470,7 @@ namespace JM.LinqFaster
             for (int i = 0; i < source.Length; i++)
             {
                 decimal v = selector(source[i]);
-                if (v > r)
+                if (v < r)
                 {
                     r = v;
                 }
