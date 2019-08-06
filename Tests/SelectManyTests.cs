@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using JM.LinqFaster;
 using System.Linq;
 using static Tests.Test;
@@ -12,8 +13,8 @@ namespace Tests
         [Test]
         public void SelectManyArray()
         {
-            var a = floatArray.SelectManyF(x => LinqFaster.RepeatArrayF(x, 2));
-            var b = floatArray.SelectMany(x => Enumerable.Repeat(x, 2).ToArray()).ToArray();
+            float[] a = floatArray.SelectManyF(x => LinqFaster.RepeatArrayF(x, 2));
+            float[] b = floatArray.SelectMany(x => Enumerable.Repeat(x, 2).ToArray()).ToArray();
 
             Assert.That(a, Is.EqualTo(b));
 
@@ -26,8 +27,8 @@ namespace Tests
         [Test]
         public void SelectManyList()
         {
-            var a = floatList.SelectManyF(x => LinqFaster.RepeatListF(x, 2));
-            var b = floatList.SelectMany(x => Enumerable.Repeat(x, 2).ToList()).ToList();
+            List<float> a = floatList.SelectManyF(x => LinqFaster.RepeatListF(x, 2));
+            List<float> b = floatList.SelectMany(x => Enumerable.Repeat(x, 2).ToList()).ToList();
 
             Assert.That(a, Is.EqualTo(b));
 

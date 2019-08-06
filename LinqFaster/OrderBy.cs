@@ -32,12 +32,12 @@ namespace JM.LinqFaster
                 comparer = Comparer<TKey>.Default;
             }
 
-            var keys = new TKey[source.Length];
+            TKey[] keys = new TKey[source.Length];
             for (int i = 0; i < keys.Length; i++)
             {
                 keys[i] = keySelector(source[i]);
             }            
-            var result = (TSource[])source.Clone();
+            TSource[] result = (TSource[])source.Clone();
             Array.Sort(keys,result,comparer);            
             return result;
         }
@@ -63,11 +63,11 @@ namespace JM.LinqFaster
                 comparer = Comparer<TKey>.Default;
             }
 
-            var keys = new TKey[source.Length];
+            TKey[] keys = new TKey[source.Length];
             for (int i = 0; i < keys.Length; i++) {
                 keys[i] = keySelector(source[i]);
             }
-            var result = (TSource[])source.Clone();
+            TSource[] result = (TSource[])source.Clone();
             Array.Sort(keys, result, comparer.Reverse());
             return result;
         }
@@ -100,8 +100,8 @@ namespace JM.LinqFaster
                 comparer = Comparer<TKey>.Default;
             }
 
-            var result = new List<TSource>(source);
-            var lambdaComparer = new LambdaComparer<TSource, TKey>(keySelector, comparer);          
+            List<TSource> result = new List<TSource>(source);
+            LambdaComparer<TSource, TKey> lambdaComparer = new LambdaComparer<TSource, TKey>(keySelector, comparer);          
             result.Sort(lambdaComparer);
             return result;
         }
@@ -127,8 +127,8 @@ namespace JM.LinqFaster
                 comparer = Comparer<TKey>.Default;
             }
 
-            var result = new List<TSource>(source);
-            var lambdaComparer = new ReverseLambdaComparer<TSource, TKey>(keySelector, comparer);
+            List<TSource> result = new List<TSource>(source);
+            ReverseLambdaComparer<TSource, TKey> lambdaComparer = new ReverseLambdaComparer<TSource, TKey>(keySelector, comparer);
             result.Sort(lambdaComparer);
             return result;
         }

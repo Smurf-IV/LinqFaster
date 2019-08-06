@@ -2,6 +2,7 @@
 using JM.LinqFaster;
 using System.Linq;
 using System;
+using System.Collections.Generic;
 using static Tests.Test;
 
 namespace Tests
@@ -13,13 +14,13 @@ namespace Tests
         [Test]
         public void WhereEmpty()
         {
-            var emptyArray = new int[0];
+            int[] emptyArray = new int[0];
 
             Assert.DoesNotThrow(() =>
             {
-                var a = emptyArray.WhereF(x => x == 0);
-                var emptyList = new System.Collections.Generic.List<int>(0);
-                var b = emptyList.WhereF(x => x == 0);
+                int[] a = emptyArray.WhereF(x => x == 0);
+                List<int> emptyList = new System.Collections.Generic.List<int>(0);
+                List<int> b = emptyList.WhereF(x => x == 0);
             });
             
         }
@@ -29,12 +30,12 @@ namespace Tests
         public void WhereArray()
         {
             Func<int, int, bool> lambda1 = ((x, i) => x + i % 2 == 0);
-            var a = intArray.WhereF(lambda1);
-            var b = intArray.Where(lambda1);
+            int[] a = intArray.WhereF(lambda1);
+            IEnumerable<int> b = intArray.Where(lambda1);
             Assert.That(a, Is.EqualTo(b));
 
-            var c = stringArray.WhereF(x => x == "no matches");
-            var d = stringArray.Where(x => x == "no matches");
+            string[] c = stringArray.WhereF(x => x == "no matches");
+            IEnumerable<string> d = stringArray.Where(x => x == "no matches");
 
         }
 
@@ -42,13 +43,13 @@ namespace Tests
         public void WhereList()
         {
             Func<int, int, bool> lambda1 = ((x, i) => x + i % 2 == 0);
-            var a = intList.WhereF(lambda1);
-            var b = intList.Where(lambda1);
+            List<int> a = intList.WhereF(lambda1);
+            IEnumerable<int> b = intList.Where(lambda1);
             Assert.That(a, Is.EqualTo(b));
 
 
-            var c = stringList.WhereF(x => x == "no matches");
-            var d = stringList.Where(x => x == "no matches");
+            List<string> c = stringList.WhereF(x => x == "no matches");
+            IEnumerable<string> d = stringList.Where(x => x == "no matches");
 
         }
 

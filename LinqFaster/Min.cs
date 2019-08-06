@@ -74,7 +74,7 @@ namespace JM.LinqFaster
                 r = selector(source[0]);
                 for (int i = 1; i < source.Length; i++)
                 {
-                    var v = selector(source[i]);
+                    TResult v = selector(source[i]);
                     if (v != null && comparer.Compare(v, r) < 0) r = v;
                 }
             }
@@ -83,7 +83,7 @@ namespace JM.LinqFaster
                 r = selector(source[0]);
                 for (int i = 1; i < source.Length; i++)
                 {
-                    var v = selector(source[i]);
+                    TResult v = selector(source[i]);
                     if (comparer.Compare(v, r) < 0) r = v;
                 }
             }
@@ -137,7 +137,7 @@ namespace JM.LinqFaster
             int r = int.MaxValue;
             for (int i = 0; i < source.Length; i++)
             {
-                var v = selector(source[i]);
+                int v = selector(source[i]);
                 if (v < r) r = v;
             }
             return r;
@@ -190,7 +190,7 @@ namespace JM.LinqFaster
             long r = long.MaxValue;
             for (int i = 0; i < source.Length; i++)
             {
-                var v = selector(source[i]);
+                long v = selector(source[i]);
                 if (v < r) r = v;
             }
             return r;
@@ -244,7 +244,7 @@ namespace JM.LinqFaster
             float r = float.MaxValue;
             for (int i = 0; i < source.Length; i++)
             {
-                var v = selector(source[i]);
+                float v = selector(source[i]);
                 if (v < r) r = v;
                 else if (float.IsNaN(v)) return v;
 
@@ -300,7 +300,7 @@ namespace JM.LinqFaster
             double r = double.MaxValue;
             for (int i = 0; i < source.Length; i++)
             {
-                var v = selector(source[i]);
+                double v = selector(source[i]);
                 if (v < r) r = v;
                 else if (double.IsNaN(v)) return v;
 
@@ -353,7 +353,7 @@ namespace JM.LinqFaster
             decimal r = decimal.MaxValue;
             for (int i = 0; i < source.Length; i++)
             {
-                var v = selector(source[i]);
+                decimal v = selector(source[i]);
                 if (v < r) r = v;
             }
             return r;
@@ -426,7 +426,7 @@ namespace JM.LinqFaster
                 r = selector(source[0]);
                 for (int i = 1; i < source.Length; i++)
                 {
-                    var v = selector(source[i]);
+                    TResult v = selector(source[i]);
                     if (v != null && comparer.Compare(v, r) < 0) r = v;
                 }
             }
@@ -435,7 +435,7 @@ namespace JM.LinqFaster
                 r = selector(source[0]);
                 for (int i = 1; i < source.Length; i++)
                 {
-                    var v = selector(source[i]);
+                    TResult v = selector(source[i]);
                     if (comparer.Compare(v, r) < 0) r = v;
                 }
             }
@@ -489,7 +489,7 @@ namespace JM.LinqFaster
             int r = int.MaxValue;
             for (int i = 0; i < source.Length; i++)
             {
-                var v = selector(source[i]);
+                int v = selector(source[i]);
                 if (v < r) r = v;
             }
             return r;
@@ -542,7 +542,7 @@ namespace JM.LinqFaster
             long r = long.MaxValue;
             for (int i = 0; i < source.Length; i++)
             {
-                var v = selector(source[i]);
+                long v = selector(source[i]);
                 if (v < r) r = v;
             }
             return r;
@@ -596,7 +596,7 @@ namespace JM.LinqFaster
             float r = float.MaxValue;
             for (int i = 0; i < source.Length; i++)
             {
-                var v = selector(source[i]);
+                float v = selector(source[i]);
                 if (v < r) r = v;
                 else if (float.IsNaN(v)) return v;
 
@@ -652,7 +652,7 @@ namespace JM.LinqFaster
             double r = double.MaxValue;
             for (int i = 0; i < source.Length; i++)
             {
-                var v = selector(source[i]);
+                double v = selector(source[i]);
                 if (v < r) r = v;
                 else if (double.IsNaN(v)) return v;
 
@@ -705,7 +705,7 @@ namespace JM.LinqFaster
             decimal r = decimal.MaxValue;
             for (int i = 0; i < source.Length; i++)
             {
-                var v = selector(source[i]);
+                decimal v = selector(source[i]);
                 if (v < r) r = v;
             }
             return r;
@@ -797,7 +797,7 @@ namespace JM.LinqFaster
             int r = int.MaxValue;
             for (int i = 0; i < source.Count; i++)
             {
-                var v = selector(source[i]);
+                int v = selector(source[i]);
                 if (v < r) r = v;
             }
             return r;
@@ -849,7 +849,7 @@ namespace JM.LinqFaster
             long r = long.MaxValue;
             for (int i = 0; i < source.Count; i++)
             {
-                var v = selector(source[i]);
+                long v = selector(source[i]);
                 if (v < r) r = v;
             }
             return r;
@@ -903,7 +903,7 @@ namespace JM.LinqFaster
             float r = float.MaxValue;
             for (int i = 0; i < source.Count; i++)
             {
-                var v = selector(source[i]);
+                float v = selector(source[i]);
                 if (v < r) r = v;
                 else if (float.IsNaN(v)) return v;
             }
@@ -958,7 +958,7 @@ namespace JM.LinqFaster
             double r = double.MaxValue;
             for (int i = 0; i < source.Count; i++)
             {
-                var v = selector(source[i]);
+                double v = selector(source[i]);
                 if (v < r) r = v;
                 else if (double.IsNaN(v)) return v;
             }
@@ -1007,7 +1007,7 @@ namespace JM.LinqFaster
             decimal r = decimal.MaxValue;
             for (int i = 0; i < source.Count; i++)
             {
-                var v = selector(source[i]);
+                decimal v = selector(source[i]);
                 if (v < r) r = v;
             }
             return r;
@@ -1043,7 +1043,7 @@ namespace JM.LinqFaster
                 r = selector(source[0]);
                 for (int i = 1; i < source.Count; i++)
                 {
-                    var v = selector(source[i]);
+                    TResult v = selector(source[i]);
                     if (v != null && comparer.Compare(v, r) < 0) r = v;
                 }
             }
@@ -1052,7 +1052,7 @@ namespace JM.LinqFaster
                 r = selector(source[0]);
                 for (int i = 1; i < source.Count; i++)
                 {
-                    var v = selector(source[i]);
+                    TResult v = selector(source[i]);
                     if (comparer.Compare(v, r) < 0) r = v;
                 }
             }

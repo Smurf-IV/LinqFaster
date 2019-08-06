@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using JM.LinqFaster;
 using System.Linq;
@@ -12,11 +13,11 @@ namespace Tests
         [Test]
         public void SelectArray()
         {
-            var a = intArray.SelectF(x => x * x);
-            var b = intArray.Select(x => x * x);
+            int[] a = intArray.SelectF(x => x * x);
+            IEnumerable<int> b = intArray.Select(x => x * x);
 
             Assert.That(a, Is.EqualTo(b));
-            var b1 = Array.AsReadOnly(intArray).SumF(x => x * x);
+            int b1 = Array.AsReadOnly(intArray).SumF(x => x * x);
 
         a = intArray.SelectF((x, i) => x + i);
             b = intArray.Select((x, i) => x + i);
@@ -27,11 +28,11 @@ namespace Tests
         [Test]
         public void SelectSumArray()
         {
-            var a = intArray.SelectF(x => x * x);
-            var b = intArray.Select(x => x * x);
+            int[] a = intArray.SelectF(x => x * x);
+            IEnumerable<int> b = intArray.Select(x => x * x);
 
             Assert.That(a, Is.EqualTo(b));
-            var b1 = Array.AsReadOnly(intArray).SumF(x => x * x);
+            int b1 = Array.AsReadOnly(intArray).SumF(x => x * x);
 
             a = intArray.SelectF((x, i) => x + i);
             b = intArray.Select((x, i) => x + i);
@@ -42,8 +43,8 @@ namespace Tests
         [Test]
         public void SelectList()
         {
-            var a = intList.SelectF(x => x * x);
-            var b = intList.Select(x => x * x).ToList();
+            List<int> a = intList.SelectF(x => x * x);
+            List<int> b = intList.Select(x => x * x).ToList();
             Assert.That(a.Count, Is.Not.EqualTo(0));
             Assert.That(a, Is.EqualTo(b));
 

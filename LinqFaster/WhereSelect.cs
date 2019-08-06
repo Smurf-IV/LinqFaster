@@ -33,7 +33,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var result = new TResult[source.Length];
+            TResult[] result = new TResult[source.Length];
             int idx = 0;
             for (int i = 0; i < source.Length; i++)
             {
@@ -72,7 +72,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var result = new TResult[source.Length];
+            TResult[] result = new TResult[source.Length];
             int idx = 0;
             for (int i = 0; i < source.Length; i++)
             {
@@ -114,7 +114,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var result = new TResult[source.Length];
+            TResult[] result = new TResult[source.Length];
             int idx = 0;
             for (int i = 0; i < source.Length; i++)
             {
@@ -153,7 +153,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var result = new TResult[source.Length];
+            TResult[] result = new TResult[source.Length];
             int idx = 0;
             for (int i = 0; i < source.Length; i++)
             {
@@ -194,7 +194,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var r = new List<TResult>();
+            List<TResult> r = new List<TResult>();
             for (int i = 0; i < source.Count; i++)
             {
                 if (predicate(source[i])) r.Add(selector(source[i]));
@@ -227,7 +227,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var r = new List<TResult>();
+            List<TResult> r = new List<TResult>();
             int idx = 0;
             for (int i = 0; i < source.Count; i++)
             {

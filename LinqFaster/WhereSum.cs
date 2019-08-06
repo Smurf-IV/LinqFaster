@@ -23,7 +23,7 @@ namespace JM.LinqFaster
             int sum = 0;
             checked
             {
-                foreach (var v in source)
+                foreach (int v in source)
                 {
                     if (predicate(v))
                     {
@@ -56,7 +56,7 @@ namespace JM.LinqFaster
             int sum = 0;
             checked
             {
-                foreach (var v in source)
+                foreach (T v in source)
                 {                    
                     if (predicate(v))
                     {
@@ -82,7 +82,7 @@ namespace JM.LinqFaster
             long sum = 0;
             checked
             {
-                foreach (var v in source)
+                foreach (long v in source)
                 {
                     if (predicate(v))
                     {
@@ -115,7 +115,7 @@ namespace JM.LinqFaster
             long sum = 0;
             checked
             {
-                foreach (var v in source)
+                foreach (T v in source)
                 {
                     if (predicate(v))
                     {
@@ -140,7 +140,7 @@ namespace JM.LinqFaster
             }
             double sum = 0;
 
-            foreach (var v in source)
+            foreach (float v in source)
             {
                 if (predicate(v))
                 {
@@ -171,7 +171,7 @@ namespace JM.LinqFaster
             }
 
             double sum = 0;
-            foreach (var v in source)
+            foreach (T v in source)
             {
                 if (predicate(v))
                 {
@@ -195,7 +195,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("source");
             }
             double sum = 0;
-            foreach (var v in source)
+            foreach (double v in source)
             {
                 if (predicate(v))
                 {
@@ -226,7 +226,7 @@ namespace JM.LinqFaster
             }
 
             double sum = 0;
-            foreach (var v in source)
+            foreach (T v in source)
             {
                 if (predicate(v))
                 {
@@ -251,7 +251,7 @@ namespace JM.LinqFaster
             }
             decimal sum = 0;
 
-            foreach (var v in source)
+            foreach (decimal v in source)
             {
                 if (predicate(v))
                 {
@@ -282,7 +282,7 @@ namespace JM.LinqFaster
             }
 
             decimal sum = 0;
-            foreach (var v in source)
+            foreach (T v in source)
             {
                 if (predicate(v))
                 {
@@ -310,7 +310,7 @@ namespace JM.LinqFaster
             int sum = 0;
             checked
             {
-                foreach (var v in source)
+                foreach (int v in source)
                 {
                     if (predicate(v))
                     {
@@ -343,7 +343,7 @@ namespace JM.LinqFaster
             int sum = 0;
             checked
             {
-                foreach (var v in source)
+                foreach (T v in source)
                 {
                     if (predicate(v))
                     {
@@ -369,7 +369,7 @@ namespace JM.LinqFaster
             long sum = 0;
             checked
             {
-                foreach (var v in source)
+                foreach (long v in source)
                 {
                     if (predicate(v))
                     {
@@ -402,7 +402,7 @@ namespace JM.LinqFaster
             long sum = 0;
             checked
             {
-                foreach (var v in source)
+                foreach (T v in source)
                 {
                     if (predicate(v))
                     {
@@ -427,7 +427,7 @@ namespace JM.LinqFaster
             }
             double sum = 0;
 
-            foreach (var v in source)
+            foreach (float v in source)
             {
                 if (predicate(v))
                 {
@@ -458,7 +458,7 @@ namespace JM.LinqFaster
             }
 
             double sum = 0;
-            foreach (var v in source)
+            foreach (T v in source)
             {
                 if (predicate(v))
                 {
@@ -482,7 +482,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("source");
             }
             double sum = 0;
-            foreach (var v in source)
+            foreach (double v in source)
             {
                 if (predicate(v))
                 {
@@ -513,7 +513,7 @@ namespace JM.LinqFaster
             }
 
             double sum = 0;
-            foreach (var v in source)
+            foreach (T v in source)
             {
                 if (predicate(v))
                 {
@@ -538,7 +538,7 @@ namespace JM.LinqFaster
             }
             decimal sum = 0;
 
-            foreach (var v in source)
+            foreach (decimal v in source)
             {
                 if (predicate(v))
                 {
@@ -569,7 +569,7 @@ namespace JM.LinqFaster
             }
 
             decimal sum = 0;
-            foreach (var v in source)
+            foreach (T v in source)
             {
                 if (predicate(v))
                 {
@@ -599,7 +599,7 @@ namespace JM.LinqFaster
             {
                 for (int i = 0; i < source.Count; i++)
                 {
-                    var s = source[i];
+                    int s = source[i];
                     if (predicate(s))
                     {
                         sum += s;
@@ -633,7 +633,7 @@ namespace JM.LinqFaster
             {
                 for (int i = 0; i < source.Count; i++)
                 {
-                    var s = source[i];
+                    T s = source[i];
                     if (predicate(s))
                     {
                         sum += selector(s);
@@ -660,7 +660,7 @@ namespace JM.LinqFaster
             {
                 for (int i = 0; i < source.Count; i++)
                 {
-                    var s = source[i];
+                    long s = source[i];
                     if (predicate(s))
                     {
                         sum += s;
@@ -694,7 +694,7 @@ namespace JM.LinqFaster
             {
                 for (int i = 0; i < source.Count; i++)
                 {
-                    var s = source[i];
+                    T s = source[i];
                     if (predicate(s))
                     {
                         sum += selector(s);
@@ -720,7 +720,7 @@ namespace JM.LinqFaster
 
             for (int i = 0; i < source.Count; i++)
             {
-                var s = source[i];
+                float s = source[i];
                 if (predicate(s))
                 {
                     sum += s;
@@ -752,7 +752,7 @@ namespace JM.LinqFaster
             double sum = 0;
             for (int i = 0; i < source.Count; i++)
             {
-                var s = source[i];
+                T s = source[i];
                 if (predicate(s))
                 {
                     sum += selector(s);
@@ -777,7 +777,7 @@ namespace JM.LinqFaster
             double sum = 0;
             for (int i = 0; i < source.Count; i++)
             {
-                var s = source[i];
+                double s = source[i];
                 if (predicate(s))
                 {
                     sum += s;
@@ -809,7 +809,7 @@ namespace JM.LinqFaster
             double sum = 0;
             for (int i = 0; i < source.Count; i++)
             {
-                var s = source[i];
+                T s = source[i];
                 if (predicate(s))
                 {
                     sum += selector(s);
@@ -835,7 +835,7 @@ namespace JM.LinqFaster
 
             for (int i = 0; i < source.Count; i++)
             {
-                var s = source[i];
+                decimal s = source[i];
                 if (predicate(s))
                 {
                     sum += s;
@@ -867,7 +867,7 @@ namespace JM.LinqFaster
             decimal sum = 0;
             for (int i = 0; i < source.Count; i++)
             {
-                var s = source[i];
+                T s = source[i];
                 if (predicate(s))
                 {
                     sum += selector(s);

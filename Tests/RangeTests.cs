@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using JM.LinqFaster;
 using System.Linq;
 
@@ -10,8 +11,8 @@ namespace Tests
         [Test]
         public void RangeArray()
         {
-            var a = LinqFaster.RangeArrayF(-100, 200);
-            var b = Enumerable.Range(-100, 200).ToArray();
+            int[] a = LinqFaster.RangeArrayF(-100, 200);
+            int[] b = Enumerable.Range(-100, 200).ToArray();
 
             Assert.That(a, Is.EqualTo(b));
         }
@@ -19,8 +20,8 @@ namespace Tests
         [Test]
         public void RangeList()
         {
-            var a = LinqFaster.RangeListF(-100, 200);
-            var b = Enumerable.Range(-100, 200).ToList();
+            List<int> a = LinqFaster.RangeListF(-100, 200);
+            List<int> b = Enumerable.Range(-100, 200).ToList();
 
             Assert.That(a, Is.EqualTo(b));
         }

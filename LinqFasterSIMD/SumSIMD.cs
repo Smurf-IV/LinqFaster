@@ -21,15 +21,15 @@ namespace JM.LinqFaster.SIMD
                 throw Error.ArgumentNull("source");
             }
 
-            var state = Vector<T>.Zero;
-            var count = Vector<T>.Count;
+            Vector<T> state = Vector<T>.Zero;
+            int count = Vector<T>.Count;
 
             for (int i = 0; i <= source.Length - count; i+=count)
             {
                 state = state + new Vector<T>(source, i);
             }
 
-            var result = default(T);
+            T result = default(T);
             
             for (int i = source.Length-source.Length % count; i < source.Length;i++)
             {
@@ -65,15 +65,15 @@ namespace JM.LinqFaster.SIMD
                 throw Error.ArgumentNull("selectorSIMD");
             }
 
-            var state = Vector<U>.Zero;
-            var count = Vector<U>.Count;
+            Vector<U> state = Vector<U>.Zero;
+            int count = Vector<U>.Count;
 
             for (int i = 0; i <= source.Length-count; i += count)
             {
                 state = state + selectorSIMD(new Vector<T>(source, i));
             }
 
-            var result = default(U);
+            U result = default(U);
 
             if (selector != null)
             {

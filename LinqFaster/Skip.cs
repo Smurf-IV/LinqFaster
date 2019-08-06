@@ -27,7 +27,7 @@ namespace JM.LinqFaster
                 return new T[0];
             }
 
-            var result = new T[source.Length - count];
+            T[] result = new T[source.Length - count];
             Array.Copy(source, count, result, 0, result.Length);
             return result;
         }
@@ -54,7 +54,7 @@ namespace JM.LinqFaster
             {
                 if (!predicate(source[i])) break;
             }
-            var result = new T[source.Length - i];
+            T[] result = new T[source.Length - i];
             Array.Copy(source, i, result, 0, result.Length);
             return result;
         }
@@ -82,7 +82,7 @@ namespace JM.LinqFaster
                 return new T[0];
             }
 
-            var result = new T[source.Length - count];
+            T[] result = new T[source.Length - count];
             for (int i = count; i < source.Length; i++)
             {
                 result[i - count] = source[i];
@@ -112,7 +112,7 @@ namespace JM.LinqFaster
             {
                 if (!predicate(source[count])) break;
             }
-            var result = new T[source.Length - count];
+            T[] result = new T[source.Length - count];
             for (int i = count; i < source.Length; i++)
             {
                 result[i - count] = source[i];
@@ -146,7 +146,7 @@ namespace JM.LinqFaster
                 return new List<T>();
             }
 
-            var result = new List<T>(source.Count - count);
+            List<T> result = new List<T>(source.Count - count);
             for (int i = count; i < source.Count; i++)
             {
                 result.Add(source[i]);
@@ -179,7 +179,7 @@ namespace JM.LinqFaster
                 }
             }
 
-            var result = new List<T>(source.Count - i);
+            List<T> result = new List<T>(source.Count - i);
             for (; i < source.Count; i++)
             {
                 result.Add(source[i]);

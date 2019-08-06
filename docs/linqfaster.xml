@@ -612,6 +612,14 @@
             <returns>A number that represents how many elements in the list satisfy the condition
             in the predicate function.</returns>
         </member>
+        <member name="M:JM.LinqFaster.LinqFaster.DefaultIfEmptyF``1(``0[])">
+            <summary>
+            Returns source or (if needed) an array (For speed) with a single value set to default{T}
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <returns>source or new array{1}</returns>
+        </member>
         <member name="M:JM.LinqFaster.LinqFaster.DistinctInPlaceF``1(System.Collections.Generic.List{``0},System.Collections.Generic.IEqualityComparer{``0},System.Collections.Generic.IComparer{``0})">
             <summary>
             Removes duplicate elements from source, does not maintain order. Elements will be
@@ -972,6 +980,10 @@
             </summary>        
             <param name="source">A sequence of values to determine the maximum of.</param>
             <returns>The maximum value in the sequence</returns>
+            <remarks>
+            This is faster than the templated functions above.
+            Probably because the comparator function os only run once and there is not stack invloved
+            </remarks>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(``0[],System.Func{``0,System.Int32})">
             <summary>
@@ -980,6 +992,10 @@
             <param name="source">A sequence of values to determine the maximum value of.</param>
             <param name="selector">A transform function to apply to each element.</param>
             <returns>The maximum value in the transform of the sequence.</returns>
+            <remarks>
+            This is faster than the templated functions above.
+            Probably because the comparator function os only run once and there is not stack invloved
+            </remarks>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Int64[])">
             <summary>
@@ -987,6 +1003,10 @@
             </summary>        
             <param name="source">A sequence of values to determine the maximum of.</param>
             <returns>The maximum value in the sequence</returns>
+            <remarks>
+            This is faster than the templated functions above.
+            Probably because the comparator function os only run once and there is not stack invloved
+            </remarks>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(``0[],System.Func{``0,System.Int64})">
             <summary>
@@ -995,6 +1015,10 @@
             <param name="source">A sequence of values to determine the maximum value of.</param>
             <param name="selector">A transform function to apply to each element.</param>
             <returns>The maximum value in the transform of the sequence.</returns>
+            <remarks>
+            This is faster than the templated functions above.
+            Probably because the comparator function os only run once and there is not stack invloved
+            </remarks>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Single[])">
             <summary>
@@ -1002,6 +1026,9 @@
             </summary>        
             <param name="source">A sequence of values to determine the maximum of.</param>
             <returns>The maximum value in the sequence</returns>
+            <remarks>
+            Special case to deal with NAN's
+            </remarks>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(``0[],System.Func{``0,System.Single})">
             <summary>
@@ -1010,6 +1037,9 @@
             <param name="source">A sequence of values to determine the maximum value of.</param>
             <param name="selector">A transform function to apply to each element.</param>
             <returns>The maximum value in the transform of the sequence.</returns>
+            <remarks>
+            Special case to deal with NAN's
+            </remarks>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Double[])">
             <summary>
@@ -1017,6 +1047,9 @@
             </summary>        
             <param name="source">A sequence of values to determine the maximum of.</param>
             <returns>The maximum value in the sequence</returns>
+            <remarks>
+            Special case to deal with NAN's
+            </remarks>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(``0[],System.Func{``0,System.Double})">
             <summary>
@@ -1025,6 +1058,9 @@
             <param name="source">A sequence of values to determine the maximum value of.</param>
             <param name="selector">A transform function to apply to each element.</param>
             <returns>The maximum value in the transform of the sequence.</returns>
+            <remarks>
+            Special case to deal with NAN's
+            </remarks>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Decimal[])">
             <summary>
@@ -1034,6 +1070,186 @@
             <returns>The maximum value in the sequence</returns>
         </member>
         <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(``0[],System.Func{``0,System.Decimal})">
+            <summary>
+            Invokes a transform function on each element of a sequence and returns the maximum value.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum value of.</param>
+            <param name="selector">A transform function to apply to each element.</param>
+            <returns>The maximum value in the transform of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Returns the maximum value in a sequence of values.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum of.</param>
+            <returns>The maximum value in the sequence</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``2(System.Collections.Generic.List{``0},System.Func{``0,``1})">
+            <summary>
+            Invokes a transform function on each element of a sequence and returns the maximum value.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum value of.</param>
+            <param name="selector">A transform function to apply to each element.</param>
+            <returns>The maximum value in the transform of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Returns the maximum value in a sequence of values.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum of.</param>
+            <returns>The maximum value in the sequence</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Int32})">
+            <summary>
+            Invokes a transform function on each element of a sequence and returns the maximum value.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum value of.</param>
+            <param name="selector">A transform function to apply to each element.</param>
+            <returns>The maximum value in the transform of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            Returns the maximum value in a sequence of values.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum of.</param>
+            <returns>The maximum value in the sequence</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Int64})">
+            <summary>
+            Invokes a transform function on each element of a sequence and returns the maximum value.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum value of.</param>
+            <param name="selector">A transform function to apply to each element.</param>
+            <returns>The maximum value in the transform of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.List{System.Single})">
+            <summary>
+            Returns the maximum value in a sequence of values.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum of.</param>
+            <returns>The maximum value in the sequence</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Single})">
+            <summary>
+            Invokes a transform function on each element of a sequence and returns the maximum value.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum value of.</param>
+            <param name="selector">A transform function to apply to each element.</param>
+            <returns>The maximum value in the transform of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Returns the maximum value in a sequence of values.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum of.</param>
+            <returns>The maximum value in the sequence</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Double})">
+            <summary>
+            Invokes a transform function on each element of a sequence and returns the maximum value.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum value of.</param>
+            <param name="selector">A transform function to apply to each element.</param>
+            <returns>The maximum value in the transform of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.List{System.Decimal})">
+            <summary>
+            Returns the maximum value in a sequence of values.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum of.</param>
+            <returns>The maximum value in the sequence</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Decimal})">
+            <summary>
+            Invokes a transform function on each element of a sequence and returns the maximum value.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum value of.</param>
+            <param name="selector">A transform function to apply to each element.</param>
+            <returns>The maximum value in the transform of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.IReadOnlyList{``0})">
+            <summary>
+            Returns the maximum value in a sequence of values.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum of.</param>
+            <returns>The maximum value in the sequence</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``2(System.Collections.Generic.IReadOnlyList{``0},System.Func{``0,``1})">
+            <summary>
+            Invokes a transform function on each element of a sequence and returns the maximum value.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum value of.</param>
+            <param name="selector">A transform function to apply to each element.</param>
+            <returns>The maximum value in the transform of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.IReadOnlyList{System.Int32})">
+            <summary>
+            Returns the maximum value in a sequence of values.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum of.</param>
+            <returns>The maximum value in the sequence</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.IReadOnlyList{``0},System.Func{``0,System.Int32})">
+            <summary>
+            Invokes a transform function on each element of a sequence and returns the maximum value.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum value of.</param>
+            <param name="selector">A transform function to apply to each element.</param>
+            <returns>The maximum value in the transform of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.IReadOnlyList{System.Int64})">
+            <summary>
+            Returns the maximum value in a sequence of values.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum of.</param>
+            <returns>The maximum value in the sequence</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.IReadOnlyList{``0},System.Func{``0,System.Int64})">
+            <summary>
+            Invokes a transform function on each element of a sequence and returns the maximum value.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum value of.</param>
+            <param name="selector">A transform function to apply to each element.</param>
+            <returns>The maximum value in the transform of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.IReadOnlyList{System.Single})">
+            <summary>
+            Returns the maximum value in a sequence of values.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum of.</param>
+            <returns>The maximum value in the sequence</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.IReadOnlyList{``0},System.Func{``0,System.Single})">
+            <summary>
+            Invokes a transform function on each element of a sequence and returns the maximum value.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum value of.</param>
+            <param name="selector">A transform function to apply to each element.</param>
+            <returns>The maximum value in the transform of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.IReadOnlyList{System.Double})">
+            <summary>
+            Returns the maximum value in a sequence of values.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum of.</param>
+            <returns>The maximum value in the sequence</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.IReadOnlyList{``0},System.Func{``0,System.Double})">
+            <summary>
+            Invokes a transform function on each element of a sequence and returns the maximum value.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum value of.</param>
+            <param name="selector">A transform function to apply to each element.</param>
+            <returns>The maximum value in the transform of the sequence.</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.IReadOnlyList{System.Decimal})">
+            <summary>
+            Returns the maximum value in a sequence of values.
+            </summary>        
+            <param name="source">A sequence of values to determine the maximum of.</param>
+            <returns>The maximum value in the sequence</returns>
+        </member>
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.IReadOnlyList{``0},System.Func{``0,System.Decimal})">
             <summary>
             Invokes a transform function on each element of a sequence and returns the maximum value.
             </summary>        
@@ -1131,14 +1347,14 @@
             <param name="selector">A transform function to apply to each element.</param>
             <returns>The maximum value in the transform of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.List{``0})">
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.ReadOnlySpan{``0})">
             <summary>
             Returns the maximum value in a sequence of values.
             </summary>        
             <param name="source">A sequence of values to determine the maximum of.</param>
             <returns>The maximum value in the sequence</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.MaxF``2(System.Collections.Generic.List{``0},System.Func{``0,``1})">
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
             <summary>
             Invokes a transform function on each element of a sequence and returns the maximum value.
             </summary>        
@@ -1146,14 +1362,14 @@
             <param name="selector">A transform function to apply to each element.</param>
             <returns>The maximum value in the transform of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.List{System.Int32})">
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.ReadOnlySpan{System.Int32})">
             <summary>
             Returns the maximum value in a sequence of values.
             </summary>        
             <param name="source">A sequence of values to determine the maximum of.</param>
             <returns>The maximum value in the sequence</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Int32})">
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.ReadOnlySpan{``0},System.Func{``0,System.Int32})">
             <summary>
             Invokes a transform function on each element of a sequence and returns the maximum value.
             </summary>        
@@ -1161,14 +1377,14 @@
             <param name="selector">A transform function to apply to each element.</param>
             <returns>The maximum value in the transform of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.List{System.Int64})">
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.ReadOnlySpan{System.Int64})">
             <summary>
             Returns the maximum value in a sequence of values.
             </summary>        
             <param name="source">A sequence of values to determine the maximum of.</param>
             <returns>The maximum value in the sequence</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Int64})">
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.ReadOnlySpan{``0},System.Func{``0,System.Int64})">
             <summary>
             Invokes a transform function on each element of a sequence and returns the maximum value.
             </summary>        
@@ -1176,14 +1392,14 @@
             <param name="selector">A transform function to apply to each element.</param>
             <returns>The maximum value in the transform of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.List{System.Single})">
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.ReadOnlySpan{System.Single})">
             <summary>
             Returns the maximum value in a sequence of values.
             </summary>        
             <param name="source">A sequence of values to determine the maximum of.</param>
             <returns>The maximum value in the sequence</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Single})">
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.ReadOnlySpan{``0},System.Func{``0,System.Single})">
             <summary>
             Invokes a transform function on each element of a sequence and returns the maximum value.
             </summary>        
@@ -1191,14 +1407,14 @@
             <param name="selector">A transform function to apply to each element.</param>
             <returns>The maximum value in the transform of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.List{System.Double})">
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.ReadOnlySpan{System.Double})">
             <summary>
             Returns the maximum value in a sequence of values.
             </summary>        
             <param name="source">A sequence of values to determine the maximum of.</param>
             <returns>The maximum value in the sequence</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Double})">
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.ReadOnlySpan{``0},System.Func{``0,System.Double})">
             <summary>
             Invokes a transform function on each element of a sequence and returns the maximum value.
             </summary>        
@@ -1206,14 +1422,14 @@
             <param name="selector">A transform function to apply to each element.</param>
             <returns>The maximum value in the transform of the sequence.</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.Collections.Generic.List{System.Decimal})">
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF(System.ReadOnlySpan{System.Decimal})">
             <summary>
             Returns the maximum value in a sequence of values.
             </summary>        
             <param name="source">A sequence of values to determine the maximum of.</param>
             <returns>The maximum value in the sequence</returns>
         </member>
-        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.Collections.Generic.List{``0},System.Func{``0,System.Decimal})">
+        <member name="M:JM.LinqFaster.LinqFaster.MaxF``1(System.ReadOnlySpan{``0},System.Func{``0,System.Decimal})">
             <summary>
             Invokes a transform function on each element of a sequence and returns the maximum value.
             </summary>        

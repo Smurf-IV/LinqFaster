@@ -11,12 +11,12 @@ namespace Tests
         [Test]
         public void WhereAggregateSumArray()
         {
-            var a =
+            int a =
                 intArray.WhereAggregateF(onlyEvenInts, 0, (acc, x) => acc += x);
 
-            var b = intArray.WhereAggregateF(onlyEvenInts, (acc, x) => acc += x);
+            int b = intArray.WhereAggregateF(onlyEvenInts, (acc, x) => acc += x);
 
-            var c = intArray.Where(onlyEvenInts).Sum();
+            int c = intArray.Where(onlyEvenInts).Sum();
 
             Assert.That(a, Is.EqualTo(c));
             Assert.That(b, Is.EqualTo(c));            
@@ -25,11 +25,11 @@ namespace Tests
 
         [Test]
         public void WhereAggregateSelectorArray() {
-            var a =
+            int a =
                 intArray.WhereAggregateF(onlyEvenInts, 0, (acc, x) => acc += x, acc =>acc/2);
             
 
-            var b = intArray.Where(onlyEvenInts).Sum()/2;
+            int b = intArray.Where(onlyEvenInts).Sum()/2;
 
             Assert.That(a, Is.EqualTo(b));
             
@@ -38,12 +38,12 @@ namespace Tests
 
         [Test]
         public void WhereAggregateSumList() {
-            var a =
+            int a =
                 intList.WhereAggregateF(onlyEvenInts, 0, (acc, x) => acc += x);
 
-            var b = intList.WhereAggregateF(onlyEvenInts, (acc, x) => acc += x);
+            int b = intList.WhereAggregateF(onlyEvenInts, (acc, x) => acc += x);
 
-            var c = intList.Where(onlyEvenInts).Sum();
+            int c = intList.Where(onlyEvenInts).Sum();
 
             Assert.That(a, Is.EqualTo(c));
             Assert.That(b, Is.EqualTo(c));
@@ -52,11 +52,11 @@ namespace Tests
 
         [Test]
         public void WhereAggregateSelectorList() {
-            var a =
+            int a =
                 intList.WhereAggregateF(onlyEvenInts, 0, (acc, x) => acc += x, acc => acc / 2);
 
 
-            var b = intList.Where(onlyEvenInts).Sum() / 2;
+            int b = intList.Where(onlyEvenInts).Sum() / 2;
 
             Assert.That(a, Is.EqualTo(b));
 

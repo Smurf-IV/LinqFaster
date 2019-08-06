@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using JM.LinqFaster.SIMD.Parallel;
 using System.Linq;
 
@@ -10,8 +11,8 @@ namespace Tests
         [Test]
         public  void SelectSIMDP()
         {
-            var a = Test.intArray.SelectSP(x => x * x, x => x*x);
-            var b = Test.intArray.Select(x => x * x);
+            int[] a = Test.intArray.SelectSP(x => x * x, x => x*x);
+            IEnumerable<int> b = Test.intArray.Select(x => x * x);
 
             Assert.That(a, Is.EqualTo(b));
 

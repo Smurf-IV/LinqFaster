@@ -16,36 +16,36 @@ namespace Tests
         [Test]
         public void SumArray()
         {
-            var a = ((IReadOnlyList<int>)intArray).SumF();
+            int a = ((IReadOnlyList<int>)intArray).SumF();
 
-            var b = intArray.Sum();
+            int b = intArray.Sum();
             Assert.That(a, Is.EqualTo(b));
-            var an = ((IReadOnlyList<int?>)intNullArray).SumF();
-            var bn = intNullArray.Sum();
+            int? an = ((IReadOnlyList<int?>)intNullArray).SumF();
+            int? bn = intNullArray.Sum();
             Assert.That(an, Is.EqualTo(bn));
 
-            var c = floatArray.SumF();
-            var d = floatArray.Sum();
+            float c = floatArray.SumF();
+            float d = floatArray.Sum();
             Assert.That(c, Is.EqualTo(d));
-            var dn = floatNullArray.SumF();
+            float? dn = floatNullArray.SumF();
             Assert.That(c, Is.EqualTo(dn));
 
-            var e = decimalArray.SumF();
-            var f = decimalArray.Sum();
+            decimal e = decimalArray.SumF();
+            decimal f = decimalArray.Sum();
             Assert.That(e, Is.EqualTo(f));
 
-            var g = byteArray.SumF();
-            var h = byteArray.Aggregate(0U, (current, b1) => current + b1);
+            uint g = byteArray.SumF();
+            uint h = byteArray.Aggregate(0U, (current, b1) => current + b1);
             Assert.That(g, Is.EqualTo(h));
 
-            var i = shortArray.SumF();
-            var j = shortArray.Aggregate(0, (current, s1) => current + s1);
+            int i = shortArray.SumF();
+            int j = shortArray.Aggregate(0, (current, s1) => current + s1);
             Assert.That(i, Is.EqualTo(j));
 
-            var k = doubleArray.SumF();
-            var l = doubleArray.Sum();
+            double k = doubleArray.SumF();
+            double l = doubleArray.Sum();
             Assert.That(k, Is.EqualTo(l));
-            var ln = doubleNullArray.SumF();
+            double? ln = doubleNullArray.SumF();
             Assert.That(k, Is.EqualTo(ln));
 
 
@@ -55,19 +55,19 @@ namespace Tests
         [Test]
         public void SumArraySelector()
         {
-            var a = intArray.SumF(x => x + 1);
-            var b = intArray.Sum(x => x + 1);
+            int a = intArray.SumF(x => x + 1);
+            int b = intArray.Sum(x => x + 1);
             Assert.That(a, Is.EqualTo(b));
 
-            var br = Array.AsReadOnly(intArray).SumF(x => x + 1);
+            int br = Array.AsReadOnly(intArray).SumF(x => x + 1);
             Assert.That(a, Is.EqualTo(br));
 
-            var an = intNullArray.SumF(x => x ?? 0);
-            var bn = intNullArray.Sum(x => x ?? 0);
+            int an = intNullArray.SumF(x => x ?? 0);
+            int bn = intNullArray.Sum(x => x ?? 0);
             Assert.That(an, Is.EqualTo(bn));
 
-            var c = floatArray.SumF(squaredFloats);
-            var d = floatArray.Sum(squaredFloats);
+            float c = floatArray.SumF(squaredFloats);
+            float d = floatArray.Sum(squaredFloats);
 
             Assert.That(c, Is.EqualTo(d));
         }
@@ -75,18 +75,18 @@ namespace Tests
         [Test]
         public void SumList()
         {
-            var a = intList.SumF();
-            var b = intList.Sum();
+            int a = intList.SumF();
+            int b = intList.Sum();
 
             Assert.That(a, Is.EqualTo(b));
 
-            var c = floatList.SumF();
-            var d = floatList.Sum();
+            float c = floatList.SumF();
+            float d = floatList.Sum();
 
             Assert.That(c, Is.EqualTo(d));
 
-            var e = decimalList.SumF();
-            var f = decimalList.Sum();
+            decimal e = decimalList.SumF();
+            decimal f = decimalList.Sum();
 
             Assert.That(e, Is.EqualTo(f));
         }
@@ -94,15 +94,15 @@ namespace Tests
         [Test]
         public void SumListSelector()
         {
-            var a = intList.SumF(x => x + 1);
-            var b = intList.Sum(x => x + 1);
+            int a = intList.SumF(x => x + 1);
+            int b = intList.Sum(x => x + 1);
             Assert.That(a, Is.EqualTo(b));
 
-            var br = intList.AsReadOnly().SumF(x => x + 1);
+            int br = intList.AsReadOnly().SumF(x => x + 1);
             Assert.That(a, Is.EqualTo(br));
 
-            var c = floatList.SumF(squaredFloats);
-            var d = floatList.Sum(squaredFloats);
+            float c = floatList.SumF(squaredFloats);
+            float d = floatList.Sum(squaredFloats);
             Assert.That(c, Is.EqualTo(d));
         }
 

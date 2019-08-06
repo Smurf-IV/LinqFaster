@@ -74,7 +74,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("selector");
             }
 
-            var r = new TResult[source.Length];
+            TResult[] r = new TResult[source.Length];
             for (int i = 0; i < source.Length; i++)
             {
                 r[i] = selector(source[i]);
@@ -101,7 +101,7 @@ namespace JM.LinqFaster
             {
                 throw Error.ArgumentNull("selector");
             }
-            var r = new TResult[source.Length];
+            TResult[] r = new TResult[source.Length];
             for (int i = 0; i < source.Length; i++)
             {
                 r[i] = selector(source[i], i);
@@ -176,7 +176,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("selector");
             }
 
-            var r = new TResult[source.Length];
+            TResult[] r = new TResult[source.Length];
             for (int i = 0; i < source.Length; i++)
             {
                 r[i] = selector(source[i]);
@@ -203,7 +203,7 @@ namespace JM.LinqFaster
             {
                 throw Error.ArgumentNull("selector");
             }
-            var r = new TResult[source.Length];
+            TResult[] r = new TResult[source.Length];
             for (int i = 0; i < source.Length; i++)
             {
                 r[i] = selector(source[i], i);
@@ -278,7 +278,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("selector");
             }
 
-            var r = new List<TResult>(source.Count);
+            List<TResult> r = new List<TResult>(source.Count);
 
             for (int i = 0; i < source.Count; i++)
             {
@@ -307,7 +307,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("selector");
             }
 
-            var r = new List<TResult>(source.Count);
+            List<TResult> r = new List<TResult>(source.Count);
 
             for (int i = 0; i < source.Count; i++)
             {

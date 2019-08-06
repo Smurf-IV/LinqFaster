@@ -40,7 +40,7 @@ namespace JM.LinqFaster
             int pos = 1;
             for (int i = 1; i < source.Count; i++)
             {
-                var newV = source[i];
+                TSource newV = source[i];
                 source[pos] = newV;
                 if (!eqComparer.Equals(newV, oldV))
                 {

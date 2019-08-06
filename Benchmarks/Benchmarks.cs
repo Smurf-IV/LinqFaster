@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 using BenchmarkDotNet.Attributes;
@@ -13,7 +14,7 @@ using JM.LinqFaster.SIMD;
 namespace Tests
 {
     [MemoryDiagnoser]
-    public class Benchmarks
+    public partial class Benchmarks
     {
         private const int LARGE_TEST_SIZE = 1000000;
         private const int SMALL_TEST_SIZE = 100;
@@ -33,6 +34,10 @@ namespace Tests
         private double?[] doubleNullArray;
         private string[] strarray;
 
+        private static readonly Func<double, int, double> mulXInts = (acc, x) => acc += x * x;
+        private static readonly Func<int, bool> firstInts = (x) => x > 0;
+        private static readonly Func<int, bool> LastInts = (x) => x > 0;
+
 
         [Params(1000000)]
         public int TEST_SIZE { get; set; }
@@ -44,7 +49,6 @@ namespace Tests
         [GlobalSetup]
         public void Setup()
         {
-            Random r = new Random();
             byteArray = new byte[TEST_SIZE];
             shortArray = new short[TEST_SIZE];
             intArray = new int[TEST_SIZE];
@@ -418,7 +422,6 @@ namespace Tests
         //}
 
 
-        //private static readonly Func<double, int, double> mulXInts = (acc, x) => acc += x * x;
 
         //[Benchmark]
         //public double IntArrayAggregateLinq()
@@ -499,22 +502,21 @@ namespace Tests
         //    return intList.AsReadOnly().AggregateF(0.0, mulXInts);
         //}
 
-        //private static readonly Func<int, bool> firstInts = (x) => x > 0;
 
         //[Benchmark]
-        //public double IntArrayFirstLinq()
+        //public double IntArrayFirstLinqSelector()
         //{
         //    return intArray.First(firstInts);
         //}
 
         //[Benchmark]
-        //public double IntArrayFirstFast()
+        //public double IntArrayFirstFastSelector()
         //{
         //    return intArray.FirstF(firstInts);
         //}
 
         //[Benchmark]
-        //public double IntArrayFirstFast1()
+        //public double IntArrayFirstArrayFindSelector()
         //{
         //    Predicate<int> predicate = new Predicate<int>(firstInts);
         //    return Array.Find(intArray, predicate);
@@ -522,7 +524,7 @@ namespace Tests
 
 
         //[Benchmark]
-        //public double IntSpanFirstForEach()
+        //public double IntSpanFirstForEachSelector()
         //{
         //    int[] localArray = intArray;
         //    Span<int> asSpan = localArray.AsSpan();
@@ -538,7 +540,7 @@ namespace Tests
         //}
 
         //[Benchmark]
-        //public double IntSpanFirstFast()
+        //public double IntSpanFirstFastSelector()
         //{
         //    int[] localArray = intArray;
         //    Span<int> asSpan = localArray.AsSpan();
@@ -546,122 +548,121 @@ namespace Tests
         //}
 
         //[Benchmark]
-        //public double IntListFirstLinq()
+        //public double IntListFirstLinqSelector()
         //{
         //    return intList.First(firstInts);
         //}
 
         //[Benchmark]
-        //public double IntListFirstFast()
+        //public double IntListFirstFastSelector()
         //{
         //    return intList.FirstF(firstInts);
         //}
 
         //[Benchmark]
-        //public double IntAsListReadOnlyFirstLinq()
+        //public double IntAsListReadOnlyFirstLinqSelector()
         //{
         //    return intList.AsReadOnly().First(firstInts);
         //}
 
         //[Benchmark]
-        //public double IntAsListReadOnlyFirstFast()
+        //public double IntAsListReadOnlyFirstFastSelector()
         //{
         //    return intList.AsReadOnly().FirstF(firstInts);
         //}
 
         //[Benchmark]
-        //public double IntArrayAsReadOnlyFirstLinq()
+        //public double IntArrayAsReadOnlyFirstLinqSelector()
         //{
         //    return Array.AsReadOnly(intArray).First(firstInts);
         //}
 
         //[Benchmark]
-        //public double IntArrayAsReadOnlyFirstFast()
+        //public double IntArrayAsReadOnlyFirstFastSelector()
         //{
         //    return Array.AsReadOnly(intArray).FirstF(firstInts);
         //}
 
-        private static readonly Func<int, bool> LastInts = (x) => x > 0;
 
-        [Benchmark]
-        public double IntArrayLastLinq()
-        {
-            return intArray.Last(LastInts);
-        }
+        //[Benchmark]
+        //public double IntArrayLastLinqSelector()
+        //{
+        //    return intArray.Last(LastInts);
+        //}
 
-        [Benchmark]
-        public double IntArrayLastFast()
-        {
-            return intArray.LastF(LastInts);
-        }
+        //[Benchmark]
+        //public double IntArrayLastFastSelector()
+        //{
+        //    return intArray.LastF(LastInts);
+        //}
 
-        [Benchmark]
-        public double IntArrayLastFast1()
-        {
-            Predicate<int> predicate = new Predicate<int>(LastInts);
-            return Array.Find(intArray, predicate);
-        }
+        //[Benchmark]
+        //public double IntArrayLastArrayFindSelector()
+        //{
+        //    Predicate<int> predicate = new Predicate<int>(LastInts);
+        //    return Array.Find(intArray, predicate);
+        //}
 
 
-        [Benchmark]
-        public double IntSpanLastForEach()
-        {
-            int[] localArray = intArray;
-            Span<int> asSpan = localArray.AsSpan();
-            foreach (int i in asSpan)
-            {
-                if (LastInts(i))
-                {
-                    return i;
-                }
-            }
+        //[Benchmark]
+        //public double IntSpanLastForEachSelector()
+        //{
+        //    int[] localArray = intArray;
+        //    Span<int> asSpan = localArray.AsSpan();
+        //    foreach (int i in asSpan)
+        //    {
+        //        if (LastInts(i))
+        //        {
+        //            return i;
+        //        }
+        //    }
 
-            return 0;
-        }
+        //    return 0;
+        //}
 
-        [Benchmark]
-        public double IntSpanLastFast()
-        {
-            int[] localArray = intArray;
-            Span<int> asSpan = localArray.AsSpan();
-            return asSpan.LastF(LastInts);
-        }
+        //[Benchmark]
+        //public double IntSpanLastFastSelector()
+        //{
+        //    int[] localArray = intArray;
+        //    Span<int> asSpan = localArray.AsSpan();
+        //    return asSpan.LastF(LastInts);
+        //}
 
-        [Benchmark]
-        public double IntListLastLinq()
-        {
-            return intList.Last(LastInts);
-        }
+        //[Benchmark]
+        //public double IntListLastLinqSelector()
+        //{
+        //    return intList.Last(LastInts);
+        //}
 
-        [Benchmark]
-        public double IntListLastFast()
-        {
-            return intList.LastF(LastInts);
-        }
+        //[Benchmark]
+        //public double IntListLastFastSelector()
+        //{
+        //    return intList.LastF(LastInts);
+        //}
 
-        [Benchmark]
-        public double IntAsListReadOnlyLastLinq()
-        {
-            return intList.AsReadOnly().Last(LastInts);
-        }
+        //[Benchmark]
+        //public double IntAsListReadOnlyLastLinqSelector()
+        //{
+        //    return intList.AsReadOnly().Last(LastInts);
+        //}
 
-        [Benchmark]
-        public double IntAsListReadOnlyLastFast()
-        {
-            return intList.AsReadOnly().LastF(LastInts);
-        }
+        //[Benchmark]
+        //public double IntAsListReadOnlyLastFastSelector()
+        //{
+        //    return intList.AsReadOnly().LastF(LastInts);
+        //}
 
-        [Benchmark]
-        public double IntArrayAsReadOnlyLastLinq()
-        {
-            return Array.AsReadOnly(intArray).Last(LastInts);
-        }
+        //[Benchmark]
+        //public double IntArrayAsReadOnlyLastLinqSelector()
+        //{
+        //    return Array.AsReadOnly(intArray).Last(LastInts);
+        //}
 
-        [Benchmark]
-        public double IntArrayAsReadOnlyLastFast()
-        {
-            return Array.AsReadOnly(intArray).LastF(LastInts);
-        }
+        //[Benchmark]
+        //public double IntArrayAsReadOnlyLastFastSelector()
+        //{
+        //    return Array.AsReadOnly(intArray).LastF(LastInts);
+        //}
 
 
         //[Benchmark]

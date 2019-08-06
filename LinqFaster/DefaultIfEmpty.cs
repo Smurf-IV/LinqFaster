@@ -4,12 +4,19 @@
 
 namespace JM.LinqFaster
 {
+    // LINQ's DefaultIfEmpty-method checks if the sequence is empty.
+    // If that is the case, it will return a singleton sequence:
+    // A sequence containing exactly one element.
+    // This one element has the default value of the sequence's type.
+    // If the sequence does contain elements, the DefaultIfEmpty-method will
+    // simply return the sequence itself.
+    // Note: DefaultIfEmpty also has an overload that takes a user-provided default value
     public static partial class LinqFaster
     {
         // --------------------------  Arrays --------------------------------------------
 
         /// <summary>
-        /// Returns an array (For speed) with a single value set to default{T}
+        /// Returns source or (if needed) an array (For speed) with a single value set to default{T}
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>

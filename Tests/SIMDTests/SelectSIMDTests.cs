@@ -11,8 +11,8 @@ namespace Tests
         [Test]
         public void SelectSIMD()
         {
-            var a = Test.intArray.Select(x => x * x).ToArray();
-            var b = Test.intArray.SelectS(x => x * x);
+            int[] a = Test.intArray.Select(x => x * x).ToArray();
+            int[] b = Test.intArray.SelectS(x => x * x);
 
             Assert.That(a, Is.EqualTo(b));
         }

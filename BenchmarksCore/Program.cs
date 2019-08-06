@@ -11,6 +11,7 @@ using System.Linq;
 using System.Collections.Generic;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Jobs;
+using BenchmarkDotNet.Reports;
 
 namespace Tests
 {
@@ -236,14 +237,14 @@ namespace Tests
         {
             int[] a = { 1, 2, 3, 4, 5, 6, 7, 8 };
             int[] b = { 1, 0, 4, 4, 6, 7, 2, 10 };
-            var r = a.SequenceCompareS(b);
+            int[] r = a.SequenceCompareS(b);
             a.Slice(2, 4).SumF();
-            foreach (var i in r)
+            foreach (int i in r)
             {
                 Console.Write(i + ",");
             }
             
-            var summary = BenchmarkRunner.Run<Benchmarks>(ManualConfig.Create(DefaultConfig.Instance).With(Job.RyuJitX64));
+            Summary summary = BenchmarkRunner.Run<Benchmarks>(ManualConfig.Create(DefaultConfig.Instance).With(Job.RyuJitX64));
             Console.ReadLine();
         }
 

@@ -12,8 +12,8 @@ namespace Tests
         [Test]
         public void AllArray()
         {            
-            var a = intArray.AllF(x => x % 2 == 0);
-            var b = intArray.All(x => x % 2 == 0);
+            bool a = intArray.AllF(x => x % 2 == 0);
+            bool b = intArray.All(x => x % 2 == 0);
 
             Assert.That(a, Is.EqualTo(b));            
         }
@@ -22,8 +22,8 @@ namespace Tests
         [Test]
         public void AllList()
         {            
-            var a = intList.AllF(x => x % 2 == 0);
-            var b = intList.All(x => x % 2 == 0);
+            bool a = intList.AllF(x => x % 2 == 0);
+            bool b = intList.All(x => x % 2 == 0);
 
             Assert.That(a, Is.EqualTo(b));
         }
@@ -32,8 +32,8 @@ namespace Tests
         public void AnyArray()
         {
                         
-            var a = intArray.AnyF();
-            var b = intArray.Any();
+            bool a = intArray.AnyF();
+            bool b = intArray.Any();
 
             Assert.That(a, Is.EqualTo(b));
 
@@ -59,8 +59,8 @@ namespace Tests
         public void AnyList()
         {                        
 
-            var a = intList.AnyF();
-            var b = intList.Any();
+            bool a = intList.AnyF();
+            bool b = intList.Any();
 
             Assert.That(a, Is.EqualTo(b));
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
 using static JM.LinqFaster.Utils.CustomPartition;
@@ -30,7 +31,7 @@ namespace JM.LinqFaster.Parallel
             }
 
             int total = 0;
-            var rangePartitioner = MakePartition(source.Length, batchSize);
+            OrderablePartitioner<Tuple<int, int>> rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => 0,
                 (range, loopState, acc) =>
@@ -79,7 +80,7 @@ namespace JM.LinqFaster.Parallel
             }
 
             int total = 0;
-            var rangePartitioner = MakePartition(source.Count, batchSize);
+            OrderablePartitioner<Tuple<int, int>> rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 () => 0,
                 (range, loopState, acc) =>

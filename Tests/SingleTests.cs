@@ -37,8 +37,8 @@ namespace Tests
         public void SingleArrayOne() {
             int[] test = { 4 };
 
-            var a = test.SingleF();
-            var b = test.SingleF(onlyEvenInts);
+            int a = test.SingleF();
+            int b = test.SingleF(onlyEvenInts);
 
             Assert.That(a, Is.EqualTo(4));
             Assert.That(b, Is.EqualTo(4));
@@ -49,8 +49,8 @@ namespace Tests
         public void SingleArrayDefaultOne() {
             int[] test = { 4 };
 
-            var a = test.SingleOrDefaultF();
-            var b = test.SingleOrDefaultF(onlyEvenInts);
+            int a = test.SingleOrDefaultF();
+            int b = test.SingleOrDefaultF(onlyEvenInts);
 
             Assert.That(a, Is.EqualTo(4));
             Assert.That(b, Is.EqualTo(4));
@@ -60,8 +60,8 @@ namespace Tests
         public void SingleArrayDefaultEmpty() {
             int[] test = { };
 
-            var a = test.SingleOrDefaultF();
-            var b = test.SingleOrDefaultF(onlyEvenInts);
+            int a = test.SingleOrDefaultF();
+            int b = test.SingleOrDefaultF(onlyEvenInts);
 
             Assert.That(a, Is.EqualTo(0));
             Assert.That(b, Is.EqualTo(0));
@@ -85,8 +85,8 @@ namespace Tests
         public void SingleListOne() {
             List<int> test = new List<int>();
             test.Add(4);
-            var a = test.SingleF();
-            var b = test.SingleF(onlyEvenInts);
+            int a = test.SingleF();
+            int b = test.SingleF(onlyEvenInts);
 
             Assert.That(a, Is.EqualTo(4));
             Assert.That(b, Is.EqualTo(4));
@@ -97,8 +97,8 @@ namespace Tests
             List<int> test = new List<int>();
             test.Add(4);
 
-            var a = test.SingleOrDefaultF();
-            var b = test.SingleOrDefaultF(onlyEvenInts);
+            int a = test.SingleOrDefaultF();
+            int b = test.SingleOrDefaultF(onlyEvenInts);
 
             Assert.That(a, Is.EqualTo(4));
             Assert.That(b, Is.EqualTo(4));
@@ -108,8 +108,8 @@ namespace Tests
         public void SingleListDefaultEmpty() {
             List<int> test = new List<int>();            
 
-            var a = test.SingleOrDefaultF();
-            var b = test.SingleOrDefaultF(onlyEvenInts);
+            int a = test.SingleOrDefaultF();
+            int b = test.SingleOrDefaultF(onlyEvenInts);
             Assert.That(a, Is.EqualTo(0));
             Assert.That(b, Is.EqualTo(0));
         }

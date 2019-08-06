@@ -10,8 +10,8 @@ namespace Tests
 
         [Test]
         public void CountArray() {
-            var a = intArray.CountF(onlyEvenInts);
-            var b = intArray.Count(onlyEvenInts);
+            int a = intArray.CountF(onlyEvenInts);
+            int b = intArray.Count(onlyEvenInts);
 
             Assert.That(a, Is.EqualTo(b));            
         }
@@ -19,8 +19,8 @@ namespace Tests
 
         [Test]
         public void CountList() {
-            var a = intList.CountF(onlyEvenInts);
-            var b = intList.Count(onlyEvenInts);
+            int a = intList.CountF(onlyEvenInts);
+            int b = intList.Count(onlyEvenInts);
 
             Assert.That(a, Is.EqualTo(b));
         }

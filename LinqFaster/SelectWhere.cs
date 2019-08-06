@@ -28,11 +28,11 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var result = new TResult[source.Length];
+            TResult[] result = new TResult[source.Length];
             int idx = 0;
             for (int i = 0; i < source.Length; i++)
             {
-                var s = selector(source[i]);
+                TResult s = selector(source[i]);
                 if (predicate(s))
                 {
                     result[idx] = s;
@@ -63,11 +63,11 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var result = new TResult[source.Length];
+            TResult[] result = new TResult[source.Length];
             int idx = 0;
             for (int i = 0; i < source.Length; i++)
             {
-                var s = selector(source[i], i);
+                TResult s = selector(source[i], i);
                 if (predicate(s, i))
                 {
                     result[idx] = s;
@@ -100,11 +100,11 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var result = new TResult[source.Length];
+            TResult[] result = new TResult[source.Length];
             int idx = 0;
             for (int i = 0; i < source.Length; i++)
             {
-                var s = selector(source[i]);
+                TResult s = selector(source[i]);
                 if (predicate(s))
                 {
                     result[idx] = s;
@@ -135,11 +135,11 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var result = new TResult[source.Length];
+            TResult[] result = new TResult[source.Length];
             int idx = 0;
             for (int i = 0; i < source.Length; i++)
             {
-                var s = selector(source[i], i);
+                TResult s = selector(source[i], i);
                 if (predicate(s, i))
                 {
                     result[idx] = s;
@@ -172,10 +172,10 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var r = new List<TResult>();
+            List<TResult> r = new List<TResult>();
             for (int i = 0; i < source.Count; i++)
             {
-                var s = selector(source[i]);
+                TResult s = selector(source[i]);
                 if (predicate(s)) r.Add(s);
             }
             return r;
@@ -201,10 +201,10 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var r = new List<TResult>();
+            List<TResult> r = new List<TResult>();
             for (int i = 0; i < source.Count; i++)
             {
-                var s = selector(source[i], i);
+                TResult s = selector(source[i], i);
                 if (predicate(s, i)) r.Add(s);
             }
             return r;

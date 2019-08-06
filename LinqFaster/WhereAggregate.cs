@@ -31,7 +31,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("func");
             }
 
-            var result = default(T);
+            T result = default(T);
 
             int i = 0;
             for (; i < source.Length; i++)
@@ -72,7 +72,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var result = default(T);
+            T result = default(T);
 
             int i = 0;
             for (; i < source.Length; i++)
@@ -120,7 +120,7 @@ namespace JM.LinqFaster
             }
 
             TAccumulate result = seed;
-            foreach (var v in source)
+            foreach (TSource v in source)
             {
                 if (predicate(v))
                     result = func(result, v);
@@ -161,7 +161,7 @@ namespace JM.LinqFaster
 
             TAccumulate result = seed;
             int count = 0;
-            foreach (var v in source)
+            foreach (TSource v in source)
             {
                 if (predicate(v)) {
                     result = func(result, v);
@@ -196,7 +196,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("func");
             }
 
-            var result = default(T);
+            T result = default(T);
 
             int i = 0;
             for (; i < source.Length; i++)
@@ -237,7 +237,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var result = default(T);
+            T result = default(T);
 
             int i = 0;
             for (; i < source.Length; i++)
@@ -285,7 +285,7 @@ namespace JM.LinqFaster
             }
 
             TAccumulate result = seed;
-            foreach (var v in source)
+            foreach (TSource v in source)
             {
                 if (predicate(v))
                     result = func(result, v);
@@ -326,7 +326,7 @@ namespace JM.LinqFaster
 
             TAccumulate result = seed;
             int count = 0;
-            foreach (var v in source)
+            foreach (TSource v in source)
             {
                 if (predicate(v))
                 {
@@ -364,7 +364,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("func");
             }
 
-            var result = default(T);
+            T result = default(T);
 
             int i = 0;
             for (; i < source.Count; i++)
@@ -405,7 +405,7 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull("predicate");
             }
 
-            var result = default(T);
+            T result = default(T);
 
             int i = 0;
             for (; i < source.Count; i++)
@@ -455,7 +455,7 @@ namespace JM.LinqFaster
             TAccumulate result = seed;
             for (int i = 0; i < source.Count; i++)
             {
-                var v = source[i];
+                TSource v = source[i];
                 if (predicate(v))
                     result = func(result, v);
             }
@@ -491,7 +491,7 @@ namespace JM.LinqFaster
             TAccumulate result = seed;
             for (int i = 0; i < source.Count; i++)
             {
-                var v = source[i];
+                TSource v = source[i];
                 if (predicate(v))
                     result = func(result, v);
             }

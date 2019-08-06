@@ -10,44 +10,44 @@ namespace Tests
 
         [Test]
         public void FirstArray() {
-            var a = intArray.FirstF();
-            var b = intArray.First();
+            int a = intArray.FirstF();
+            int b = intArray.First();
             Assert.That(a, Is.EqualTo(b));
         }
 
         [Test]
         public void FirstArrayPredicate() {
-            var a = intArray.FirstF(x => x > 0);
-            var b = intArray.First(x => x > 0);
+            int a = intArray.FirstF(x => x > 0);
+            int b = intArray.First(x => x > 0);
             Assert.That(a, Is.EqualTo(b));
         }
 
         [Test]
         public void FirstOrDefaultArray() {
-            var a = intArray.FirstOrDefaultF(x => x > 99999);
-            var b = intArray.FirstOrDefault(x => x >  99999);
+            int a = intArray.FirstOrDefaultF(x => x > 99999);
+            int b = intArray.FirstOrDefault(x => x >  99999);
             Assert.That(a, Is.EqualTo(b));
         }
 
 
         [Test]
         public void FirstList() {
-            var a = intList.FirstF();
-            var b = intList.First();
+            int a = intList.FirstF();
+            int b = intList.First();
             Assert.That(a, Is.EqualTo(b));
         }
 
         [Test]
         public void FirstListPredicate() {
-            var a = intList.FirstF(x => x > 0);
-            var b = intList.First(x => x > 0);
+            int a = intList.FirstF(x => x > 0);
+            int b = intList.First(x => x > 0);
             Assert.That(a, Is.EqualTo(b));
         }
 
         [Test]
         public void FirstOrDefaultList() {
-            var a = intList.FirstOrDefaultF(x => x > 99999);
-            var b = intList.FirstOrDefault(x => x > 99999);
+            int a = intList.FirstOrDefaultF(x => x > 99999);
+            int b = intList.FirstOrDefault(x => x > 99999);
             Assert.That(a, Is.EqualTo(b));
         }
     }

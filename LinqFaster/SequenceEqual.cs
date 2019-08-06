@@ -70,7 +70,7 @@ namespace JM.LinqFaster
             }
             if (first.Length != second.Length) throw Error.NotSupported();
 
-            var result = new int[first.Length];
+            int[] result = new int[first.Length];
             for (int i = 0; i < first.Length; i++)
             {
                 result[i] = comparer.Compare(first[i], second[i]);               

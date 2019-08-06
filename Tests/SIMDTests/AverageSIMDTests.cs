@@ -13,8 +13,8 @@ namespace Tests
         [Test]
         public void AverageSIMDInts()
         {
-            var a = Test.intArray.Average();
-            var b = Test.intArray.AverageS();
+            double a = Test.intArray.Average();
+            double b = Test.intArray.AverageS();
             double diff = Math.Abs(a - b);
             Assert.That(diff, Is.LessThan(0.1));
         }
@@ -22,8 +22,8 @@ namespace Tests
         [Test]
         public void AverageSIMDFloats()
         {
-            var a = Test.floatArray.Average();
-            var b = Test.floatArray.AverageSf();
+            float a = Test.floatArray.Average();
+            float b = Test.floatArray.AverageSf();
             double diff = Math.Abs(a - b);
             Assert.That(diff, Is.LessThan(0.1));
         }
@@ -31,8 +31,8 @@ namespace Tests
         [Test]
         public void AverageBySIMDInts()
         {
-            var a = Test.intArray.Average(x => x - 1);
-            var b = Test.intArray.AverageS(x => x - new Vector<int>(1));
+            double a = Test.intArray.Average(x => x - 1);
+            double b = Test.intArray.AverageS(x => x - new Vector<int>(1));
             double diff = Math.Abs(a - b);
             Assert.That(diff, Is.LessThan(0.1));
         }

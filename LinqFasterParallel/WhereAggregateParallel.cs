@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using static JM.LinqFaster.Utils.CustomPartition;
 
@@ -33,7 +34,7 @@ namespace JM.LinqFaster.Parallel
             }
 
             bool[] isChosen = new bool[source.Length];            
-            var rangePartitioner = MakePartition(source.Length, batchSize);
+            OrderablePartitioner<Tuple<int, int>> rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
@@ -46,7 +47,7 @@ namespace JM.LinqFaster.Parallel
                     }
                 });
 
-            var result = default(TSource);
+            TSource result = default(TSource);
 
             int idx = 0;
             for (; idx < isChosen.Length; idx++)
@@ -94,7 +95,7 @@ namespace JM.LinqFaster.Parallel
             }
 
             bool[] isChosen = new bool[source.Length];
-            var rangePartitioner = MakePartition(source.Length, batchSize);
+            OrderablePartitioner<Tuple<int, int>> rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
@@ -107,7 +108,7 @@ namespace JM.LinqFaster.Parallel
                     }
                 });
 
-            var result = default(TSource);
+            TSource result = default(TSource);
 
             int idx = 0;            
             for (; idx < isChosen.Length; idx++)
@@ -157,7 +158,7 @@ namespace JM.LinqFaster.Parallel
             }
 
             bool[] isChosen = new bool[source.Length];
-            var rangePartitioner = MakePartition(source.Length, batchSize);
+            OrderablePartitioner<Tuple<int, int>> rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
@@ -170,7 +171,7 @@ namespace JM.LinqFaster.Parallel
                     }
                 });
 
-            var result = seed;
+            TAccumulate result = seed;
 
             for (int i = 0; i < isChosen.Length;i++)
             {
@@ -210,7 +211,7 @@ namespace JM.LinqFaster.Parallel
             }
 
             bool[] isChosen = new bool[source.Length];
-            var rangePartitioner = MakePartition(source.Length, batchSize);
+            OrderablePartitioner<Tuple<int, int>> rangePartitioner = MakePartition(source.Length, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
@@ -223,7 +224,7 @@ namespace JM.LinqFaster.Parallel
                     }
                 });
 
-            var result = seed;
+            TAccumulate result = seed;
 
             for (int i = 0; i < isChosen.Length; i++)
             {
@@ -263,7 +264,7 @@ namespace JM.LinqFaster.Parallel
             }
 
             bool[] isChosen = new bool[source.Count];
-            var rangePartitioner = MakePartition(source.Count, batchSize);
+            OrderablePartitioner<Tuple<int, int>> rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
@@ -276,7 +277,7 @@ namespace JM.LinqFaster.Parallel
                     }
                 });
 
-            var result = default(TSource);
+            TSource result = default(TSource);
 
             int idx = 0;
             for (; idx < isChosen.Length; idx++)
@@ -324,7 +325,7 @@ namespace JM.LinqFaster.Parallel
             }
 
             bool[] isChosen = new bool[source.Count];
-            var rangePartitioner = MakePartition(source.Count, batchSize);
+            OrderablePartitioner<Tuple<int, int>> rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
@@ -337,7 +338,7 @@ namespace JM.LinqFaster.Parallel
                     }
                 });
 
-            var result = default(TSource);
+            TSource result = default(TSource);
 
             int idx = 0;
             for (; idx < isChosen.Length; idx++)
@@ -386,7 +387,7 @@ namespace JM.LinqFaster.Parallel
             }
 
             bool[] isChosen = new bool[source.Count];
-            var rangePartitioner = MakePartition(source.Count, batchSize);
+            OrderablePartitioner<Tuple<int, int>> rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
@@ -399,7 +400,7 @@ namespace JM.LinqFaster.Parallel
                     }
                 });
 
-            var result = seed;
+            TAccumulate result = seed;
 
             for (int i = 0; i < isChosen.Length; i++)
             {
@@ -439,7 +440,7 @@ namespace JM.LinqFaster.Parallel
             }
 
             bool[] isChosen = new bool[source.Count];
-            var rangePartitioner = MakePartition(source.Count, batchSize);
+            OrderablePartitioner<Tuple<int, int>> rangePartitioner = MakePartition(source.Count, batchSize);
             System.Threading.Tasks.Parallel.ForEach(rangePartitioner,
                 (range, loopState) =>
                 {
@@ -452,7 +453,7 @@ namespace JM.LinqFaster.Parallel
                     }
                 });
 
-            var result = seed;
+            TAccumulate result = seed;
 
             for (int i = 0; i < isChosen.Length; i++)
             {

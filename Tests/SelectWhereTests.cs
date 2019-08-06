@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using JM.LinqFaster;
 using System.Linq;
 using static Tests.Test;
@@ -11,8 +12,8 @@ namespace Tests
         [Test]
         public void SelectWhereArray()
         {
-            var a = intArray.SelectWhereF(squaredInts,onlyEvenInts);
-            var b = intArray.Select(squaredInts).Where(onlyEvenInts);
+            int[] a = intArray.SelectWhereF(squaredInts,onlyEvenInts);
+            IEnumerable<int> b = intArray.Select(squaredInts).Where(onlyEvenInts);
 
             Assert.That(a, Is.EqualTo(b));
 
@@ -24,8 +25,8 @@ namespace Tests
 
         [Test]
         public void SelectWhereList() {
-            var a = intList.SelectWhereF(squaredInts, onlyEvenInts);
-            var b = intList.Select(squaredInts).Where(onlyEvenInts);
+            List<int> a = intList.SelectWhereF(squaredInts, onlyEvenInts);
+            IEnumerable<int> b = intList.Select(squaredInts).Where(onlyEvenInts);
 
             Assert.That(a, Is.EqualTo(b));
 
