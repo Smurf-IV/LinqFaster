@@ -19,7 +19,7 @@ namespace JM.LinqFaster
             
             if (source == null)
             {
-                throw Error.ArgumentNull("source");
+                throw Error.ArgumentNull(nameof(source));
             }
 
             if (keySelector == null)
@@ -52,7 +52,7 @@ namespace JM.LinqFaster
         /// <returns>A sequence whose elements are ordered according to a key</returns>
         public static TSource[] OrderByDescendingF<TSource, TKey>(this TSource[] source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null) {
             if (source == null) {
-                throw Error.ArgumentNull("source");
+                throw Error.ArgumentNull(nameof(source));
             }
 
             if (keySelector == null) {
@@ -87,7 +87,7 @@ namespace JM.LinqFaster
         {
             if (source == null)
             {
-                throw Error.ArgumentNull("source");
+                throw Error.ArgumentNull(nameof(source));
             }
 
             if (keySelector == null)
@@ -116,7 +116,7 @@ namespace JM.LinqFaster
         /// <returns>A sequence whose elements are ordered according to a key</returns>
         public static List<TSource> OrderByDescendingF<TSource, TKey>(this List<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null) {
             if (source == null) {
-                throw Error.ArgumentNull("source");
+                throw Error.ArgumentNull(nameof(source));
             }
 
             if (keySelector == null) {

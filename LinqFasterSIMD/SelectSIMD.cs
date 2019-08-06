@@ -20,7 +20,7 @@ namespace JM.LinqFaster.SIMD
         {
             if (source == null)
             {
-                throw Error.ArgumentNull("source");
+                throw Error.ArgumentNull(nameof(source));
             }            
             if (slectorSIMD == null)
             {
@@ -64,7 +64,7 @@ namespace JM.LinqFaster.SIMD
         {
             if (source == null)
             {
-                throw Error.ArgumentNull("source");
+                throw Error.ArgumentNull(nameof(source));
             }
             if (slectorSIMD == null)
             {

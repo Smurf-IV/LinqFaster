@@ -1,22 +1,25 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster;
+﻿using System;
 using System.Linq;
-using System;
+
+using JM.LinqFaster;
+
+using NUnit.Framework;
+
 using static Tests.Test;
 
 namespace Tests
 {
     [TestFixture]
-    class AverageTests
+    internal class AverageTests
     {
-       
+
         [Test]
         public void AverageArrayInt()
         {
             double a = intArray.AverageF();
             double b = intArray.Average();
 
-            Assert.That(a, Is.EqualTo(b));            
+            Assert.That(a, Is.EqualTo(b));
         }
 
         [Test]
@@ -70,7 +73,8 @@ namespace Tests
 
 
         [Test]
-        public void AverageListInt() {
+        public void AverageListInt()
+        {
             double a = intList.AverageF();
             double b = intList.Average();
 
@@ -78,7 +82,8 @@ namespace Tests
         }
 
         [Test]
-        public void AverageListLong() {
+        public void AverageListLong()
+        {
             double a = Test.longList.AverageF();
             double b = Test.longList.Average();
 
@@ -86,7 +91,8 @@ namespace Tests
         }
 
         [Test]
-        public void AverageListFloat() {
+        public void AverageListFloat()
+        {
             float a = floatList.AverageF();
             float b = floatList.Average();
 
@@ -94,7 +100,8 @@ namespace Tests
         }
 
         [Test]
-        public void AverageListDouble() {
+        public void AverageListDouble()
+        {
             double a = Test.doubleList.AverageF();
             double b = Test.doubleList.Average();
 
@@ -102,7 +109,8 @@ namespace Tests
         }
 
         [Test]
-        public void AverageListDecimal() {
+        public void AverageListDecimal()
+        {
             decimal a = decimalList.AverageF();
             decimal b = decimalList.Average();
 
@@ -110,7 +118,8 @@ namespace Tests
         }
 
         [Test]
-        public void AverageListString() {
+        public void AverageListString()
+        {
             Func<string, float> lambda = (x => int.Parse(x));
             float a = stringList.AverageF(lambda);
             float b = stringList.Average(lambda);

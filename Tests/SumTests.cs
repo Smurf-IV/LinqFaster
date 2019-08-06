@@ -14,6 +14,37 @@ namespace Tests
     internal class SumTests
     {
         [Test]
+        public void NonOverflowOfComputableSumSingle()
+        {
+            float[] source = { float.MaxValue, float.MaxValue,
+                -float.MaxValue, -float.MaxValue };
+            // In a world where we summed using a float accumulator, the
+            // result would be infinity.
+            Assert.AreEqual(0f, source.Sum());
+        }
+
+        [Test]
+        public void AccumulatorAccuracyForSingle()
+        {
+            // 20000000 and 20000004 are both exactly representable as
+            // float values, but 20000001 is not. Therefore if we use
+            // a float accumulator, we’ll end up with 20000000. However,
+            // if we use a double accumulator, we’ll get the right value.
+            float[] array = { 20000000f, 1f, 1f, 1f, 1f };
+            Assert.AreEqual(20000004f, array.SumF());
+        }
+
+        [Test]
+        public void OverflowOfComputableSumInt32()
+        {
+            int[] source = { int.MaxValue, 1, -1, -int.MaxValue };
+            // In a world where we summed using a long accumulator, the
+            // result would be 0.
+            Assert.Throws<OverflowException>(() => source.Sum());
+            Assert.DoesNotThrow(() => source.SumF());
+        }
+
+        [Test]
         public void SumArray()
         {
             int a = ((IReadOnlyList<int>)intArray).SumF();

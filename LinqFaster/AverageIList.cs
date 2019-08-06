@@ -182,7 +182,7 @@ namespace JM.LinqFaster
             {
                 return 0;
             }
-            return (float)SumF(source) / source.Count;
+            return SumF(source) / (float)source.Count;
         }
 
         /// <summary>

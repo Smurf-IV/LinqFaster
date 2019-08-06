@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Runtime.CompilerServices;
-
 using JM.LinqFaster.Utils;
-// ReSharper disable MemberCanBePrivate.Global
+
 // ReSharper disable UnusedMember.Global
 // ReSharper disable LoopCanBeConvertedToQuery
+// ReSharper disable ConvertToCompoundAssignment
+// ReSharper disable ForCanBeConvertedToForeach
 
 
 namespace JM.LinqFaster
@@ -18,112 +20,122 @@ namespace JM.LinqFaster
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint SumF(this byte[] source)
+        public static uint WhereSumF(this byte[] source, Func<byte, bool> predicate)
         {
-            return NumericPolicies.Instance.SumF<NumericPolicies, byte, uint>(source);
+            return NumericPolicies.Instance.WhereSumF<NumericPolicies, byte, uint>(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SumF(this sbyte[] source)
+        public static int WhereSumF(this sbyte[] source, Func<sbyte, bool> predicate)
         {
-            return NumericPolicies.Instance.SumF<NumericPolicies, sbyte, int>(source);
+            return NumericPolicies.Instance.WhereSumF<NumericPolicies, sbyte, int>(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint SumF(this ushort[] source)
+        public static uint WhereSumF(this ushort[] source, Func<ushort, bool> predicate)
         {
-            return NumericPolicies.Instance.SumF<NumericPolicies, ushort, uint>(source);
+            return NumericPolicies.Instance.WhereSumF<NumericPolicies, ushort, uint>(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SumF(this short[] source)
+        public static int WhereSumF(this short[] source, Func<short, bool> predicate)
         {
-            return NumericPolicies.Instance.SumF<NumericPolicies, short, int>(source);
+            return NumericPolicies.Instance.WhereSumF<NumericPolicies, short, int>(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint SumF(this uint[] source)
+        public static uint WhereSumF(this uint[] source, Func<uint, bool> predicate)
         {
-            return NumericPolicies.Instance.SumF(source);
+            return NumericPolicies.Instance.WhereSumF(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int SumF(this int[] source)
+        public static int WhereSumF(this int[] source, Func<int, bool> predicate)
         {
-            return NumericPolicies.Instance.SumF(source);
+            return NumericPolicies.Instance.WhereSumF(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong SumF(this ulong[] source)
+        public static ulong WhereSumF(this ulong[] source, Func<ulong, bool> predicate)
         {
-            return NumericPolicies.Instance.SumF(source);
+            return NumericPolicies.Instance.WhereSumF(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long SumF(this long[] source)
+        public static long WhereSumF(this long[] source, Func<long, bool> predicate)
         {
-            return NumericPolicies.Instance.SumF(source);
+            return NumericPolicies.Instance.WhereSumF(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float SumF(this float[] source)
+        public static float WhereSumF(this float[] source, Func<float, bool> predicate)
         {
-            return (float)NumericPolicies.Instance.SumF<NumericPolicies, float, double>(source);
+            return (float)NumericPolicies.Instance.WhereSumF<NumericPolicies, float, double>(source, predicate);
         }
 
         /// <summary>
         /// Adds the transformed sequence of elements.
         /// </summary>        
         /// <param name="source">The sequence of values to transform then sum.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <param name="selector">A transformation function.</param>
         /// <returns>The sum of the transformed elements.</returns>
         /// <remarks>
         /// Special case for floats, as IEnumerable does the sums on doubles before returning the type.
         /// </remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T2 SumF<T2>(this float[] source, Func<float, T2> selector)
+        public static T2 WhereSumF<T2>(this float[] source, Func<float, bool> predicate, Func<float, T2> selector)
             where T2 : struct, IConvertible // Make sure these are not nullable
         {
             if (source == null)
@@ -131,6 +143,10 @@ namespace JM.LinqFaster
                 throw Error.ArgumentNull(nameof(source));
             }
 
+            if (predicate == null)
+            {
+                throw Error.ArgumentNull(nameof(predicate));
+            }
             if (selector == null)
             {
                 throw Error.ArgumentNull(nameof(selector));
@@ -142,7 +158,10 @@ namespace JM.LinqFaster
             {
                 foreach (float b in source)
                 {
-                    a = p.Add(a, selector(b).ToDouble(CultureInfo.InvariantCulture));
+                    if (predicate(b))
+                    {
+                        a = p.Add(a, selector(b).ToDouble(CultureInfo.InvariantCulture));
+                    }
                 }
             }
 
@@ -153,38 +172,45 @@ namespace JM.LinqFaster
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double SumF(this double[] source)
+        public static double WhereSumF(this double[] source, Func<double, bool> predicate)
         {
-            return NumericPolicies.Instance.SumF(source);
+            return NumericPolicies.Instance.WhereSumF(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal SumF(this decimal[] source)
+        public static decimal WhereSumF(this decimal[] source, Func<decimal, bool> predicate)
         {
-            return NumericPolicies.Instance.SumF(source);
+            return NumericPolicies.Instance.WhereSumF(source, predicate);
         }
 
         /// <summary>
         /// Adds the transformed sequence of elements.
         /// </summary>        
         /// <param name="source">The sequence of values to transform then sum.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <param name="selector">A transformation function.</param>
         /// <returns>The sum of the transformed elements.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static T2 SumF<T, T2>(this T[] source, Func<T, T2> selector) 
+        public static T2 WhereSumF<T, T2>(this T[] source, Func<T, bool> predicate, Func<T, T2> selector)
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
             }
 
+            if (predicate == null)
+            {
+                throw Error.ArgumentNull(nameof(predicate));
+            }
             if (selector == null)
             {
                 throw Error.ArgumentNull(nameof(selector));
@@ -195,7 +221,10 @@ namespace JM.LinqFaster
             {
                 foreach (T b in source)
                 {
-                    a = GenericOperators.Add(a, selector(b));
+                    if (predicate(b))
+                    {
+                        a = GenericOperators.Add(a, selector(b));
+                    }
                 }
             }
 
@@ -208,125 +237,136 @@ namespace JM.LinqFaster
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint? SumF(this byte?[] source)
+        public static uint? WhereSumF(this byte?[] source, Func<byte?, bool> predicate)
         {
-            return NumericPolicies.Instance.SumFNullable<NumericPolicies, byte, uint>(source);
+            return NumericPolicies.Instance.WhereSumFNullable<NumericPolicies, byte, uint>(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int? SumF(this sbyte?[] source)
+        public static int? WhereSumF(this sbyte?[] source, Func<sbyte?, bool> predicate)
         {
-            return NumericPolicies.Instance.SumFNullable<NumericPolicies, sbyte, int>(source);
+            return NumericPolicies.Instance.WhereSumFNullable<NumericPolicies, sbyte, int>(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint? SumF(this ushort?[] source)
+        public static uint? WhereSumF(this ushort?[] source, Func<ushort?, bool> predicate)
         {
-            return NumericPolicies.Instance.SumFNullable<NumericPolicies, ushort, uint>(source);
+            return NumericPolicies.Instance.WhereSumFNullable<NumericPolicies, ushort, uint>(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int? SumF(this short?[] source)
+        public static int? WhereSumF(this short?[] source, Func<short?, bool> predicate)
         {
-            return NumericPolicies.Instance.SumFNullable<NumericPolicies, short, int>(source);
+            return NumericPolicies.Instance.WhereSumFNullable<NumericPolicies, short, int>(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint? SumF(this uint?[] source)
+        public static uint? WhereSumF(this uint?[] source, Func<uint?, bool> predicate)
         {
-            return NumericPolicies.Instance.SumFNullable(source);
+            return NumericPolicies.Instance.WhereSumFNullable(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int? SumF(this int?[] source)
+        public static int? WhereSumF(this int?[] source, Func<int?, bool> predicate)
         {
-            return NumericPolicies.Instance.SumFNullable(source);
+            return NumericPolicies.Instance.WhereSumFNullable(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong? SumF(this ulong?[] source)
+        public static ulong? WhereSumF(this ulong?[] source, Func<ulong?, bool> predicate)
         {
-            return NumericPolicies.Instance.SumFNullable(source);
+            return NumericPolicies.Instance.WhereSumFNullable(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long? SumF(this long?[] source)
+        public static long? WhereSumF(this long?[] source, Func<long?, bool> predicate)
         {
-            return NumericPolicies.Instance.SumFNullable(source);
+            return NumericPolicies.Instance.WhereSumFNullable(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float? SumF(this float?[] source)
+        public static float? WhereSumF(this float?[] source, Func<float?, bool> predicate)
         {
-            return (float)NumericPolicies.Instance.SumFNullable<NumericPolicies, float, double>(source);
+            return (float)NumericPolicies.Instance.WhereSumFNullable<NumericPolicies, float, double>(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double? SumF(this double?[] source)
+        public static double? WhereSumF(this double?[] source, Func<double?, bool> predicate)
         {
-            return NumericPolicies.Instance.SumFNullable(source);
+            return NumericPolicies.Instance.WhereSumFNullable(source, predicate);
         }
 
         /// <summary>
         ///  Adds a sequence of values.
         /// </summary>
         /// <param name="source">The sequence to add.</param>
+        /// <param name="predicate">A function to filter the sequence with before summing.</param>
         /// <returns>The sum of the sequence.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static decimal? SumF(this decimal?[] source)
+        public static decimal? WhereSumF(this decimal?[] source, Func<decimal?, bool> predicate)
         {
-            return NumericPolicies.Instance.SumFNullable(source);
+            return NumericPolicies.Instance.WhereSumFNullable(source, predicate);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static T2 SumF<P, T1, T2>(this P p, T1[] source)
+        private static T2 WhereSumF<P, T1, T2>(this P p, T1[] source, Func<T1, bool> predicate)
             where P : INumericPolicy<T1, T2>
             where T1 : IConvertible
         {
@@ -334,13 +374,20 @@ namespace JM.LinqFaster
             {
                 throw Error.ArgumentNull(nameof(source));
             }
+            if (predicate == null)
+            {
+                throw Error.ArgumentNull(nameof(predicate));
+            }
 
             T2 a = p.Zero();
             checked
             {
                 foreach (T1 b in source)
                 {
-                    a = p.Add(a, b);
+                    if (predicate(b))
+                    {
+                        a = p.Add(a, b);
+                    }
                 }
             }
 
@@ -348,12 +395,16 @@ namespace JM.LinqFaster
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static T SumF<P, T>(this P p, T[] source)
+        private static T WhereSumF<P, T>(this P p, T[] source, Func<T, bool> predicate)
             where P : INumericPolicy<T>
         {
             if (source == null)
             {
                 throw Error.ArgumentNull(nameof(source));
+            }
+            if (predicate == null)
+            {
+                throw Error.ArgumentNull(nameof(predicate));
             }
 
             T a = p.Zero();
@@ -361,7 +412,10 @@ namespace JM.LinqFaster
             {
                 foreach (T b in source)
                 {
-                    a = p.Add(a, b);
+                    if (predicate(b))
+                    {
+                        a = p.Add(a, b);
+                    }
                 }
             }
 
@@ -369,7 +423,7 @@ namespace JM.LinqFaster
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static T2 SumFNullable<P, T1, T2>(this P p, T1?[] source)
+        private static T2 WhereSumFNullable<P, T1, T2>(this P p, T1?[] source, Func<T1?, bool> predicate)
             where P : INullableNumericPolicy<T1, T2>
             where T1 : struct, IConvertible
         {
@@ -377,13 +431,20 @@ namespace JM.LinqFaster
             {
                 throw Error.ArgumentNull(nameof(source));
             }
+            if (predicate == null)
+            {
+                throw Error.ArgumentNull(nameof(predicate));
+            }
 
             T2 a = p.Zero();
             checked
             {
                 foreach (T1? b in source)
                 {
-                    a = p.Add(a, b);
+                    if (predicate(b))
+                    {
+                        a = p.Add(a, b);
+                    }
                 }
             }
 
@@ -391,7 +452,7 @@ namespace JM.LinqFaster
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static T SumFNullable<P, T>(this P p, T?[] source)
+        private static T WhereSumFNullable<P, T>(this P p, T?[] source, Func<T?, bool> predicate)
             where P : INullableNumericPolicy<T>
             where T : struct
         {
@@ -399,13 +460,20 @@ namespace JM.LinqFaster
             {
                 throw Error.ArgumentNull(nameof(source));
             }
+            if (predicate == null)
+            {
+                throw Error.ArgumentNull(nameof(predicate));
+            }
 
             T a = p.Zero();
             checked
             {
                 foreach (T? b in source)
                 {
-                    a = p.Add(a, b);
+                    if (predicate(b))
+                    {
+                        a = p.Add(a, b);
+                    }
                 }
             }
 
@@ -414,5 +482,6 @@ namespace JM.LinqFaster
 
         #endregion Nullable types
 
+    
     }
 }

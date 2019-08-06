@@ -198,9 +198,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BenchmarkAggregate.cs" />
+    <Compile Include="BenchmarkAverage.cs" />
+    <Compile Include="BenchmarkFirst.cs" />
+    <Compile Include="BenchmarkLast.cs" />
+    <Compile Include="BenchmarkOrderBy.cs" />
     <Compile Include="Benchmarks.cs" />
     <Compile Include="BenchmarksMin.cs" />
     <Compile Include="BenchmarksMax.cs" />
+    <Compile Include="BenchmarkWhereSum.cs" />
+    <Compile Include="BenchmarkSum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -20,7 +20,7 @@ namespace JM.LinqFaster.SIMD.Parallel
         {
             if (source == null)
             {
-                throw Error.ArgumentNull("source");
+                throw Error.ArgumentNull(nameof(source));
             }
 
             int count = Vector<T>.Count;
