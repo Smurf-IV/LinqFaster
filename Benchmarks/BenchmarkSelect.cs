@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
@@ -13,9 +12,9 @@ namespace Tests
     public class BenchmarkSelect
     {
         [BenchmarkCategory("intArray.Select"), Benchmark(Baseline = true)]
-        public IEnumerable<int> IntArraySelectLinq()
+        public int[] IntArraySelectLinq()
         {
-            return Benchmarks.intArray.Select(x => x * x);
+            return Benchmarks.intArray.Select(x => x * x).ToArray();
         }
 
         [BenchmarkCategory("intArray.Select"), Benchmark]

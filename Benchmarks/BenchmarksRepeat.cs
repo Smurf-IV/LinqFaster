@@ -1,35 +1,37 @@
 ﻿using System.Linq;
 
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
 
 using JM.LinqFaster;
 using JM.LinqFaster.SIMD;
 
 namespace Tests
 {
-    internal class BenchmarksRepeat
+    [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
+    public class BenchmarksRepeat
     {
 
-        [Benchmark(Baseline = true)]
+        [BenchmarkCategory("intArray"), Benchmark(Baseline = true)]
         public int[] IntArrayRepeatLinq()
         {
             return Enumerable.Repeat(5, Benchmarks.TEST_SIZE).ToArray();
         }
 
-        [BenchmarkCategory("IntArrayAggregate"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("intArray"), Benchmark]
         public int[] IntArrayRepeatFast()
         {
             return LinqFaster.RepeatArrayF(5, Benchmarks.TEST_SIZE);
         }
 
 
-        [BenchmarkCategory("IntArrayAggregate"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("intArray"), Benchmark]
         public int[] IntArrayRepeatFastSIMD()
         {
             return LinqFasterSIMD.RepeatS(5, Benchmarks.TEST_SIZE);
         }
 
-        //[BenchmarkCategory("IntArrayAggregate"), Benchmark(Baseline = true)]
+        //[BenchmarkCategory("intArray"), Benchmark]
         //public int[] IntArrayRepeatFastSIMDB()
         //{
         //    return LinqFasterSIMD.RepeatSB(5, Benchmarks.TEST_SIZE);

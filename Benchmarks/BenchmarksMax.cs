@@ -125,13 +125,13 @@ namespace Tests
             return asSpan.MaxF(MaxInts);
         }
 
-        [BenchmarkCategory("intList"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("intListSelect"), Benchmark(Baseline = true)]
         public double IntListMaxLinqSelector()
         {
             return Benchmarks.intList.Max(MaxInts);
         }
 
-        [BenchmarkCategory("intList"), Benchmark]
+        [BenchmarkCategory("intListSelect"), Benchmark]
         public double IntListMaxFastSelector()
         {
             return Benchmarks.intList.MaxF(MaxInts);

@@ -2,23 +2,24 @@
 using System.Linq;
 
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
 
 using JM.LinqFaster;
 
 namespace Tests
 {
-    //[GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
+    [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
     public class BenchmarkOrderBy
     {
         private static readonly Func<int, int> orderBy = (x) => x - 1;
 
-        [Benchmark(Baseline = true)]
+        [BenchmarkCategory("intArray"), Benchmark(Baseline = true)]
         public int IntArrayOrderByLinq()
         {
             return Benchmarks.intArray.OrderBy(orderBy).Sum();
         }
 
-        [Benchmark]
+        [BenchmarkCategory("intArray"), Benchmark]
         public int IntArrayOrderByFast()
         {
             return Benchmarks.intArray.OrderByF(orderBy).Sum();

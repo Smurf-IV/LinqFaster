@@ -96,7 +96,7 @@ namespace Tests
             return Benchmarks.intArray.Sum(sumDivide);
         }
 
-        [BenchmarkCategory("IntArrayAggregate"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("IntArrayAggregate"), Benchmark]
         public int IntArraySumFastSelect()
         {
             return Benchmarks.intArray.SumF(sumDivide);

@@ -20,7 +20,7 @@ namespace Tests
             return Benchmarks.intArray.Where(x => x % 2 == 0).Aggregate(0.0, mulXInts, acc => acc / Benchmarks.intArray.Length);
         }
 
-        [BenchmarkCategory("intArray.WhereAggregateSelect"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("intArray.WhereAggregateSelect"), Benchmark]
         public double IntArrayWhereAggregateFast()
         {
             return Benchmarks.intArray.WhereAggregateF(x => x % 2 == 0, 0.0, mulXInts, acc => acc / Benchmarks.intArray.Length);
