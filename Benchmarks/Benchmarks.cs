@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Jobs;
+using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
-
-using JM.LinqFaster;
-using JM.LinqFaster.SIMD;
 
 namespace Tests
 {
@@ -19,32 +15,25 @@ namespace Tests
         private const int LARGE_TEST_SIZE = 1000000;
         private const int SMALL_TEST_SIZE = 100;
 
-        private List<int> list;
-        private byte[] byteArray;
-        private short[] shortArray;
-        private int[] intArray;
-        private List<int> intList;
-        private int?[] intNullArray;
-        private int[] array2;
-        private float[] floatArray;
-        private List<float> floatList;
-        private float?[] floatNullArray;
-        private double[] doubleArray;
-        private List<double> doubleList;
-        private double?[] doubleNullArray;
-        private string[] strarray;
+        internal static List<int> list;
+        internal static byte[] byteArray;
+        internal static short[] shortArray;
+        internal static int[] intArray;
+        internal static List<int> intList;
+        internal static int?[] intNullArray;
+        internal static int[] array2;
+        internal static float[] floatArray;
+        internal static List<float> floatList;
+        internal static float?[] floatNullArray;
+        internal static double[] doubleArray;
+        internal static List<double> doubleList;
+        internal static double?[] doubleNullArray;
+        internal static string[] strarray;
 
 
+        internal static int TEST_SIZE => LARGE_TEST_SIZE;
 
-        [Params(1000000)]
-        public int TEST_SIZE { get; set; }
-
-        public Benchmarks()
-        {
-        }
-
-        [GlobalSetup]
-        public void Setup()
+        static Benchmarks()
         {
             byteArray = new byte[TEST_SIZE];
             shortArray = new short[TEST_SIZE];
@@ -83,99 +72,28 @@ namespace Tests
 
 
 
-
-        //[Benchmark]
-        //public double IntArrayWhereAggregateLinq()
-        //{
-        //    return intArray.Where(x => x % 2 == 0).Aggregate(0.0, mulXInts, acc => acc / intArray.Length);
-        //}
-
-        //[Benchmark]
-        //public double IntArrayWhereAggregateFast()
-        //{
-        //    return intArray.WhereAggregateF(x => x % 2 == 0, 0.0, mulXInts, acc => acc / intArray.Length);
-        //}
-
-        //[Benchmark]
-        //public int[] IntArraySelectLinq()
-        //{
-        //    return intArray.Select(x => x * x);
-        //}
-
-        //[Benchmark]
-        //public int[] IntArraySelectFast()
-        //{
-        //    return intArray.SelectF(x => x * x);
-        //}
-
-        //[Benchmark]
-        //public int[] IntArraySelectFastSIMD()
-        //{
-        //    return intArray.SelectS(x => x * x, x => x * x);
-        //}
-
-
-
-        //[Benchmark]
-        //public int[] IntArrayRepeatLinq()
-        //{
-        //    return Enumerable.Repeat(5, TEST_SIZE).ToArray();
-        //}
-
-        //[Benchmark]
-        //public int[] IntArrayRepeatFast()
-        //{
-        //    return LinqFaster.RepeatArrayF(5, TEST_SIZE);
-        //}
-
-
-        //[Benchmark]
-        //public int[] IntArrayRepeatFastSIMD()
-        //{
-        //    return LinqFasterSIMD.RepeatS(5, TEST_SIZE);
-        //}
-
-        //[Benchmark]
-        //public int[] IntArrayRepeatFastSIMDB()
-        //{
-        //    return LinqFasterSIMD.RepeatSB(5, TEST_SIZE);
-        //}
-
-        //[Benchmark]
-        //public bool IntArraySequenceEqual()
-        //{
-        //    return intArray.SequenceEqual(array2);
-        //}
-
-        //[Benchmark]
-        //public bool IntArraySequenceEqualF()
-        //{
-        //    return intArray.SequenceEqualF(array2);
-        //}
-
-
-        //[Benchmark]
-        //public bool IntArraySequenceEqualP()
-        //{
-        //    return intArray.SequenceEqualP(array2);
-        //}
-
-        //[Benchmark]
-        //public bool IntArraySequenceEqualS()
-        //{
-        //    return intArray.SequenceEqualS(array2);
-        //}
-
-        //[Benchmark]
-        //public bool IntArraySequenceEqualSP()
-        //{
-        //    return intArray.SequenceEqualSP(array2);
-        //}
-
-
         public static void Main(string[] args)
         {
-            Console.WriteLine(BenchmarkRunner.Run<Benchmarks>(ManualConfig.Create(DefaultConfig.Instance).With(Job.RyuJitX64)).ResultsDirectoryPath);
+            ManualConfig config = (ManualConfig)ManualConfig.Create(DefaultConfig.Instance).With(Job.RyuJitX64);
+            config.Options |= ConfigOptions.JoinSummary;
+
+            BenchmarkRunInfo[] benchmarkRunInfos =
+            {
+                BenchmarkConverter.TypeToBenchmarks(typeof (BenchmarkSum), config),
+                BenchmarkConverter.TypeToBenchmarks(typeof (BenchmarksAverage), config),
+                BenchmarkConverter.TypeToBenchmarks(typeof (BenchmarksFirst), config),
+                BenchmarkConverter.TypeToBenchmarks(typeof (BenchmarksLast), config),
+                BenchmarkConverter.TypeToBenchmarks(typeof (BenchmarksMax), config),
+                BenchmarkConverter.TypeToBenchmarks(typeof (BenchmarksMin), config),
+                BenchmarkConverter.TypeToBenchmarks(typeof (BenchmarksAggregate), config),
+                BenchmarkConverter.TypeToBenchmarks(typeof (BenchmarksRepeat), config),
+                BenchmarkConverter.TypeToBenchmarks(typeof (BenchmarkOrderBy), config),
+                BenchmarkConverter.TypeToBenchmarks(typeof (BenchmarkSequenceEqual), config),
+                BenchmarkConverter.TypeToBenchmarks(typeof (BenchmarkSelect), config),
+                BenchmarkConverter.TypeToBenchmarks(typeof (BenchmarksWhereAggregate), config),
+                //BenchmarkConverter.TypeToBenchmarks(typeof (
+        };
+            Summary[] summaries = BenchmarkRunner.Run(benchmarkRunInfos);
             Console.WriteLine("Press enter to close");
             Console.ReadLine();
         }

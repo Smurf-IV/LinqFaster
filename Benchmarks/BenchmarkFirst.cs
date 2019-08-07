@@ -2,94 +2,96 @@
 using System.Linq;
 
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
 
 using JM.LinqFaster;
 
 namespace Tests
 {
-    public partial class Benchmarks
+    [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
+    public class BenchmarksFirst
     {
         private static readonly Func<int, bool> firstInts = (x) => x > 0;
 
-        //[Benchmark]
-        //public double IntArrayFirstLinqSelector()
-        //{
-        //    return intArray.First(firstInts);
-        //}
+        [BenchmarkCategory("intArray"), Benchmark(Baseline = true)]
+        public double IntArrayFirstLinqSelector()
+        {
+            return Benchmarks.intArray.First(firstInts);
+        }
 
-        //[Benchmark]
-        //public double IntArrayFirstFastSelector()
-        //{
-        //    return intArray.FirstF(firstInts);
-        //}
+        [BenchmarkCategory("intArray"), Benchmark]
+        public double IntArrayFirstArrayFindSelector()
+        {
+            Predicate<int> predicate = new Predicate<int>(firstInts);
+            return Array.Find(Benchmarks.intArray, predicate);
+        }
 
-        //[Benchmark]
-        //public double IntArrayFirstArrayFindSelector()
-        //{
-        //    Predicate<int> predicate = new Predicate<int>(firstInts);
-        //    return Array.Find(intArray, predicate);
-        //}
+        [BenchmarkCategory("intArray"), Benchmark]
+        public double IntArrayFirstFastSelector()
+        {
+            return Benchmarks.intArray.FirstF(firstInts);
+        }
 
 
-        //[Benchmark]
-        //public double IntSpanFirstForEachSelector()
-        //{
-        //    int[] localArray = intArray;
-        //    Span<int> asSpan = localArray.AsSpan();
-        //    foreach (int i in asSpan)
-        //    {
-        //        if (firstInts(i))
-        //        {
-        //            return i;
-        //        }
-        //    }
+        [BenchmarkCategory("localArray.AsSpan"), Benchmark(Baseline = true)]
+        public double IntSpanFirstForEachSelector()
+        {
+            int[] localArray = Benchmarks.intArray;
+            Span<int> asSpan = localArray.AsSpan();
+            foreach (int i in asSpan)
+            {
+                if (firstInts(i))
+                {
+                    return i;
+                }
+            }
 
-        //    return 0;
-        //}
+            return 0;
+        }
 
-        //[Benchmark]
-        //public double IntSpanFirstFastSelector()
-        //{
-        //    int[] localArray = intArray;
-        //    Span<int> asSpan = localArray.AsSpan();
-        //    return asSpan.FirstF(firstInts);
-        //}
+        [BenchmarkCategory("localArray.AsSpan"), Benchmark]
+        public double IntSpanFirstFastSelector()
+        {
+            int[] localArray = Benchmarks.intArray;
+            Span<int> asSpan = localArray.AsSpan();
+            return asSpan.FirstF(firstInts);
+        }
 
-        //[Benchmark]
-        //public double IntListFirstLinqSelector()
-        //{
-        //    return intList.First(firstInts);
-        //}
+        [BenchmarkCategory("intList"), Benchmark(Baseline = true)]
+        public double IntListFirstLinqSelector()
+        {
+            return Benchmarks.intList.First(firstInts);
+        }
 
-        //[Benchmark]
-        //public double IntListFirstFastSelector()
-        //{
-        //    return intList.FirstF(firstInts);
-        //}
+        [BenchmarkCategory("intList"), Benchmark]
+        public double IntListFirstFastSelector()
+        {
+            return Benchmarks.intList.FirstF(firstInts);
+        }
 
-        //[Benchmark]
-        //public double IntAsListReadOnlyFirstLinqSelector()
-        //{
-        //    return intList.AsReadOnly().First(firstInts);
-        //}
+        [BenchmarkCategory("intList.AsReadOnly"), Benchmark(Baseline = true)]
+        public double IntAsListReadOnlyFirstLinqSelector()
+        {
+            return Benchmarks.intList.AsReadOnly().First(firstInts);
+        }
 
-        //[Benchmark]
-        //public double IntAsListReadOnlyFirstFastSelector()
-        //{
-        //    return intList.AsReadOnly().FirstF(firstInts);
-        //}
+        [BenchmarkCategory("intList.AsReadOnly"), Benchmark]
+        public double IntAsListReadOnlyFirstFastSelector()
+        {
+            return Benchmarks.intList.AsReadOnly().FirstF(firstInts);
+        }
 
-        //[Benchmark]
-        //public double IntArrayAsReadOnlyFirstLinqSelector()
-        //{
-        //    return Array.AsReadOnly(intArray).First(firstInts);
-        //}
+        [BenchmarkCategory("Array.AsReadOnly"), Benchmark(Baseline = true)]
+        public double IntArrayAsReadOnlyFirstLinqSelector()
+        {
+            return Array.AsReadOnly(Benchmarks.intArray).First(firstInts);
+        }
 
-        //[Benchmark]
-        //public double IntArrayAsReadOnlyFirstFastSelector()
-        //{
-        //    return Array.AsReadOnly(intArray).FirstF(firstInts);
-        //}
+        [BenchmarkCategory("Array.AsReadOnly"), Benchmark]
+        public double IntArrayAsReadOnlyFirstFastSelector()
+        {
+            return Array.AsReadOnly(Benchmarks.intArray).FirstF(firstInts);
+        }
 
     }
 }

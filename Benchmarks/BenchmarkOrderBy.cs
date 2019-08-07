@@ -7,20 +7,21 @@ using JM.LinqFaster;
 
 namespace Tests
 {
-    public partial class Benchmarks
+    //[GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
+    public class BenchmarkOrderBy
     {
         private static readonly Func<int, int> orderBy = (x) => x - 1;
 
-        //[Benchmark]
-        //public int IntArrayOrderByLinq()
-        //{
-        //    return intArray.OrderBy(orderBy).Sum();
-        //}
+        [Benchmark(Baseline = true)]
+        public int IntArrayOrderByLinq()
+        {
+            return Benchmarks.intArray.OrderBy(orderBy).Sum();
+        }
 
-        //[Benchmark]
-        //public int IntArrayOrderByFast()
-        //{
-        //    return intArray.OrderByF(orderBy).Sum();
-        //}
+        [Benchmark]
+        public int IntArrayOrderByFast()
+        {
+            return Benchmarks.intArray.OrderByF(orderBy).Sum();
+        }
     }
 }

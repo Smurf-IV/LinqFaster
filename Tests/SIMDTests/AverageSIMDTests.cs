@@ -1,13 +1,15 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster.SIMD;
+﻿using System;
 using System.Linq;
-using System;
 using System.Numerics;
+
+using JM.LinqFaster.SIMD;
+
+using NUnit.Framework;
 
 namespace Tests
 {
     [TestFixture]
-    class AverageSIMDTests
+    internal class AverageSIMDTests
     {
 
         [Test]

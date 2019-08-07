@@ -1,11 +1,13 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+
 using JM.LinqFaster.SIMD;
-using System.Linq;
+
+using NUnit.Framework;
 
 namespace Tests
 {
     [TestFixture]
-    class SelectSIMDTests
+    internal class SelectSIMDTests
     {
 
         [Test]
@@ -17,7 +19,7 @@ namespace Tests
             Assert.That(a, Is.EqualTo(b));
         }
 
-        
-        
+
+
     }
 }

@@ -2,276 +2,261 @@
 using System.Linq;
 
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
 
 using JM.LinqFaster;
+using JM.LinqFaster.SIMD;
 
 namespace Tests
 {
-    public partial class Benchmarks
+    [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
+    public class BenchmarkSum
     {
         private static readonly Func<int, int> sumDivide = (x) => x / 2;
 
-        //[Benchmark]
-        //public int ByteArraySumLinq()
-        //{
-        //    return byteArray.Aggregate(0, (current, b1) => current + b1);
-        //}
+        [BenchmarkCategory("byteArray"), Benchmark(Baseline = true)]
+        public int ByteArraySumLinq()
+        {
+            return Benchmarks.byteArray.Aggregate(0, (current, b1) => current + b1);
+        }
 
-        //[Benchmark]
-        //public uint ByteArraySumFast()
-        //{
-        //    return byteArray.SumF();
-        //}
-
-
-        //[Benchmark]
-        //public int ShortArraySumLinq()
-        //{
-        //    return shortArray.Aggregate(0, (current, s1) => current + s1);
-        //}
-
-        //[Benchmark]
-        //public int ShortArraySumFast()
-        //{
-        //    return shortArray.SumF();
-        //}
+        [BenchmarkCategory("byteArray"), Benchmark]
+        public uint ByteArraySumFast()
+        {
+            return Benchmarks.byteArray.SumF();
+        }
 
 
-        //[Benchmark]
-        //public int IntArraySumLinq()
-        //{
-        //    return intArray.Sum();
-        //}
+        [BenchmarkCategory("shortArray"), Benchmark(Baseline = true)]
+        public int ShortArraySumLinq()
+        {
+            return Benchmarks.shortArray.Aggregate(0, (current, s1) => current + s1);
+        }
 
-        //[Benchmark]
-        //public int IntArraySumFast()
-        //{
-        //    return intArray.SumF();
-        //}
-
-        //[Benchmark]
-        //public int IntSpanSumFor()
-        //{
-        //    int val = 0;
-        //    Span<int> span = intArray.AsSpan();
-        //    for (int index = 0; index < span.Length; index++)
-        //    {
-        //        val += span[index];
-        //    }
-
-        //    return val;
-        //}
-
-        //[Benchmark]
-        //public int IntSpanSumFast()
-        //{
-        //    return intArray.AsSpan().SumF();
-        //}
-
-        //[Benchmark]
-        //public int IntIArraySumFast()
-        //{
-        //    return ((IReadOnlyList<int>)intArray).SumF();
-        //}
-
-        //[Benchmark]
-        //public int IntListSumLinq()
-        //{
-        //    return intList.Sum();
-        //}
-
-        //[Benchmark]
-        //public int IntListSumFast()
-        //{
-        //    return intList.SumF();
-        //}
-
-        //[Benchmark]
-        //public int IntIReadOnlyListSumLinq()
-        //{
-        //    return ((IReadOnlyList<int>)intList).Sum();
-        //}
-
-        //[Benchmark]
-        //public int IntIReadOnlyListSumFast()
-        //{
-        //    return ((IReadOnlyList<int>)intList).SumF();
-        //}
+        [BenchmarkCategory("shortArray"), Benchmark]
+        public int ShortArraySumFast()
+        {
+            return Benchmarks.shortArray.SumF();
+        }
 
 
-        //[Benchmark]
-        //public int IntArraySumLinqSelect()
-        //{
-        //    return intArray.Sum(x => x / 2);
-        //}
+        [BenchmarkCategory("intArray"), Benchmark(Baseline = true)]
+        public int IntArraySumLinq()
+        {
+            return Benchmarks.intArray.Sum();
+        }
 
-        //[Benchmark]
-        //public int IntArraySumFastSelect()
-        //{
-        //    return intArray.SumF(x => x / 2);
-        //}
+        [BenchmarkCategory("intArray"), Benchmark]
+        public int IntArraySumFast()
+        {
+            return Benchmarks.intArray.SumF();
+        }
 
-        //[Benchmark]
-        //public double IntReadOnlyArraySumWithSelectLinq()
-        //{
-        //    return Array.AsReadOnly(intArray).Sum(x => x / 2);
-        //}
+        [BenchmarkCategory("intArray"), Benchmark]
+        public int IntArraySumFastSIMD()
+        {
+            return Benchmarks.intArray.SumS();
+        }
 
-        //[Benchmark]
-        //public double IntReadOnlyArraySumWithSelectFast()
-        //{
-        //    return Array.AsReadOnly(intArray).SumF(x => x / 2);
-        //}
+        [BenchmarkCategory("intArraySpan"), Benchmark(Baseline = true)]
+        public int IntSpanSumFor()
+        {
+            int val = 0;
+            Span<int> span = Benchmarks.intArray.AsSpan();
+            for (int index = 0; index < span.Length; index++)
+            {
+                val += span[index];
+            }
 
-        //[Benchmark]
-        //public int IntArraySumFastSIMD()
-        //{
-        //    return intArray.SumS();
-        //}
+            return val;
+        }
 
-        //[Benchmark]
-        //public int? IntNullArraySumLinq()
-        //{
-        //    return intNullArray.Sum();
-        //}
+        [BenchmarkCategory("intArraySpan"), Benchmark]
+        public int IntSpanSumFast()
+        {
+            return Benchmarks.intArray.AsSpan().SumF();
+        }
 
-        //[Benchmark]
-        //public int? IntNullArraySumFast()
-        //{
-        //    return intNullArray.SumF();
-        //}
+        [BenchmarkCategory("intList"), Benchmark(Baseline = true)]
+        public int IntListSumLinq()
+        {
+            return Benchmarks.intList.Sum();
+        }
 
-        //[Benchmark]
-        //public int IntNullArraySumLinqSelect()
-        //{
-        //    return intNullArray.Sum(x => x/2 ?? 0);
-        //}
-
-        //[Benchmark]
-        //public int IntNullArraySumFastSelect()
-        //{
-        //    return intNullArray.SumF(x => x/2 ?? 0);
-        //}
-
-        //[Benchmark]
-        //public float FloatArraySumLinq()
-        //{
-        //    return floatArray.Sum();
-        //}
-
-        //[Benchmark]
-        //public float FloatArraySumFast()
-        //{
-        //    return floatArray.SumF();
-        //}
-
-        //[Benchmark]
-        //public float FloatListSumLinq()
-        //{
-        //    return floatList.Sum();
-        //}
-
-        //[Benchmark]
-        //public float FloatListSumFast()
-        //{
-        //    return floatList.SumF();
-        //}
-
-        //[Benchmark]
-        //public float FloatArraySumLinqSelect()
-        //{
-        //    return floatArray.Sum(x => x / 2);
-        //}
-
-        //[Benchmark]
-        //public float FloatArraySumFastSelect()
-        //{
-        //    return floatArray.SumF(x => x / 2);
-        //}
-
-        //[Benchmark]
-        //public float? FloatNullArraySumLinq()
-        //{
-        //    return floatNullArray.Sum();
-        //}
-
-        //[Benchmark]
-        //public float? FloatNullArraySumFast()
-        //{
-        //    return floatNullArray.SumF();
-        //}
-
-        //[Benchmark]
-        //public float FloatNullArraySumLinqSelect()
-        //{
-        //    return floatNullArray.Sum(x => x / 2 ?? 0);
-        //}
-
-        //[Benchmark]
-        //public float FloatNullArraySumFastSelect()
-        //{
-        //    return floatNullArray.SumF(x => x / 2 ?? 0);
-        //}
+        [BenchmarkCategory("intList"), Benchmark]
+        public int IntListSumFast()
+        {
+            return Benchmarks.intList.SumF();
+        }
 
 
-        //[Benchmark]
-        //public double DoubleArraySumLinq()
-        //{
-        //    return doubleArray.Sum();
-        //}
+        [BenchmarkCategory("IntArrayAggregate"), Benchmark(Baseline = true)]
+        public int IntArraySumLinqSelect()
+        {
+            return Benchmarks.intArray.Sum(sumDivide);
+        }
 
-        //[Benchmark]
-        //public double DoubleArraySumFast()
-        //{
-        //    return doubleArray.SumF();
-        //}
+        [BenchmarkCategory("IntArrayAggregate"), Benchmark(Baseline = true)]
+        public int IntArraySumFastSelect()
+        {
+            return Benchmarks.intArray.SumF(sumDivide);
+        }
 
-        //[Benchmark]
-        //public double DoubleListSumLinq()
-        //{
-        //    return doubleList.Sum();
-        //}
+        [BenchmarkCategory("intArrayAsReadOnly"), Benchmark(Baseline = true)]
+        public double IntReadOnlyArraySumWithSelectLinq()
+        {
+            return Array.AsReadOnly(Benchmarks.intArray).Sum(sumDivide);
+        }
 
-        //[Benchmark]
-        //public double DoubleListSumFast()
-        //{
-        //    return doubleList.SumF();
-        //}
+        [BenchmarkCategory("intArrayAsReadOnly"), Benchmark]
+        public double IntReadOnlyArraySumWithSelectFast()
+        {
+            return Array.AsReadOnly(Benchmarks.intArray).SumF(sumDivide);
+        }
 
-        //[Benchmark]
-        //public double DoubleArraySumLinqSelect()
-        //{
-        //    return doubleArray.Sum(x => x / 2);
-        //}
+        [BenchmarkCategory("intNullArray"), Benchmark(Baseline = true)]
+        public int? IntNullArraySumLinq()
+        {
+            return Benchmarks.intNullArray.Sum();
+        }
 
-        //[Benchmark]
-        //public double DoubleArraySumFastSelect()
-        //{
-        //    return doubleArray.SumF(x => x / 2);
-        //}
+        [BenchmarkCategory("intNullArray"), Benchmark]
+        public int? IntNullArraySumFast()
+        {
+            return Benchmarks.intNullArray.SumF();
+        }
 
-        //[Benchmark]
-        //public double? DoubleNullArraySumLinq()
-        //{
-        //    return doubleNullArray.Sum();
-        //}
+        [BenchmarkCategory("intNullArraySelect"), Benchmark(Baseline = true)]
+        public int IntNullArraySumLinqSelect()
+        {
+            return Benchmarks.intNullArray.Sum(x => x / 2 ?? 0);
+        }
 
-        //[Benchmark]
-        //public double? DoubleNullArraySumFast()
-        //{
-        //    return doubleNullArray.SumF();
-        //}
+        [BenchmarkCategory("intNullArraySelect"), Benchmark]
+        public int IntNullArraySumFastSelect()
+        {
+            return Benchmarks.intNullArray.SumF(x => x / 2 ?? 0);
+        }
 
-        //[Benchmark]
-        //public double? DoubleNullArraySumLinqSelect()
-        //{
-        //    return doubleNullArray.Sum(x => x / 2 ?? 0);
-        //}
+        [BenchmarkCategory("floatArray"), Benchmark(Baseline = true)]
+        public float FloatArraySumLinq()
+        {
+            return Benchmarks.floatArray.Sum();
+        }
 
-        //[Benchmark]
-        //public double? DoubleNullArraySumFastSelect()
-        //{
-        //    return doubleNullArray.SumF(x => x / 2 ?? 0);
-        //}
+        [BenchmarkCategory("floatArray"), Benchmark]
+        public float FloatArraySumFast()
+        {
+            return Benchmarks.floatArray.SumF();
+        }
+
+        [BenchmarkCategory("floatList"), Benchmark(Baseline = true)]
+        public float FloatListSumLinq()
+        {
+            return Benchmarks.floatList.Sum();
+        }
+
+        [BenchmarkCategory("floatList"), Benchmark]
+        public float FloatListSumFast()
+        {
+            return Benchmarks.floatList.SumF();
+        }
+
+        [BenchmarkCategory("floatArraySelect"), Benchmark(Baseline = true)]
+        public float FloatArraySumLinqSelect()
+        {
+            return Benchmarks.floatArray.Sum(x => x / 2);
+        }
+
+        [BenchmarkCategory("floatArraySelect"), Benchmark]
+        public float FloatArraySumFastSelect()
+        {
+            return Benchmarks.floatArray.SumF(x => x / 2);
+        }
+
+        [BenchmarkCategory("floatNullArray"), Benchmark(Baseline = true)]
+        public float? FloatNullArraySumLinq()
+        {
+            return Benchmarks.floatNullArray.Sum();
+        }
+
+        [BenchmarkCategory("floatNullArray"), Benchmark]
+        public float? FloatNullArraySumFast()
+        {
+            return Benchmarks.floatNullArray.SumF();
+        }
+
+        [BenchmarkCategory("floatNullArraySelect"), Benchmark(Baseline = true)]
+        public float FloatNullArraySumLinqSelect()
+        {
+            return Benchmarks.floatNullArray.Sum(x => x / 2 ?? 0);
+        }
+
+        [BenchmarkCategory("floatNullArraySelect"), Benchmark]
+        public float FloatNullArraySumFastSelect()
+        {
+            return Benchmarks.floatNullArray.SumF(x => x / 2 ?? 0);
+        }
+
+
+        [BenchmarkCategory("doubleArray"), Benchmark(Baseline = true)]
+        public double DoubleArraySumLinq()
+        {
+            return Benchmarks.doubleArray.Sum();
+        }
+
+        [BenchmarkCategory("doubleArray"), Benchmark]
+        public double DoubleArraySumFast()
+        {
+            return Benchmarks.doubleArray.SumF();
+        }
+
+        [BenchmarkCategory("doubleList"), Benchmark(Baseline = true)]
+        public double DoubleListSumLinq()
+        {
+            return Benchmarks.doubleList.Sum();
+        }
+
+        [BenchmarkCategory("doubleList"), Benchmark]
+        public double DoubleListSumFast()
+        {
+            return Benchmarks.doubleList.SumF();
+        }
+
+        [BenchmarkCategory("doubleArraySelect"), Benchmark(Baseline = true)]
+        public double DoubleArraySumLinqSelect()
+        {
+            return Benchmarks.doubleArray.Sum(x => x / 2);
+        }
+
+        [BenchmarkCategory("doubleArraySelect"), Benchmark]
+        public double DoubleArraySumFastSelect()
+        {
+            return Benchmarks.doubleArray.SumF(x => x / 2);
+        }
+
+        [BenchmarkCategory("doubleNullArray"), Benchmark(Baseline = true)]
+        public double? DoubleNullArraySumLinq()
+        {
+            return Benchmarks.doubleNullArray.Sum();
+        }
+
+        [BenchmarkCategory("doubleNullArray"), Benchmark]
+        public double? DoubleNullArraySumFast()
+        {
+            return Benchmarks.doubleNullArray.SumF();
+        }
+
+        [BenchmarkCategory("doubleNullArraySelect"), Benchmark(Baseline = true)]
+        public double? DoubleNullArraySumLinqSelect()
+        {
+            return Benchmarks.doubleNullArray.Sum(x => x / 2 ?? 0);
+        }
+
+        [BenchmarkCategory("doubleNullArraySelect"), Benchmark]
+        public double? DoubleNullArraySumFastSelect()
+        {
+            return Benchmarks.doubleNullArray.SumF(x => x / 2 ?? 0);
+        }
     }
 }

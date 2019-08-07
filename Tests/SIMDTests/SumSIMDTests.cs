@@ -1,12 +1,14 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster.SIMD;
+﻿using System;
 using System.Linq;
-using System;
+
+using JM.LinqFaster.SIMD;
+
+using NUnit.Framework;
 
 namespace Tests
 {
     [TestFixture]
-    class SumSIMDTests
+    internal class SumSIMDTests
     {
 
         [Test]

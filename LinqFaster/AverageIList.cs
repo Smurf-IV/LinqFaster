@@ -61,7 +61,7 @@ namespace JM.LinqFaster
             {
                 return 0;
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace JM.LinqFaster
             {
                 return 0;
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace JM.LinqFaster
             {
                 return 0;
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace JM.LinqFaster
             {
                 return 0;
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace JM.LinqFaster
             {
                 return 0;
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace JM.LinqFaster
             {
                 return 0;
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace JM.LinqFaster
             {
                 return 0;
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace JM.LinqFaster
             {
                 return 0;
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
 
@@ -182,7 +182,7 @@ namespace JM.LinqFaster
             {
                 return 0;
             }
-            return SumF(source) / (float)source.Count;
+            return source.SumF() / (float)source.Count;
         }
 
         /// <summary>
@@ -230,7 +230,7 @@ namespace JM.LinqFaster
                 return 0;
             }
 
-            return SumF(source, selector) / source.Count;
+            return source.SumF(selector) / source.Count;
         }
 
         #region Nullable types
@@ -246,7 +246,7 @@ namespace JM.LinqFaster
             {
                 return new double?();
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace JM.LinqFaster
             {
                 return new double?();
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -276,7 +276,7 @@ namespace JM.LinqFaster
             {
                 return new double?();
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -291,7 +291,7 @@ namespace JM.LinqFaster
             {
                 return new double?();
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -306,7 +306,7 @@ namespace JM.LinqFaster
             {
                 return new double?();
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -321,7 +321,7 @@ namespace JM.LinqFaster
             {
                 return new double?();
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -336,7 +336,7 @@ namespace JM.LinqFaster
             {
                 return new double?();
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
@@ -351,7 +351,7 @@ namespace JM.LinqFaster
             {
                 return new double?();
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
 
@@ -367,7 +367,7 @@ namespace JM.LinqFaster
             {
                 return new double?();
             }
-            return (double)SumF(source) / source.Count;
+            return (double)source.SumF() / source.Count;
         }
 
         /// <summary>
