@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Linq;
+
 using JM.LinqFaster;
+using JM.LinqFasterSpan;
+
 using NUnit.Framework;
+
 using static Tests.Test;
 
 namespace Tests

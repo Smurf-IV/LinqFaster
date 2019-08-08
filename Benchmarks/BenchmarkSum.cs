@@ -5,6 +5,7 @@ using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 
 using JM.LinqFaster;
+using JM.LinqFasterSpan;
 using JM.LinqFaster.SIMD;
 
 namespace Tests

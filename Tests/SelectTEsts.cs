@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using NUnit.Framework;
-using JM.LinqFaster;
 using System.Linq;
+
+using JM.LinqFaster;
+
+using NUnit.Framework;
+
 using static Tests.Test;
 
 namespace Tests
 {
     [TestFixture]
-    class SelectTests
+    internal class SelectTests
     {
         [Test]
         public void SelectArray()
@@ -19,7 +22,7 @@ namespace Tests
             Assert.That(a, Is.EqualTo(b));
             int b1 = Array.AsReadOnly(intArray).SumF(x => x * x);
 
-        a = intArray.SelectF((x, i) => x + i);
+            a = intArray.SelectF((x, i) => x + i);
             b = intArray.Select((x, i) => x + i);
 
             Assert.That(a, Is.EqualTo(b));

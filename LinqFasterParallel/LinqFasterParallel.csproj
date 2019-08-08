@@ -20,6 +20,7 @@
   <PropertyGroup>
     <DocumentationFile>..\docs\linqfaster-parallel.xml</DocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RootNamespace>JM.LinqFaster.Parallel</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.3|AnyCPU'">

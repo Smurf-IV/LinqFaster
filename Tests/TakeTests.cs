@@ -1,20 +1,26 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster;
-using System.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
+using JM.LinqFaster;
+using JM.LinqFasterSpan;
+
+using NUnit.Framework;
+
 using static Tests.Test;
 
 namespace Tests
 {
     [TestFixture]
-    class TakeTests {
+    internal class TakeTests
+    {
 
         [Test]
         [TestCase(0)]
         [TestCase(5)]
         [TestCase(TEST_SIZE)]
-        public void TakeArray(int count) {
+        public void TakeArray(int count)
+        {
 
             int[] a = intArray.TakeF(count);
             int[] aSpan = intArray.AsSpan().TakeF(count);
@@ -25,7 +31,8 @@ namespace Tests
         }
 
         [Test]
-        public void TakeWhileArray() {
+        public void TakeWhileArray()
+        {
             int[] a = intArray.TakeWhileF(onlyEvenInts);
             int[] aSpan = intArray.AsSpan().TakeWhileF(onlyEvenInts);
             IEnumerable<int> b = intArray.TakeWhile(onlyEvenInts);
@@ -39,7 +46,8 @@ namespace Tests
         [TestCase(0)]
         [TestCase(5)]
         [TestCase(TEST_SIZE)]
-        public void TakeList(int count) {
+        public void TakeList(int count)
+        {
 
             List<int> a = intList.TakeF(count);
             IEnumerable<int> b = intList.Take(count);
@@ -48,7 +56,8 @@ namespace Tests
         }
 
         [Test]
-        public void TakeWhileList() {
+        public void TakeWhileList()
+        {
             List<int> a = intList.TakeWhileF(onlyEvenInts);
             IEnumerable<int> b = intList.TakeWhile(onlyEvenInts);
 

@@ -34,6 +34,9 @@ namespace JM.LinqFaster
                 eqComparer = EqualityComparer<TSource>.Default;
             }
 
+            if (source.Count == 0)
+                return;
+
             source.Sort(comparer);
 
             TSource oldV = source[0];

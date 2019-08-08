@@ -2,9 +2,9 @@
 using System.Globalization;
 using System.Runtime.CompilerServices;
 
-namespace JM.LinqFaster
+namespace JM.LinqFasterSpan
 {
-    public static partial class LinqFaster
+    public static partial class LinqFasterSpan
     {
         /*
          * Since ReadOnlySpan is actually a struct and it does not inherit from IEnumerable,

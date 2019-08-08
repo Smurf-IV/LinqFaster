@@ -6,6 +6,7 @@ using BenchmarkDotNet.Configs;
 
 using JM.LinqFaster;
 using JM.LinqFaster.SIMD;
+using JM.LinqFasterSpan;
 
 namespace Tests
 {

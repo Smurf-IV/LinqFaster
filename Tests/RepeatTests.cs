@@ -1,15 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+
 using JM.LinqFaster;
+
 using NUnit.Framework;
 
 namespace Tests
 {
     [TestFixture]
-    class RepeatTests
+    internal class RepeatTests
     {
         [Test]
-        public void RepeatArray() {
+        public void RepeatArray()
+        {
             float[] a = LinqFaster.RepeatArrayF(2.0f, 10);
             List<float> b = Enumerable.Repeat(2.0f, 10).ToList();
 

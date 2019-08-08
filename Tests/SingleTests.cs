@@ -1,40 +1,50 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster;
-using static Tests.Test;
+﻿using System;
 using System.Collections.Generic;
-using System;
+
+using JM.LinqFaster;
+
+using NUnit.Framework;
+
+using static Tests.Test;
 
 namespace Tests
 {
     [TestFixture]
-    class SingleTests {
+    internal class SingleTests
+    {
 
-        public int SingleArrayFunc() {
+        public int SingleArrayFunc()
+        {
             return intArray.SingleF(onlyEvenInts);
         }
 
-        public int SingleOrDefaultArrayFunc() {
+        public int SingleOrDefaultArrayFunc()
+        {
             return intArray.SingleOrDefaultF(onlyEvenInts);
         }
 
-        public int SingleListFunc() {
+        public int SingleListFunc()
+        {
             return intList.SingleF(onlyEvenInts);
         }
 
-        public int SingleOrDefaultListFunc() {
+        public int SingleOrDefaultListFunc()
+        {
             return intList.SingleOrDefaultF(onlyEvenInts);
         }
 
 
 
         [Test]
-        public void SingleArrayMoreThanOne() {                        
+        public void SingleArrayMoreThanOne()
+        {
             Assert.Throws<InvalidOperationException>(() => intArray.SingleF());
             Assert.That(SingleArrayFunc, Throws.Exception);
         }
 
         [Test]
-        public void SingleArrayOne() {
+        public void SingleArrayOne()
+        {
             int[] test = { 4 };
 
             int a = test.SingleF();
@@ -46,7 +56,8 @@ namespace Tests
         }
 
         [Test]
-        public void SingleArrayDefaultOne() {
+        public void SingleArrayDefaultOne()
+        {
             int[] test = { 4 };
 
             int a = test.SingleOrDefaultF();
@@ -57,7 +68,8 @@ namespace Tests
         }
 
         [Test]
-        public void SingleArrayDefaultEmpty() {
+        public void SingleArrayDefaultEmpty()
+        {
             int[] test = { };
 
             int a = test.SingleOrDefaultF();
@@ -68,7 +80,8 @@ namespace Tests
         }
 
         [Test]
-        public void SingleArrayDefaultMoreThanOne() {
+        public void SingleArrayDefaultMoreThanOne()
+        {
             Assert.Throws<InvalidOperationException>(() => intArray.SingleOrDefaultF());
             Assert.That(SingleOrDefaultArrayFunc, Throws.Exception);
         }
@@ -76,15 +89,19 @@ namespace Tests
         // List
 
         [Test]
-        public void SingleListMoreThanOne() {
+        public void SingleListMoreThanOne()
+        {
             Assert.Throws<InvalidOperationException>(() => intList.SingleF());
             Assert.That(SingleListFunc, Throws.Exception);
         }
 
         [Test]
-        public void SingleListOne() {
-            List<int> test = new List<int>();
-            test.Add(4);
+        public void SingleListOne()
+        {
+            List<int> test = new List<int>
+            {
+                4
+            };
             int a = test.SingleF();
             int b = test.SingleF(onlyEvenInts);
 
@@ -93,9 +110,12 @@ namespace Tests
         }
 
         [Test]
-        public void SingleListDefaultOne() {
-            List<int> test = new List<int>();
-            test.Add(4);
+        public void SingleListDefaultOne()
+        {
+            List<int> test = new List<int>
+            {
+                4
+            };
 
             int a = test.SingleOrDefaultF();
             int b = test.SingleOrDefaultF(onlyEvenInts);
@@ -105,8 +125,9 @@ namespace Tests
         }
 
         [Test]
-        public void SingleListDefaultEmpty() {
-            List<int> test = new List<int>();            
+        public void SingleListDefaultEmpty()
+        {
+            List<int> test = new List<int>();
 
             int a = test.SingleOrDefaultF();
             int b = test.SingleOrDefaultF(onlyEvenInts);
@@ -115,7 +136,8 @@ namespace Tests
         }
 
         [Test]
-        public void SingleListDefaultMoreThanOne() {
+        public void SingleListDefaultMoreThanOne()
+        {
             Assert.Throws<InvalidOperationException>(() => intList.SingleOrDefaultF());
             Assert.That(SingleOrDefaultListFunc, Throws.Exception);
         }

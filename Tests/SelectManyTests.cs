@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
-using NUnit.Framework;
-using JM.LinqFaster;
 using System.Linq;
+
+using JM.LinqFaster;
+
+using NUnit.Framework;
+
 using static Tests.Test;
 
 namespace Tests
 {
     [TestFixture]
-    class SelectManyTests
+    internal class SelectManyTests
     {
 
         [Test]
@@ -18,8 +21,8 @@ namespace Tests
 
             Assert.That(a, Is.EqualTo(b));
 
-            a = floatArray.SelectManyF((x,i) => LinqFaster.RepeatArrayF(x+i, 2));
-            b = floatArray.SelectMany((x,i) => Enumerable.Repeat(x+i, 2).ToArray()).ToArray();
+            a = floatArray.SelectManyF((x, i) => LinqFaster.RepeatArrayF(x + i, 2));
+            b = floatArray.SelectMany((x, i) => Enumerable.Repeat(x + i, 2).ToArray()).ToArray();
 
             Assert.That(a, Is.EqualTo(b));
         }

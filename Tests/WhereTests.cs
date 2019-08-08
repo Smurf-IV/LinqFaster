@@ -1,14 +1,17 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster;
-using System.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
+using JM.LinqFaster;
+
+using NUnit.Framework;
+
 using static Tests.Test;
 
 namespace Tests
 {
     [TestFixture]
-    class WhereTests
+    internal class WhereTests
     {
 
         [Test]
@@ -22,7 +25,7 @@ namespace Tests
                 List<int> emptyList = new System.Collections.Generic.List<int>(0);
                 List<int> b = emptyList.WhereF(x => x == 0);
             });
-            
+
         }
 
 

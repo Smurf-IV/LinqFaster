@@ -6,9 +6,9 @@ using JM.LinqFaster.Utils;
 // ReSharper disable ForCanBeConvertedToForeach
 // ReSharper disable MemberCanBePrivate.Global
 
-namespace JM.LinqFaster
+namespace JM.LinqFasterSpan
 {
-    public static partial class LinqFaster
+    public static partial class LinqFasterSpan
     {
         /*
          * Since Span is actually a struct and it does not inherit from IEnumerable,

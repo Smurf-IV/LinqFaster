@@ -5,12 +5,12 @@ using System.Runtime.CompilerServices;
 // ReSharper disable UnusedMember.Global
 // ReSharper disable LoopCanBeConvertedToQuery
 
-namespace JM.LinqFaster
+namespace JM.LinqFasterSpan
 {
     // Common types optimised: int, long, float, double, decimal
     // Other types will be handled via the templates which are approx 2 time longer than 
     // the above optimised base types
-    public static partial class LinqFaster
+    public static partial class LinqFasterSpan
     {
         // Note: although there is a lot of shared code in the following
         // comparers, we do not incorporate it into a base class for perf

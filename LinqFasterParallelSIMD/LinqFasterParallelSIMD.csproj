@@ -21,6 +21,7 @@
   <PropertyGroup>
     <DocumentationFile>..\docs\linqfaster-parallel-simd.xml</DocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RootNamespace>JM.LinqFaster.SIMD.Parallel</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.3|AnyCPU'">

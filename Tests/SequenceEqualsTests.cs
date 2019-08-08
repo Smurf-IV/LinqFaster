@@ -1,15 +1,21 @@
-﻿using NUnit.Framework;
-using JM.LinqFaster;
+﻿using System.Collections.Generic;
 using System.Linq;
-using static Tests.Test;
-using System.Collections.Generic;
 
-namespace Tests {
+using JM.LinqFaster;
+
+using NUnit.Framework;
+
+using static Tests.Test;
+
+namespace Tests
+{
     [TestFixture]
-    class SequenceEqualsTests {
+    internal class SequenceEqualsTests
+    {
 
         [Test]
-        public void SequenceEqualArray() {
+        public void SequenceEqualArray()
+        {
             int[] intArray2 = (int[])intArray.Clone();
             bool a = LinqFaster.SequenceEqualF(intArray, intArray2);
             bool b = Enumerable.SequenceEqual(intArray, intArray2);
@@ -18,7 +24,8 @@ namespace Tests {
         }
 
         [Test]
-        public void SequenceNotEqualArray() {
+        public void SequenceNotEqualArray()
+        {
             int[] intArray2 = (int[])intArray.Clone();
             intArray2[3] = -10;
             bool a = LinqFaster.SequenceEqualF(intArray, intArray2);
@@ -28,7 +35,8 @@ namespace Tests {
         }
 
         [Test]
-        public void SequenceEqualList() {
+        public void SequenceEqualList()
+        {
             List<int> intList2 = intList.ToList();
             bool a = LinqFaster.SequenceEqualF(intList, intList2);
             bool b = Enumerable.SequenceEqual(intList, intList2);
@@ -37,7 +45,8 @@ namespace Tests {
         }
 
         [Test]
-        public void SequenceNotEqualList() {
+        public void SequenceNotEqualList()
+        {
             List<int> testList = intList.ToList();
             testList[3] = -10;
             bool a = LinqFaster.SequenceEqualF(intList, testList);
@@ -47,7 +56,8 @@ namespace Tests {
         }
 
         [Test]
-        public void SequenceEqualListAndArray() {
+        public void SequenceEqualListAndArray()
+        {
             bool a = LinqFaster.SequenceEqualF(intList, intArray);
             bool b = Enumerable.SequenceEqual(intList, intArray);
 
@@ -55,7 +65,8 @@ namespace Tests {
         }
 
         [Test]
-        public void SequenceNotEqualListAndArray() {
+        public void SequenceNotEqualListAndArray()
+        {
             List<int> testList = new List<int>();
             int[] testArray = { 1, 2, 3, 4, };
             testList.Add(1);

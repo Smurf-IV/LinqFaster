@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
-using NUnit.Framework;
-using JM.LinqFaster;
 using System.Linq;
+
+using JM.LinqFaster;
+
+using NUnit.Framework;
 
 namespace Tests
 {
     [TestFixture]
-    class RangeTests
+    internal class RangeTests
     {
         [Test]
         public void RangeArray()

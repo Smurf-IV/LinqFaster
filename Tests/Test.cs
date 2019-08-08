@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using NUnit.Framework;
 
 namespace Tests
@@ -63,11 +64,11 @@ namespace Tests
             longArray = new long[TEST_SIZE];
             longList = new List<long>(TEST_SIZE);
             Random rand = new Random();
-            for (int i = 0; i < intArray.Length;i++)
+            for (int i = 0; i < intArray.Length; i++)
             {
                 intArray[i] = rand.Next(-100, 100);
-                byteArray[i] = (byte) intArray[i];
-                shortArray[i] = (short) intArray[i];
+                byteArray[i] = (byte)intArray[i];
+                shortArray[i] = (short)intArray[i];
                 intNullArray[i] = intArray[i];
                 intList.Add(intArray[i]);
                 longArray[i] = intArray[i];
@@ -90,6 +91,6 @@ namespace Tests
 
         }
 
-      
+
     }
 }

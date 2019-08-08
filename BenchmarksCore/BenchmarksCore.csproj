@@ -14,6 +14,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\Benchmarks\BenchmarkAggregate.cs" Link="BenchmarkAggregate.cs" />
+    <Compile Include="..\Benchmarks\BenchmarkAverage.cs" Link="BenchmarkAverage.cs" />
+    <Compile Include="..\Benchmarks\BenchmarkFirst.cs" Link="BenchmarkFirst.cs" />
+    <Compile Include="..\Benchmarks\BenchmarkLast.cs" Link="BenchmarkLast.cs" />
+    <Compile Include="..\Benchmarks\BenchmarkOrderBy.cs" Link="BenchmarkOrderBy.cs" />
+    <Compile Include="..\Benchmarks\Benchmarks.cs" Link="Benchmarks.cs" />
+    <Compile Include="..\Benchmarks\BenchmarkSelect.cs" Link="BenchmarkSelect.cs" />
+    <Compile Include="..\Benchmarks\BenchmarkSequenceEqual.cs" Link="BenchmarkSequenceEqual.cs" />
+    <Compile Include="..\Benchmarks\BenchmarksMax.cs" Link="BenchmarksMax.cs" />
+    <Compile Include="..\Benchmarks\BenchmarksMin.cs" Link="BenchmarksMin.cs" />
+    <Compile Include="..\Benchmarks\BenchmarksRepeat.cs" Link="BenchmarksRepeat.cs" />
+    <Compile Include="..\Benchmarks\BenchmarkSum.cs" Link="BenchmarkSum.cs" />
+    <Compile Include="..\Benchmarks\BenchmarksWhereAggregate.cs" Link="BenchmarksWhereAggregate.cs" />
+    <Compile Include="..\Benchmarks\BenchmarkWhereSum.cs" Link="BenchmarkWhereSum.cs" />
+    <Compile Include="..\Benchmarks\Config.cs" Link="Config.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.11.5" />
   </ItemGroup>
 
@@ -21,6 +39,7 @@
     <ProjectReference Include="..\LinqFasterParallelSIMD\LinqFasterParallelSIMD.csproj" />
     <ProjectReference Include="..\LinqFasterParallel\LinqFasterParallel.csproj" />
     <ProjectReference Include="..\LinqFasterSIMD\LinqFasterSIMD.csproj" />
+    <ProjectReference Include="..\LinqFasterSpan\LinqFasterSpan.csproj" />
     <ProjectReference Include="..\LinqFaster\LinqFaster.csproj" />
   </ItemGroup>
 
