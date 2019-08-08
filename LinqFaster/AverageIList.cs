@@ -179,11 +179,6 @@ namespace JM.LinqFaster
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float AverageF(this IReadOnlyList<float> source)
         {
-            if (source.Count == 0)
-            {
-                return 0;
-            }
-
             // Have to get at the double directly, because the aggressive inlining sometimes makes a bollox answer
             // Failed : Tests.AverageTests.AverageArrayFloat
             // Expected: 0.905460358f
