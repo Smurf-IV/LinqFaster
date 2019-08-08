@@ -14,32 +14,32 @@ namespace Tests
     [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
     public class BenchmarkSequenceEqual
     {
-        [Benchmark(Baseline = true)]
+        [BenchmarkCategory("BSEintArray"), Benchmark(Baseline = true)]
         public bool IntArraySequenceEqual()
         {
             return Benchmarks.intArray.SequenceEqual(Benchmarks.array2);
         }
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BSEintArray"), Benchmark]
         public bool IntArraySequenceEqualF()
         {
             return Benchmarks.intArray.SequenceEqualF(Benchmarks.array2);
         }
 
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BSEintArray"), Benchmark]
         public bool IntArraySequenceEqualP()
         {
             return Benchmarks.intArray.SequenceEqualP(Benchmarks.array2);
         }
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BSEintArray"), Benchmark]
         public bool IntArraySequenceEqualS()
         {
             return Benchmarks.intArray.SequenceEqualS(Benchmarks.array2);
         }
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BSEintArray"), Benchmark]
         public bool IntArraySequenceEqualSP()
         {
             return Benchmarks.intArray.SequenceEqualSP(Benchmarks.array2);

@@ -12,38 +12,38 @@ namespace Tests
     public class BenchmarksAverage
     {
 
-        [BenchmarkCategory("intArray"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BAvintArray"), Benchmark(Baseline = true)]
         public double IntArrayAverageLinq()
         {
             return Benchmarks.intArray.Average();
         }
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BAvintArray"), Benchmark]
         public double IntArrayAverageFast()
         {
             return Benchmarks.intArray.AverageF();
         }
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BAvintArray"), Benchmark]
         public double IntArrayAverageFastSIMD()
         {
             return Benchmarks.intArray.AverageS();
         }
 
 
-        [BenchmarkCategory("intList"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BAvintList"), Benchmark(Baseline = true)]
         public double IntListAverageLinq()
         {
             return Benchmarks.intList.Average();
         }
 
-        [BenchmarkCategory("intList"), Benchmark]
+        [BenchmarkCategory("BAvintList"), Benchmark]
         public double IntListAverageFast()
         {
             return Benchmarks.intList.AverageF();
         }
 
-        //[BenchmarkCategory("intList"), Benchmark]
+        //[BenchmarkCategory("BAvintList"), Benchmark]
         //public double IntListAverageFastSIMD()
         //{
         //    return Benchmarks.intList.AverageS();

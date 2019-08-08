@@ -14,19 +14,19 @@ namespace Tests
     {
         private static readonly Func<int, int> MaxInts = (x) => x + 1;
 
-        [BenchmarkCategory("intArray"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMaxintArray"), Benchmark(Baseline = true)]
         public double IntArrayMaxLinq()
         {
             return Benchmarks.intArray.Max();
         }
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BMaxintArray"), Benchmark]
         public double IntArrayMaxFast()
         {
             return Benchmarks.intArray.MaxF();
         }
 
-        [BenchmarkCategory("localArray.AsSpan"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMaxlocalArray.AsSpan"), Benchmark(Baseline = true)]
         public double IntSpanMaxForEach()
         {
             int[] localArray = Benchmarks.intArray;
@@ -43,7 +43,7 @@ namespace Tests
             return max;
         }
 
-        [BenchmarkCategory("localArray.AsSpan"), Benchmark]
+        [BenchmarkCategory("BMaxlocalArray.AsSpan"), Benchmark]
         public double IntSpanMaxFast()
         {
             int[] localArray = Benchmarks.intArray;
@@ -51,56 +51,56 @@ namespace Tests
             return asSpan.MaxF();
         }
 
-        [BenchmarkCategory("intList"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMaxintList"), Benchmark(Baseline = true)]
         public double IntListMaxLinq()
         {
             return Benchmarks.intList.Max();
         }
 
-        [BenchmarkCategory("intList"), Benchmark]
+        [BenchmarkCategory("BMaxintList"), Benchmark]
         public double IntListMaxFast()
         {
             return Benchmarks.intList.MaxF();
         }
 
-        [BenchmarkCategory("intList.AsReadOnly"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMaxintList.AsReadOnly"), Benchmark(Baseline = true)]
         public double IntAsListReadOnlyMaxLinq()
         {
             return Benchmarks.intList.AsReadOnly().Max();
         }
 
-        [BenchmarkCategory("intList.AsReadOnly"), Benchmark]
+        [BenchmarkCategory("BMaxintList.AsReadOnly"), Benchmark]
         public double IntAsListReadOnlyMaxFast()
         {
             return Benchmarks.intList.AsReadOnly().MaxF();
         }
 
-        [BenchmarkCategory("Array.AsReadOnly"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMaxArray.AsReadOnly"), Benchmark(Baseline = true)]
         public double IntArrayAsReadOnlyMaxLinq()
         {
             return Array.AsReadOnly(Benchmarks.intArray).Max();
         }
 
-        [BenchmarkCategory("Array.AsReadOnly"), Benchmark]
+        [BenchmarkCategory("BMaxArray.AsReadOnly"), Benchmark]
         public double IntArrayAsReadOnlyMaxFast()
         {
             return Array.AsReadOnly(Benchmarks.intArray).MaxF();
         }
 
 
-        [BenchmarkCategory("intArraySelector"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMaxintArraySelector"), Benchmark(Baseline = true)]
         public double IntArrayMaxLinqSelector()
         {
             return Benchmarks.intArray.Max(MaxInts);
         }
 
-        [BenchmarkCategory("intArraySelector"), Benchmark]
+        [BenchmarkCategory("BMaxintArraySelector"), Benchmark]
         public double IntArrayMaxFastSelector()
         {
             return Benchmarks.intArray.MaxF(MaxInts);
         }
 
-        [BenchmarkCategory("localArray.AsSpanSelector"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMaxlocalArray.AsSpanSelector"), Benchmark(Baseline = true)]
         public double IntSpanMaxForEachSelector()
         {
             int[] localArray = Benchmarks.intArray;
@@ -118,7 +118,7 @@ namespace Tests
             return max;
         }
 
-        [BenchmarkCategory("localArray.AsSpanSelector"), Benchmark]
+        [BenchmarkCategory("BMaxlocalArray.AsSpanSelector"), Benchmark]
         public double IntSpanMaxFastSelector()
         {
             int[] localArray = Benchmarks.intArray;
@@ -126,37 +126,37 @@ namespace Tests
             return asSpan.MaxF(MaxInts);
         }
 
-        [BenchmarkCategory("intListSelect"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMaxintListSelect"), Benchmark(Baseline = true)]
         public double IntListMaxLinqSelector()
         {
             return Benchmarks.intList.Max(MaxInts);
         }
 
-        [BenchmarkCategory("intListSelect"), Benchmark]
+        [BenchmarkCategory("BMaxintListSelect"), Benchmark]
         public double IntListMaxFastSelector()
         {
             return Benchmarks.intList.MaxF(MaxInts);
         }
 
-        [BenchmarkCategory("intList.AsReadOnlySelector"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMaxintList.AsReadOnlySelector"), Benchmark(Baseline = true)]
         public double IntAsListReadOnlyMaxLinqSelector()
         {
             return Benchmarks.intList.AsReadOnly().Max(MaxInts);
         }
 
-        [BenchmarkCategory("intList.AsReadOnlySelector"), Benchmark]
+        [BenchmarkCategory("BMaxintList.AsReadOnlySelector"), Benchmark]
         public double IntAsListReadOnlyMaxFastSelector()
         {
             return Benchmarks.intList.AsReadOnly().MaxF(MaxInts);
         }
 
-        [BenchmarkCategory("Array.AsReadOnlySelector"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMaxArray.AsReadOnlySelector"), Benchmark(Baseline = true)]
         public double IntArrayAsReadOnlyMaxLinqSelector()
         {
             return Array.AsReadOnly(Benchmarks.intArray).Max(MaxInts);
         }
 
-        [BenchmarkCategory("Array.AsReadOnlySelector"), Benchmark]
+        [BenchmarkCategory("BMaxArray.AsReadOnlySelector"), Benchmark]
         public double IntArrayAsReadOnlyMaxFastSelector()
         {
             return Array.AsReadOnly(Benchmarks.intArray).MaxF(MaxInts);

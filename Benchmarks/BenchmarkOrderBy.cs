@@ -13,13 +13,13 @@ namespace Tests
     {
         private static readonly Func<int, int> orderBy = (x) => x - 1;
 
-        [BenchmarkCategory("intArray"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BOBintArray"), Benchmark(Baseline = true)]
         public int IntArrayOrderByLinq()
         {
             return Benchmarks.intArray.OrderBy(orderBy).Sum();
         }
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BOBintArray"), Benchmark]
         public int IntArrayOrderByFast()
         {
             return Benchmarks.intArray.OrderByF(orderBy).Sum();

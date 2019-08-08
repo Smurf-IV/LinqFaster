@@ -15,20 +15,20 @@ namespace Tests
         private static readonly Func<int, bool> LastInts = (x) => x > 0;
 
 
-        [BenchmarkCategory("intArray"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BLintArray"), Benchmark(Baseline = true)]
         public double IntArrayLastLinqSelector()
         {
             return Benchmarks.intArray.Last(LastInts);
         }
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BLintArray"), Benchmark]
         public double IntArrayLastArrayFindSelector()
         {
             Predicate<int> predicate = new Predicate<int>(LastInts);
             return Array.FindLast(Benchmarks.intArray, predicate);
         }
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BLintArray"), Benchmark]
         public double IntArrayLastFastSelector()
         {
             return Benchmarks.intArray.LastF(LastInts);
@@ -36,7 +36,7 @@ namespace Tests
 
 
 
-        [BenchmarkCategory("localArray.AsSpan"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BLlocalArray.AsSpan"), Benchmark(Baseline = true)]
         public double IntSpanLastForEachSelector()
         {
             int[] localArray = Benchmarks.intArray;
@@ -52,7 +52,7 @@ namespace Tests
             return 0;
         }
 
-        [BenchmarkCategory("localArray.AsSpan"), Benchmark]
+        [BenchmarkCategory("BLlocalArray.AsSpan"), Benchmark]
         public double IntSpanLastFastSelector()
         {
             int[] localArray = Benchmarks.intArray;
@@ -60,37 +60,37 @@ namespace Tests
             return asSpan.LastF(LastInts);
         }
 
-        [BenchmarkCategory("intList"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BLintList"), Benchmark(Baseline = true)]
         public double IntListLastLinqSelector()
         {
             return Benchmarks.intList.Last(LastInts);
         }
 
-        [BenchmarkCategory("intList"), Benchmark]
+        [BenchmarkCategory("BLintList"), Benchmark]
         public double IntListLastFastSelector()
         {
             return Benchmarks.intList.LastF(LastInts);
         }
 
-        [BenchmarkCategory("intList.AsReadOnly"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BLintList.AsReadOnly"), Benchmark(Baseline = true)]
         public double IntAsListReadOnlyLastLinqSelector()
         {
             return Benchmarks.intList.AsReadOnly().Last(LastInts);
         }
 
-        [BenchmarkCategory("intList.AsReadOnly"), Benchmark]
+        [BenchmarkCategory("BLintList.AsReadOnly"), Benchmark]
         public double IntAsListReadOnlyLastFastSelector()
         {
             return Benchmarks.intList.AsReadOnly().LastF(LastInts);
         }
 
-        [BenchmarkCategory("Array.AsReadOnly"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BLArray.AsReadOnly"), Benchmark(Baseline = true)]
         public double IntArrayAsReadOnlyLastLinqSelector()
         {
             return Array.AsReadOnly(Benchmarks.intArray).Last(LastInts);
         }
 
-        [BenchmarkCategory("Array.AsReadOnly"), Benchmark]
+        [BenchmarkCategory("BLArray.AsReadOnly"), Benchmark]
         public double IntArrayAsReadOnlyLastFastSelector()
         {
             return Array.AsReadOnly(Benchmarks.intArray).LastF(LastInts);

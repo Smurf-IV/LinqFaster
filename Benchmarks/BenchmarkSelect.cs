@@ -11,19 +11,19 @@ namespace Tests
     [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
     public class BenchmarkSelect
     {
-        [BenchmarkCategory("intArray.Select"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BSintArray.Select"), Benchmark(Baseline = true)]
         public int[] IntArraySelectLinq()
         {
             return Benchmarks.intArray.Select(x => x * x).ToArray();
         }
 
-        [BenchmarkCategory("intArray.Select"), Benchmark]
+        [BenchmarkCategory("BSintArray.Select"), Benchmark]
         public int[] IntArraySelectFast()
         {
             return Benchmarks.intArray.SelectF(x => x * x);
         }
 
-        [BenchmarkCategory("intArray.Select"), Benchmark]
+        [BenchmarkCategory("BSintArray.Select"), Benchmark]
         public int[] IntArraySelectFastSIMD()
         {
             return Benchmarks.intArray.SelectS(x => x * x, x => x * x);

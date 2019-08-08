@@ -15,25 +15,25 @@ namespace Tests
     {
         private static readonly Func<int, int> MinInts = (x) => x + 1;
 
-        [BenchmarkCategory("intArray"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMinintArray"), Benchmark(Baseline = true)]
         public double IntArrayMinLinq()
         {
             return Benchmarks.intArray.Min();
         }
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BMinintArray"), Benchmark]
         public double IntArrayMinFast()
         {
             return Benchmarks.intArray.MinF();
         }
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BMinintArray"), Benchmark]
         public int IntArrayMinFastSIMD()
         {
             return Benchmarks.intArray.MinS();
         }
 
-        [BenchmarkCategory("localArray.AsSpan"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMinlocalArray.AsSpan"), Benchmark(Baseline = true)]
         public double IntSpanMinForEach()
         {
             int[] localArray = Benchmarks.intArray;
@@ -50,7 +50,7 @@ namespace Tests
             return Min;
         }
 
-        [BenchmarkCategory("localArray.AsSpan"), Benchmark]
+        [BenchmarkCategory("BMinlocalArray.AsSpan"), Benchmark]
         public double IntSpanMinFast()
         {
             int[] localArray = Benchmarks.intArray;
@@ -58,56 +58,56 @@ namespace Tests
             return asSpan.MinF();
         }
 
-        [BenchmarkCategory("intList"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMinintList"), Benchmark(Baseline = true)]
         public double IntListMinLinq()
         {
             return Benchmarks.intList.Min();
         }
 
-        [BenchmarkCategory("intList"), Benchmark]
+        [BenchmarkCategory("BMinintList"), Benchmark]
         public double IntListMinFast()
         {
             return Benchmarks.intList.MinF();
         }
 
-        [BenchmarkCategory("intList.AsReadOnly"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMinintList.AsReadOnly"), Benchmark(Baseline = true)]
         public double IntAsListReadOnlyMinLinq()
         {
             return Benchmarks.intList.AsReadOnly().Min();
         }
 
-        [BenchmarkCategory("Array.AsReadOnly"), Benchmark]
+        [BenchmarkCategory("BMinArray.AsReadOnly"), Benchmark]
         public double IntAsListReadOnlyMinFast()
         {
             return Benchmarks.intList.AsReadOnly().MinF();
         }
 
-        [BenchmarkCategory("Array.AsReadOnly"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMinArray.AsReadOnly"), Benchmark(Baseline = true)]
         public double IntArrayAsReadOnlyMinLinq()
         {
             return Array.AsReadOnly(Benchmarks.intArray).Min();
         }
 
-        [BenchmarkCategory("intArraySelector"), Benchmark]
+        [BenchmarkCategory("BMinintArraySelector"), Benchmark]
         public double IntArrayAsReadOnlyMinFast()
         {
             return Array.AsReadOnly(Benchmarks.intArray).MinF();
         }
 
 
-        [BenchmarkCategory("intArraySelector"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMinintArraySelector"), Benchmark(Baseline = true)]
         public double IntArrayMinLinqSelector()
         {
             return Benchmarks.intArray.Min(MinInts);
         }
 
-        [BenchmarkCategory("IntArrayAggregate"), Benchmark]
+        [BenchmarkCategory("BMinIntArrayAggregate"), Benchmark]
         public double IntArrayMinFastSelector()
         {
             return Benchmarks.intArray.MinF(MinInts);
         }
 
-        [BenchmarkCategory("localArray.AsSpanSelector"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMinlocalArray.AsSpanSelector"), Benchmark(Baseline = true)]
         public double IntSpanMinForEachSelector()
         {
             int[] localArray = Benchmarks.intArray;
@@ -125,7 +125,7 @@ namespace Tests
             return Min;
         }
 
-        [BenchmarkCategory("localArray.AsSpanSelector"), Benchmark]
+        [BenchmarkCategory("BMinlocalArray.AsSpanSelector"), Benchmark]
         public double IntSpanMinFastSelector()
         {
             int[] localArray = Benchmarks.intArray;
@@ -133,37 +133,37 @@ namespace Tests
             return asSpan.MinF(MinInts);
         }
 
-        [BenchmarkCategory("intListSelector"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMinintListSelector"), Benchmark(Baseline = true)]
         public double IntListMinLinqSelector()
         {
             return Benchmarks.intList.Min(MinInts);
         }
 
-        [BenchmarkCategory("intListSelector"), Benchmark]
+        [BenchmarkCategory("BMinintListSelector"), Benchmark]
         public double IntListMinFastSelector()
         {
             return Benchmarks.intList.MinF(MinInts);
         }
 
-        [BenchmarkCategory("intList.AsReadOnlySelector"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMinintList.AsReadOnlySelector"), Benchmark(Baseline = true)]
         public double IntAsListReadOnlyMinLinqSelector()
         {
             return Benchmarks.intList.AsReadOnly().Min(MinInts);
         }
 
-        [BenchmarkCategory("intList.AsReadOnlySelector"), Benchmark]
+        [BenchmarkCategory("BMinintList.AsReadOnlySelector"), Benchmark]
         public double IntAsListReadOnlyMinFastSelector()
         {
             return Benchmarks.intList.AsReadOnly().MinF(MinInts);
         }
 
-        [BenchmarkCategory("Array.AsReadOnlySelector"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BMinArray.AsReadOnlySelector"), Benchmark(Baseline = true)]
         public double IntArrayAsReadOnlyMinLinqSelector()
         {
             return Array.AsReadOnly(Benchmarks.intArray).Min(MinInts);
         }
 
-        [BenchmarkCategory("Array.AsReadOnlySelector"), Benchmark]
+        [BenchmarkCategory("BMinArray.AsReadOnlySelector"), Benchmark]
         public double IntArrayAsReadOnlyMinFastSelector()
         {
             return Array.AsReadOnly(Benchmarks.intArray).MinF(MinInts);

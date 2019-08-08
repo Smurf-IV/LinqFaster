@@ -14,27 +14,27 @@ namespace Tests
     {
         private static readonly Func<int, bool> firstInts = (x) => x > 0;
 
-        [BenchmarkCategory("intArray"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BFintArray"), Benchmark(Baseline = true)]
         public double IntArrayFirstLinqSelector()
         {
             return Benchmarks.intArray.First(firstInts);
         }
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BFintArray"), Benchmark]
         public double IntArrayFirstArrayFindSelector()
         {
             Predicate<int> predicate = new Predicate<int>(firstInts);
             return Array.Find(Benchmarks.intArray, predicate);
         }
 
-        [BenchmarkCategory("intArray"), Benchmark]
+        [BenchmarkCategory("BFintArray"), Benchmark]
         public double IntArrayFirstFastSelector()
         {
             return Benchmarks.intArray.FirstF(firstInts);
         }
 
 
-        [BenchmarkCategory("localArray.AsSpan"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BFlocalArray.AsSpan"), Benchmark(Baseline = true)]
         public double IntSpanFirstForEachSelector()
         {
             int[] localArray = Benchmarks.intArray;
@@ -50,7 +50,7 @@ namespace Tests
             return 0;
         }
 
-        [BenchmarkCategory("localArray.AsSpan"), Benchmark]
+        [BenchmarkCategory("BFlocalArray.AsSpan"), Benchmark]
         public double IntSpanFirstFastSelector()
         {
             int[] localArray = Benchmarks.intArray;
@@ -58,37 +58,37 @@ namespace Tests
             return asSpan.FirstF(firstInts);
         }
 
-        [BenchmarkCategory("intList"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BFintList"), Benchmark(Baseline = true)]
         public double IntListFirstLinqSelector()
         {
             return Benchmarks.intList.First(firstInts);
         }
 
-        [BenchmarkCategory("intList"), Benchmark]
+        [BenchmarkCategory("BFintList"), Benchmark]
         public double IntListFirstFastSelector()
         {
             return Benchmarks.intList.FirstF(firstInts);
         }
 
-        [BenchmarkCategory("intList.AsReadOnly"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BFintList.AsReadOnly"), Benchmark(Baseline = true)]
         public double IntAsListReadOnlyFirstLinqSelector()
         {
             return Benchmarks.intList.AsReadOnly().First(firstInts);
         }
 
-        [BenchmarkCategory("intList.AsReadOnly"), Benchmark]
+        [BenchmarkCategory("BFintList.AsReadOnly"), Benchmark]
         public double IntAsListReadOnlyFirstFastSelector()
         {
             return Benchmarks.intList.AsReadOnly().FirstF(firstInts);
         }
 
-        [BenchmarkCategory("Array.AsReadOnly"), Benchmark(Baseline = true)]
+        [BenchmarkCategory("BFArray.AsReadOnly"), Benchmark(Baseline = true)]
         public double IntArrayAsReadOnlyFirstLinqSelector()
         {
             return Array.AsReadOnly(Benchmarks.intArray).First(firstInts);
         }
 
-        [BenchmarkCategory("Array.AsReadOnly"), Benchmark]
+        [BenchmarkCategory("BFArray.AsReadOnly"), Benchmark]
         public double IntArrayAsReadOnlyFirstFastSelector()
         {
             return Array.AsReadOnly(Benchmarks.intArray).FirstF(firstInts);
