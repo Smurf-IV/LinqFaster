@@ -8,7 +8,7 @@ namespace Benchmarks
     {
         public Config()
         {
-            KeepBenchmarkFiles = true;
+            // KeepBenchmarkFiles = true;
 
             //Add(Job.Default.With(CsProjClassicNetToolchain.Net472));
             Add(Job.Default.With(CsProjClassicNetToolchain.From("net48")));

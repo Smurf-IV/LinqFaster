@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;netstandard2.0;net461;net48</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461;net48</TargetFrameworks>
     <PackageId>LinqFaster.Parallel</PackageId>
     <Version>1.0.2</Version>
     <Authors>Jack Mott</Authors>
