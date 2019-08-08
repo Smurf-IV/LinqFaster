@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Runtime.CompilerServices;
+using JM.LinqFaster.Utils;
 
 // ReSharper disable UnusedMember.Global
 // ReSharper disable PossibleInvalidOperationException
@@ -182,7 +183,32 @@ namespace JM.LinqFaster
             {
                 return 0;
             }
-            return source.SumF() / (float)source.Count;
+
+            // Have to get at the double directly, because the aggressive inlining sometimes makes a bollox answer
+            // Failed : Tests.AverageTests.AverageArrayFloat
+            // Expected: 0.905460358f
+            // But was:  0.905460417f
+            // at Tests.AverageTests.AverageArrayFloat() in C:\projects\linqfaster\Tests\AverageTests.cs:line 41
+            double sum = 0D;
+            switch (source)
+            {
+                case null:
+                    throw Error.ArgumentNull(nameof(source));
+                case float[] sa:
+                    sum = NumericPolicies.Instance.SumF<NumericPolicies, float, double>(sa);
+                    break;
+                case List<float> sl:
+                    sum = NumericPolicies.Instance.SumF<NumericPolicies, float, double>(sl);
+                    break;
+                default:
+                    int sourceCount = source.Count;
+                    for (int i = 0; i < sourceCount; i++)
+                    {
+                        sum = sum + source[i];
+                    }
+                    break;
+            }
+            return (float)(sum / source.Count);
         }
 
         /// <summary>
